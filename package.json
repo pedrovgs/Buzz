@@ -9,8 +9,8 @@
   "private": false,
   "scripts": {
     "start": "electron .",
-    "lint": "eslint src",
-    "fixLint": "eslint --fix src"
+    "lint": "eslint src test",
+    "fixLint": "eslint --fix src test"
   },
   "dependencies": {
     "electron": "^1.8.2"
