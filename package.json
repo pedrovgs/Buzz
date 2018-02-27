@@ -10,12 +10,14 @@
   "scripts": {
     "start": "electron .",
     "lint": "eslint src test",
-    "fixLint": "eslint --fix src test"
+    "fixLint": "eslint --fix src test",
+    "dist": "electron-packager . --overwrite"
   },
   "dependencies": {
     "electron": "^1.8.2"
   },
   "devDependencies": {
+    "electron-packager": "^11.0.1",
     "eslint": "^4.18.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.9.0",

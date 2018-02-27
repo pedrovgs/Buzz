@@ -11,3 +11,4 @@ cache:
 script:
   - yarn install
   - yarn lint
+  - yarn dist
