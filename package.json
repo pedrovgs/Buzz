@@ -2,16 +2,24 @@
   "name": "Buzz",
   "version": "0.0.1",
   "description": "A portable photo booth built on top of Electron, React and Raspberry Pi.",
-  "main": "main.js",
+  "main": "src/main.js",
   "repository": "git@github.com:pedrovgs/Buzz.git",
   "author": "Pedro Vicente Gómez Sánchez <pedrovicente.gomez@gmail.com>",
   "license": "GPL-3.0",
   "private": false,
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "lint": "eslint src",
+    "fixLint": "eslint --fix src"
   },
   "dependencies": {
     "electron": "^1.8.2"
+  },
+  "devDependencies": {
+    "eslint": "^4.18.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "prettier-eslint-cli": "^4.7.1"
   }
-  
 }
