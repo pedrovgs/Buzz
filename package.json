@@ -1,0 +1,10 @@
+{
+  "name": "Buzz",
+  "version": "0.0.1",
+  "description": "A portable photo booth built on top of Electron, React and Raspberry Pi.",
+  "main": "main.js",
+  "repository": "git@github.com:pedrovgs/Buzz.git",
+  "author": "Pedro Vicente Gómez Sánchez <pedrovicente.gomez@gmail.com>",
+  "license": "GPL-3.0",
+  "private": false
+}
