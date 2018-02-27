@@ -8,7 +8,18 @@ This repository is built on top of [Electron](https://electronjs.org/) and uses 
 
 ```
 yarn install
-yarn run
+yarn start
+```
+
+### Executing tests:
+
+This project contains some tests written using [Jest](https://facebook.github.io/jest/). You can easily run the tests by executing one of the following commands:
+
+```
+yarn test // Executes every test.
+yarn test --watch // Watch files for changes and rerun tests related to changed files.
+yarn test --watchAll // Watch files for changes and rerun every test.
+yarn test --testRegex "String calculator spec*" //Executes tests matching with the regex passed as param.
 ```
 
 ### Linter:
