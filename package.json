@@ -11,7 +11,7 @@
     "start": "electron .",
     "lint": "eslint src test",
     "fixLint": "eslint --fix src test",
-    "dist": "electron-packager . --overwrite"
+    "dist": "electron-packager . --platform=darwin --arch=x64 --out=dist --overwrite"
   },
   "dependencies": {
     "electron": "^1.8.2"
