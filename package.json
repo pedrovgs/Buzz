@@ -6,5 +6,12 @@
   "repository": "git@github.com:pedrovgs/Buzz.git",
   "author": "Pedro Vicente Gómez Sánchez <pedrovicente.gomez@gmail.com>",
   "license": "GPL-3.0",
-  "private": false
+  "private": false,
+  "scripts": {
+    "start": "electron ."
+  },
+  "dependencies": {
+    "electron": "^1.8.2"
+  }
+  
 }
