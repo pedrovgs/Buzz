@@ -65,3 +65,6 @@ typings/
 
 # IntelliJ
 .idea
+
+# React distribution build
+/build

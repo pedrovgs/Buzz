@@ -4,11 +4,12 @@ A portable photo booth built on top of [Electron](https://electronjs.org/), [Rea
 
 ### Running this project:
 
-This repository is built on top of [Electron](https://electronjs.org/) and uses [Yarn](https://yarnpkg.com/en/) for dependency management. Thanks to these tools you can easily run this project on your computer running the following commands:
+This repository is built on top of [Electron](https://electronjs.org/) and [React](https://reactjs.org/) using [Yarn](https://yarnpkg.com/en/) for dependency management. Thanks to these tools you can easily run this project on your computer running the following commands:
 
 ```
 yarn install
-yarn start
+yarn run dev // Starts a webpack-dev-server instance with our react application inside and the electron app showing this applicaiton. This command is ideal for development purposes.
+yarn start // Starts a webpack-dev-server instance with our react application running on a browser.
 ```
 
 ### Executing tests:
