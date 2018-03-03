@@ -2,31 +2,51 @@
   "name": "Buzz",
   "version": "0.0.1",
   "description": "A portable photo booth built on top of Electron, React and Raspberry Pi.",
-  "main": "src/main.js",
+  "main": "src/electron-starter.js",
+  "homepage": "./",
   "repository": "git@github.com:pedrovgs/Buzz.git",
   "author": "Pedro Vicente Gómez Sánchez <pedrovicente.gomez@gmail.com>",
   "license": "GPL-3.0",
   "private": false,
   "scripts": {
-    "start": "electron .",
+    "dev": "nf start -p 3000",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "electron": "electron .",
     "lint": "eslint src test",
     "fixLint": "eslint --fix src test",
-    "test": "jest",
-    "dist": "electron-packager . --platform=darwin --arch=x64 --out=dist --overwrite"
+    "test": "react-scripts test --env=jsdom",
+    "dist": "yarn build && electron-packager . --platform=darwin --arch=x64 --out=dist --overwrite"
   },
   "dependencies": {
-    "electron": "^1.8.2"
+    "electron": "^1.8.2",
+    "electron-store": "^1.3.0",
+    "moment": "^2.21.0",
+    "monet": "^0.8.10",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^4.0.8",
+    "redux": "^3.7.2",
+    "redux-devtools": "^3.4.1"
   },
   "devDependencies": {
-    "babel-jest": "^22.4.1",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "create-react-app": "^1.5.2",
+    "electron-devtools-installer": "^2.2.3",
     "electron-packager": "^11.0.1",
     "eslint": "^4.18.1",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "^2.9.0",
     "eslint-plugin-prettier": "^2.6.0",
-    "jest": "^22.4.2",
-    "prettier-eslint-cli": "^4.7.1"
+    "eslint-plugin-react": "^7.7.0",
+    "foreman": "^2.0.0",
+    "jsverify": "^0.8.3",
+    "prettier-eslint-cli": "^4.7.1",
+    "react-scripts": "^1.1.1",
+    "webpack": "^4.0.1",
+    "webpack-dev-server": "^3.1.0"
   }
 }
