@@ -46,9 +46,13 @@ function startMainWindow() {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    icon: path.join(__dirname + "/../assets/icons/png/logo.png")
+    icon: path.join(__dirname + "/../assets/icons/png/logo.png"),
+    show: false
   });
-
+  // This hack keeps the main window hidden until is ready to be shown
+  mainWindow.once("ready-to-show", () => {
+    mainWindow.show();
+  });
   // and load the index.html of the app.
   const startUrl =
     process.env.ELECTRON_START_URL ||
