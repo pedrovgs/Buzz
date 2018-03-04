@@ -6,7 +6,7 @@ As we don't have resources for this project we've decided to pick a random logo 
 
 Obtained from [https://www.flaticon.com](https://www.flaticon.com)
 
-![logo.svg](logo.svg)
+![logo.svg](../public/images/logo.svg)
 
 ## Color palette:
 

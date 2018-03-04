@@ -1,6 +1,6 @@
 # Buzz [![Build Status](https://travis-ci.org/pedrovgs/Buzz.svg?branch=master)](https://travis-ci.org/pedrovgs/Buzz)
 
-<img alt="Buzz" src="./art/logo.svg" height="80" width="80"/>
+<img alt="Buzz" src="./public/images/logo.svg" height="80" width="80"/>
 
 A portable photo booth built on top of [Electron](https://electronjs.org/), [React](https://reactjs.org/) and [Raspberry Pi](https://www.raspberrypi.org/).
 
