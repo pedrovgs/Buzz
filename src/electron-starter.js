@@ -46,6 +46,8 @@ function startMainWindow() {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    minWidth: 400,
+    minHeight: 300,
     icon: path.join(__dirname + "/../assets/icons/png/logo.png"),
     show: false
   });
