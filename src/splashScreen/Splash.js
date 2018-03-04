@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import logo from "./images/logo.svg";
+import logo from "../images/logo.svg";
+import "./css/Splash.css";
 
 export default class SplashScreen extends Component {
   render() {
