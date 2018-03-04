@@ -1,5 +1,7 @@
 # Buzz [![Build Status](https://travis-ci.org/pedrovgs/Buzz.svg?branch=master)](https://travis-ci.org/pedrovgs/Buzz)
 
+<img alt="Buzz" src="./art/logo.png" height="80" width="80"/>
+
 A portable photo booth built on top of [Electron](https://electronjs.org/), [React](https://reactjs.org/) and [Raspberry Pi](https://www.raspberrypi.org/).
 
 ### Running this project:
@@ -26,6 +28,18 @@ yarn test --testRegex "String calculator spec*" //Executes tests matching with t
 ### Linter:
 
 This repository uses [eslint](https://eslint.org/) in order to check if the js code written matches the checkstyle configured. You can check if everything is ok by executing ``yarn lint`` and automatically fix the issues by executing ``yarn fixLint`` if needed.
+
+Developed By
+------------
+
+* Pedro Vicente Gómez Sánchez - <pedrovicente.gomez@gmail.com>
+
+<a href="https://twitter.com/pedro_g_s">
+  <img alt="Follow me on Twitter" src="https://image.freepik.com/iconos-gratis/twitter-logo_318-40209.jpg" height="60" width="60"/>
+</a>
+<a href="https://es.linkedin.com/in/pedrovgs">
+  <img alt="Add me to Linkedin" src="https://image.freepik.com/iconos-gratis/boton-del-logotipo-linkedin_318-84979.png" height="60" width="60"/>
+</a>
 
 License
 -------
