@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    text-rendering: optimizeLegibility;
+}
+
+.loading-screen-logo {
+    width: 25%;
+    height: 25%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%)
+}

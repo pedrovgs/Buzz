@@ -10,7 +10,7 @@ Obtained from [https://www.flaticon.com](https://www.flaticon.com)
 
 ## Color palette:
 
-Generated using [https://coolors.co](https://coolors.co) and moved to material design thanks to [this tool](https://material.io/color/#!/?view.left=0&view.right=1&primary.color=F2DB2C&secondary.color=33658A)
+Generated using [https://coolors.co](https://coolors.co) and moved to material design thanks to [this tool](https://material.io/color/#!/?view.left=0&view.right=1&primary.color=F2DB2C&secondary.color=33658A).
 
 * Primary color: #f2db2c
 * Primary color light: #ffff65
@@ -23,6 +23,4 @@ Generated using [https://coolors.co](https://coolors.co) and moved to material d
 
 ## Design schema
 
-We follow the [Material Design](https://material.io) style implemented thanks to [Material UI](http://www.material-ui.com/#/) react components
-
-**An example of the usage of the color palette we've chosen and the material design stye can be found in [this interactive example](https://codepen.io/pen/).**
+We follow the [Material Design](https://material.io) style implemented thanks to [Material UI](http://www.material-ui.com/#/) react components.
