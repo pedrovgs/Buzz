@@ -27,7 +27,7 @@ export default class SplashScreen extends Component {
   render() {
     if (this.state.loading) {
       this.scheduleHideLoading();
-      return <CircularProgress className="progress-bar center" />;
+      return <CircularProgress className="center" size={100} />;
     } else {
       return (
         <img
