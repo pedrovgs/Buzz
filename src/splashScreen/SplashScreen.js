@@ -5,7 +5,7 @@ import "./css/SplashScreen.css";
 import CircularProgress from "material-ui/CircularProgress";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
-import {ALBUM, LOG_IN} from "../routes";
+import { ALBUM, LOG_IN } from "../routes";
 
 const timeShowingAppIconInMillis = 1200;
 const timeLoadingInMillis = 1900;
