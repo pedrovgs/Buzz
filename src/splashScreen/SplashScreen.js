@@ -1,14 +1,15 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import logo from "../images/logo.svg";
 import "./css/SplashScreen.css";
 import CircularProgress from "material-ui/CircularProgress";
 import { withRouter } from "react-router";
+import {LOG_IN} from "../routes";
 
 const timeShowingAppIconInMillis = 1200;
 const timeLoadingInMillis = 1900;
 
-class Splash extends Component {
+class Splash extends React.Component {
   constructor(props) {
     super(props);
     this.state = { loading: false };
@@ -43,7 +44,7 @@ class Splash extends Component {
 
   scheduleHideLoading() {
     this.hideLoadingTimer = setTimeout(
-      () => this.props.history.push("/asdfasdf"),
+      () => this.props.history.push(LOG_IN),
       timeLoadingInMillis
     );
   }
