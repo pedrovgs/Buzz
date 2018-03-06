@@ -2,12 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppTheme from "./theme/AppTheme";
-
-import SplashScreen from "./splashScreen/Splash";
+import { Provider } from "react-redux";
+import App from "./App";
+import buzzStore from "./buzz";
 
 ReactDOM.render(
-  <MuiThemeProvider muiTheme={AppTheme}>
-    <SplashScreen />
-  </MuiThemeProvider>,
+  <Provider store={buzzStore}>
+    <MuiThemeProvider muiTheme={AppTheme}>
+      <App />
+    </MuiThemeProvider>
+  </Provider>,
   document.getElementById("root")
 );

@@ -1,12 +1,14 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import logo from "../images/logo.svg";
-import "./css/Splash.css";
+import "./css/SplashScreen.css";
 import CircularProgress from "material-ui/CircularProgress";
+import { connect } from "react-redux";
 
 const timeShowingAppIconInMillis = 1200;
 const timeLoadingInMillis = 1900;
 
-export default class SplashScreen extends Component {
+class Splash extends Component {
   constructor(props) {
     super(props);
     this.state = { loading: false };
@@ -41,7 +43,7 @@ export default class SplashScreen extends Component {
 
   scheduleHideLoading() {
     this.hideLoadingTimer = setTimeout(
-      () => this.openNextScreen(),
+      () => this.props.onLoadCompleted(),
       timeLoadingInMillis
     );
   }
@@ -51,10 +53,24 @@ export default class SplashScreen extends Component {
       loading: true
     });
   }
-
-  openNextScreen() {
-    this.setState({
-      loading: false
-    });
-  }
 }
+
+Splash.propTypes = {
+  onLoadCompleted: PropTypes.func
+};
+
+const mapStateToProps = () => {
+  return {};
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onLoadCompleted: () => {
+      console.log("On fucking load completed");
+    }
+  };
+};
+
+const SplashScreen = connect(mapStateToProps, mapDispatchToProps)(Splash);
+
+export default SplashScreen;
