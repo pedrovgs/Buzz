@@ -5,7 +5,7 @@ const initialState = {
   authToken: undefined
 };
 
-export default function session(state = initialState, action) {
+export function sessionReducer(state = initialState, action) {
   switch (action.type) {
     case LOG_IN:
       return Object.assign({}, state, {
@@ -21,4 +21,8 @@ export default function session(state = initialState, action) {
     default:
       return state;
   }
+}
+
+export function isUserLoggedIn(state) {
+  return typeof state.session !== "undefined";
 }

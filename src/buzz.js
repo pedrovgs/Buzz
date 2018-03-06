@@ -1,9 +1,9 @@
-import session from "./session/reducer";
+import { sessionReducer } from "./session/session";
 import { createStore } from "redux";
 
 function buzz(state = {}, action) {
   return {
-    session: session(state.session, action)
+    session: sessionReducer(state.session, action)
   };
 }
 

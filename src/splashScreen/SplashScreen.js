@@ -6,6 +6,7 @@ import CircularProgress from "material-ui/CircularProgress";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import { ALBUM, LOG_IN } from "../routes";
+import { isUserLoggedIn } from "../session/session";
 
 const timeShowingAppIconInMillis = 1200;
 const timeLoadingInMillis = 1900;
@@ -51,7 +52,7 @@ class Splash extends React.Component {
   }
 
   openNextScreen() {
-    if (this.isUserLoggedIn) {
+    if (!this.isUserLoggedIn) {
       return this.props.history.push(LOG_IN);
     } else {
       return this.props.history.push(ALBUM);
@@ -66,11 +67,10 @@ class Splash extends React.Component {
 }
 
 function mapStateToProps(state) {
-  return { isUserLoggedIn: typeof state.session === "undefined" };
+  return { isUserLoggedIn: isUserLoggedIn(state) };
 }
 
 Splash.propTypes = {
-  store: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired
 };
 
