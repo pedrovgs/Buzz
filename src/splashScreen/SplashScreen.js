@@ -4,7 +4,8 @@ import logo from "../images/logo.svg";
 import "./css/SplashScreen.css";
 import CircularProgress from "material-ui/CircularProgress";
 import { withRouter } from "react-router";
-import {LOG_IN} from "../routes";
+import { connect } from "react-redux";
+import {ALBUM, LOG_IN} from "../routes";
 
 const timeShowingAppIconInMillis = 1200;
 const timeLoadingInMillis = 1900;
@@ -44,9 +45,17 @@ class Splash extends React.Component {
 
   scheduleHideLoading() {
     this.hideLoadingTimer = setTimeout(
-      () => this.props.history.push(LOG_IN),
+      () => this.openNextScreen(),
       timeLoadingInMillis
     );
+  }
+
+  openNextScreen() {
+    if (this.isUserLoggedIn) {
+      return this.props.history.push(LOG_IN);
+    } else {
+      return this.props.history.push(ALBUM);
+    }
   }
 
   showLoading() {
@@ -56,10 +65,13 @@ class Splash extends React.Component {
   }
 }
 
+function mapStateToProps(state) {
+  return { isUserLoggedIn: typeof state.session === "undefined" };
+}
+
 Splash.propTypes = {
+  store: PropTypes.object.isRequired,
   history: PropTypes.object.isRequired
 };
 
-const SplashScreen = withRouter(Splash);
-
-export default SplashScreen;
+export default withRouter(connect(mapStateToProps)(Splash));
