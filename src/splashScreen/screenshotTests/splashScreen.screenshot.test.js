@@ -1,6 +1,8 @@
 import app from "../../testUtils/spectron";
+
 const { toMatchImageSnapshot } = require("jest-image-snapshot");
 expect.extend({ toMatchImageSnapshot });
+
 describe("SplashScreen", () => {
   beforeEach(() => {
     return app.start();
@@ -16,6 +18,8 @@ describe("SplashScreen", () => {
   });
 
   it("shows the app logo on start", async () => {
+    await app.browserWindow.isVisible();
+    await app.client.waitUntilWindowLoaded();
     const image = await app.browserWindow.capturePage();
     expect(image).toMatchImageSnapshot();
   });
