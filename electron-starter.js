@@ -56,13 +56,16 @@ function startMainWindow() {
     mainWindow.show();
   });
   // and load the index.html of the app.
+  const appPath = path.join(__dirname, "build", "index.html");
   const startUrl =
     process.env.ELECTRON_START_URL ||
     url.format({
-      pathname: path.join(__dirname, "/../build/index.html"),
+      pathname: appPath,
       protocol: "file:",
       slashes: true
     });
+  // eslint-disable-next-line no-console
+  console.log("Starting electron and loading url: " + startUrl);
   mainWindow.loadURL(startUrl);
 }
 

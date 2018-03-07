@@ -2,7 +2,7 @@
   "name": "Buzz",
   "version": "0.0.1",
   "description": "A portable photo booth built on top of Electron, React and Raspberry Pi.",
-  "main": "src/electron-starter.js",
+  "main": "electron-starter.js",
   "homepage": "./",
   "repository": "git@github.com:pedrovgs/Buzz.git",
   "author": "Pedro Vicente Gómez Sánchez <pedrovicente.gomez@gmail.com>",
