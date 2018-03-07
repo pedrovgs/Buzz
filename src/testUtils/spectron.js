@@ -6,10 +6,14 @@ import path from "path";
 expect.extend({ toMatchImageSnapshot });
 
 export async function compareScreenshot(app) {
-  await app.client.waitUntilWindowLoaded();
-  await app.browserWindow.isVisible();
+  await waitForAppReady(app);
   const image = await app.browserWindow.capturePage();
   expect(image).toMatchImageSnapshot();
+}
+
+export async function waitForAppReady(app) {
+  await app.client.waitUntilWindowLoaded();
+  await app.browserWindow.isVisible();
 }
 
 export async function startApp() {
@@ -19,4 +23,9 @@ export async function startApp() {
     startTimeout: 3000
   });
   return app.start();
+}
+
+export function runningTests() {
+  const runningTestEnvVar = process.env.RUNNING_TESTS;
+  return runningTestEnvVar ? runningTestEnvVar === true : false;
 }

@@ -7,6 +7,7 @@ import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import { ALBUM, LOG_IN } from "../routes";
 import { isUserLoggedIn } from "../session/session";
+import { runningTests } from "../testUtils/spectron";
 
 const timeShowingAppIconInMillis = 1200;
 const timeLoadingInMillis = 1900;
@@ -32,7 +33,8 @@ class Splash extends React.Component {
   render() {
     if (this.state.loading) {
       this.scheduleHideLoading();
-      return <CircularProgress className="center" size={100} />;
+      const mode = runningTests() ? "indeterminate" : "determinate";
+      return <CircularProgress className="center" mode={mode} size={100} />;
     } else {
       return (
         <img

@@ -1,4 +1,8 @@
-import { compareScreenshot, startApp } from "../../testUtils/spectron";
+import {
+  compareScreenshot,
+  startApp,
+  waitForAppReady
+} from "../../testUtils/spectron";
 
 let app;
 
@@ -9,6 +13,11 @@ describe("SplashScreen", () => {
 
   afterEach(async () => {
     await app.stop();
+  });
+
+  it("shows the app logo on start", async () => {
+    const title = await app.browserWindow.getTitle();
+    expect(title).toEqual("Buzz");
   });
 
   it("shows the app logo on start", async () => {
