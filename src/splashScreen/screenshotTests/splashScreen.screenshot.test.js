@@ -23,4 +23,10 @@ describe("SplashScreen", () => {
   it("shows the app logo on start", async () => {
     await compareScreenshot(app);
   });
+
+  it("shows the progress bar after showing the application logo", async () => {
+    await app.client.waitForVisible(".progress");
+    //TODO We need to use webdriver io here with the app.client variable.
+    //await compareScreenshot(app);
+  });
 });
