@@ -40,7 +40,7 @@ class Splash extends React.Component {
           className="center"
           mode={mode}
           size={100}
-          value={79}
+          value={55}
         />
       );
     } else {
