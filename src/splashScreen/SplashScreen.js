@@ -46,6 +46,7 @@ class Splash extends React.Component {
     } else {
       return (
         <img
+          id="logo"
           src={logo}
           alt="Buzz logo"
           className="loading-screen-logo center"

@@ -1,8 +1,4 @@
-import {
-  compareScreenshot,
-  startApp,
-  waitForReady
-} from "../../testUtils/spectron";
+import { compareScreenshot, startApp } from "../../testUtils/spectron";
 
 let app;
 
@@ -22,12 +18,15 @@ describe("SplashScreen", () => {
     expect(title).toEqual("Buzz");
   });
 
-  it("shows the app logo on start", async () => {
-    await compareScreenshot(app);
+  it("shows the app logo on start", () => {
+    return app.client
+      .waitForVisible("#logo")
+      .then(() => compareScreenshot(app));
   });
 
   it("shows the progress bar after showing the application logo", async () => {
-    await app.client.waitForVisible("#progress");
-    await compareScreenshot(app);
+    return app.client
+      .waitForVisible("#progress")
+      .then(() => compareScreenshot(app));
   });
 });
