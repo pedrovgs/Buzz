@@ -49,7 +49,7 @@ function startMainWindow() {
     minWidth: 400,
     minHeight: 300,
     icon: path.join(__dirname + "/../assets/icons/png/logo.png"),
-    show: false
+    show: !isRunningTests()
   });
   // This hack keeps the main window hidden until is ready to be shown
   mainWindow.once("ready-to-show", () => {
@@ -100,4 +100,9 @@ function openDevToolsIfNeeded() {
 
 function isDev() {
   return typeof process.env.ELECTRON_START_URL !== "undefined";
+}
+
+function isRunningTests() {
+  const runningTestEnvVar = process.env.RUNNING_TESTS;
+  return runningTestEnvVar ? runningTestEnvVar === true : false;
 }
