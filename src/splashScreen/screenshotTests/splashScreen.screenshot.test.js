@@ -9,10 +9,13 @@ let app;
 describe("SplashScreen", () => {
   beforeEach(async () => {
     app = await startApp();
+    waitForAppReady(app);
   });
 
   afterEach(async () => {
-    await app.stop();
+    if (app.isRunning()) {
+      await app.stop();
+    }
   });
 
   it("shows the app logo on start", async () => {
@@ -27,6 +30,6 @@ describe("SplashScreen", () => {
   it("shows the progress bar after showing the application logo", async () => {
     await app.client.waitForVisible(".progress");
     //TODO We need to use webdriver io here with the app.client variable.
-    //await compareScreenshot(app);
+    await compareScreenshot(app);
   });
 });

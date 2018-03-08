@@ -24,8 +24,3 @@ export async function startApp() {
   });
   return app.start();
 }
-
-export function runningTests() {
-  const runningTestEnvVar = process.env.RUNNING_TESTS;
-  return runningTestEnvVar ? runningTestEnvVar === true : false;
-}
