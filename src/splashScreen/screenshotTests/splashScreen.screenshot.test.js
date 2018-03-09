@@ -29,4 +29,12 @@ describe("SplashScreen", () => {
       .waitForVisible("#progress")
       .then(() => compareScreenshot(app));
   });
+
+  it("navigates to the log in screen if the user is not logged in after finishing the splash screen animation", async () => {
+    await app.client.waitForVisible("#progress");
+    await app.client.waitForVisible("#progress", false);
+    await app.client.pause(2000);
+    const currentUrl = await app.client.getUrl();
+    expect(currentUrl).toMatch("/logIn");
+  });
 });
