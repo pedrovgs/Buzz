@@ -5,6 +5,8 @@ import path from "path";
 
 expect.extend({ toMatchImageSnapshot });
 
+process.env.REACT_APP_RUNNING_TESTS = true;
+
 export function compareScreenshot(app) {
   return waitForReady(app)
     .browserWindow.capturePage()

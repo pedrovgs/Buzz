@@ -16,8 +16,8 @@
     "electron": "electron .",
     "lint": "eslint src test",
     "fixLint": "eslint --fix src test",
-    "test": "RUNNING_TESTS=true react-scripts test --env=jsdom",
-    "recordTes": "RUNNING_TESTS=true react-scripts test --updateSnapshot --env=jsdom",
+    "test": "react-scripts test --env=jsdom",
+    "recordTest": "react-scripts test --updateSnapshot --env=jsdom",
     "dist": "yarn distMac && yarn distRaspberry",
     "distMac": "yarn build && electron-packager . --platform=darwin --arch=x64 --out=dist --icon=assets/icons/logo.icns --overwrite",
     "distRaspberry": "yarn build && electron-packager . --platform=linux --arch=armv7l --out=dist --icon=assets/icons/logo.png --overwrite"
