@@ -27,3 +27,4 @@ script:
   - yarn build
   - yarn test
   - yarn dist
+  - find src -type f -name "*snap.png" -exec openssl  base64 -in {} \;
