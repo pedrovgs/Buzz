@@ -1,40 +1,43 @@
-import { compareScreenshot, startApp } from "../../testUtils/spectron";
-
-let app;
+import {
+  compareScreenshot,
+  getUrlLoaded,
+  getWindowTitle,
+  startApp,
+  stopApp,
+  waitABit,
+  waitForInvisible,
+  waitForVisible
+} from "../../testUtils/spectron";
 
 describe("SplashScreen", () => {
   beforeEach(async () => {
-    app = await startApp();
+    await startApp();
   });
 
   afterEach(async () => {
-    if (app && app.isRunning()) {
-      await app.stop();
-    }
+    await stopApp();
   });
 
   it("shows the app title on start", async () => {
-    const title = await app.client.getTitle();
+    const title = await getWindowTitle();
     expect(title).toEqual("Buzz");
   });
 
-  it("shows the app logo on start", () => {
-    return app.client
-      .waitForVisible("#logo")
-      .then(() => compareScreenshot(app));
+  it("shows the app logo on start", async () => {
+    await waitForVisible("#logo");
+    await compareScreenshot();
   });
 
   it("shows the progress bar after showing the application logo", async () => {
-    return app.client
-      .waitForVisible("#progress")
-      .then(() => compareScreenshot(app));
+    await waitForVisible("#progress");
+    await compareScreenshot();
   });
 
   it("navigates to the log in screen if the user is not logged in after finishing the splash screen animation", async () => {
-    await app.client.waitForVisible("#progress");
-    await app.client.waitForVisible("#progress", false);
-    await app.client.pause(2000);
-    const currentUrl = await app.client.getUrl();
+    await waitForVisible("#progress");
+    await waitForInvisible("#progress");
+    await waitABit();
+    const currentUrl = await getUrlLoaded();
     expect(currentUrl).toMatch("/logIn");
   });
 });

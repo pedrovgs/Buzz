@@ -7,16 +7,16 @@ expect.extend({ toMatchImageSnapshot });
 
 process.env.REACT_APP_RUNNING_TESTS = true;
 
-export function compareScreenshot(app) {
-  return waitForReady(app)
-    .browserWindow.capturePage()
-    .then(image => {
-      expect(image).toMatchImageSnapshot();
-    });
+let app;
+
+export async function compareScreenshot() {
+  await waitForReady();
+  const image = await app.browserWindow.capturePage();
+  expect(image).toMatchImageSnapshot();
 }
 
-export function startApp() {
-  const app = new Application({
+export async function startApp() {
+  app = new Application({
     path: electron,
     args: [path.join(__dirname, "..", "..", "electron-starter.js")],
     startTimeout: 3000
@@ -24,6 +24,33 @@ export function startApp() {
   return app.start();
 }
 
-function waitForReady(app) {
+export async function stopApp() {
+  if (app && app.isRunning()) {
+    return app.stop();
+  }
+  return Promise.resolve();
+}
+
+export async function getWindowTitle() {
+  return app.client.getTitle();
+}
+
+export async function waitForVisible(selector) {
+  return app.client.waitForVisible(selector);
+}
+
+export async function waitForInvisible(selector) {
+  return app.client.waitForVisible(selector, true);
+}
+
+export async function waitABit() {
+  return app.client.pause(2000);
+}
+
+export async function getUrlLoaded() {
+  return app.client.getUrl();
+}
+
+async function waitForReady() {
   return app.client.waitUntilWindowLoaded();
 }
