@@ -3,6 +3,11 @@ language: node_js
 node_js:
  - "8"
 
+addons:
+  apt:
+    packages:
+      - xvfb
+
 before_install:
   - sudo apt-key adv --fetch-keys http://dl.yarnpkg.com/debian/pubkey.gpg
   - echo "deb http://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
@@ -12,10 +17,9 @@ before_install:
 cache:
   yarn: true
 
-before_script:
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - sleep 3 # give xvfb some time to start
+install:
+  - export DISPLAY=':99.0'
+  - Xvfb :99 -screen 0 1600x1156x24 > /dev/null 2>&1 &
 
 script:
   - yarn install
