@@ -68,3 +68,6 @@ typings/
 
 # React distribution build
 /build
+
+# jest-image-snapshot diffs
+/src/**/__diff_output__/
