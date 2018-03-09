@@ -20,5 +20,6 @@ before_script:
 script:
   - yarn install
   - yarn lint
+  - yarn build
   - yarn test
   - yarn dist
