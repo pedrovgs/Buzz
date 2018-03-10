@@ -14,6 +14,7 @@ let app;
 
 export async function compareScreenshot() {
   await waitForReady();
+  await waitABit();
   const screenshot = await app.client.saveScreenshot();
   const size = await app.browserWindow.getSize();
   console.log("Screen size => " + size);
