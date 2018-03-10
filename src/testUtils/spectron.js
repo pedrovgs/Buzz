@@ -13,10 +13,7 @@ let app;
 export async function compareScreenshot() {
   await waitForReady();
   const screenshot = await app.browserWindow.capturePage();
-  const resizedScreenshot = await sharp(screenshot)
-    .resize(1600, 1156)
-    .toBuffer();
-  expect(resizedScreenshot).toMatchImageSnapshot();
+  expect(screenshot).toMatchImageSnapshot();
 }
 
 export async function startApp() {
