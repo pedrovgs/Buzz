@@ -1,5 +1,4 @@
 import {
-  compareScreenshot,
   getUrlLoaded,
   getWindowTitle,
   startApp,
@@ -25,12 +24,11 @@ describe("SplashScreen", () => {
 
   it("shows the app logo on start", async () => {
     await waitForVisible("#logo");
-    await compareScreenshot();
   });
 
   it("shows the progress bar after showing the application logo", async () => {
+    await waitForVisible("#logo");
     await waitForVisible("#progress");
-    await compareScreenshot();
   });
 
   it("navigates to the log in screen if the user is not logged in after finishing the splash screen animation", async () => {
