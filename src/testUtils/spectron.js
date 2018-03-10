@@ -4,6 +4,8 @@ import electron from "electron";
 import path from "path";
 import sharp from "sharp";
 
+const sizeOf = require("image-size");
+
 expect.extend({ toMatchImageSnapshot });
 
 process.env.REACT_APP_RUNNING_TESTS = true;
@@ -14,18 +16,26 @@ export async function compareScreenshot() {
   await waitForReady();
   const screenshot = await app.browserWindow.capturePage();
   const size = await app.browserWindow.getSize();
-  console.log(size);
+  console.log("Screen size => " + size);
   const width = size[0];
   const height = size[1];
-  console.log(width);
-  console.log(height);
-  expect(screenshot).toMatchImageSnapshot();
+  const resizedScreenshot = await sharp(screenshot)
+    .resize(width, height)
+    .toBuffer();
+  let dimensions = sizeOf(resizedScreenshot);
+  console.log(
+    "Screenshot size => " + dimensions.width + "-" + dimensions.height
+  );
+  expect(resizedScreenshot).toMatchImageSnapshot();
 }
 
 export async function startApp() {
   app = new Application({
     path: electron,
-    args: [path.join(__dirname, "..", "..", "electron-starter.js"), ("--force-device-scale-factor=1")],
+    args: [
+      path.join(__dirname, "..", "..", "electron-starter.js"),
+      "--force-device-scale-factor=2"
+    ],
     startTimeout: 3000
   });
   return app.start();
