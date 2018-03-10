@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import logo from "../images/logo.svg";
 import "./css/SplashScreen.css";
 import CircularProgress from "material-ui/CircularProgress";
 import { withRouter } from "react-router";
@@ -8,6 +7,8 @@ import { connect } from "react-redux";
 import { ALBUM, LOG_IN } from "../routes";
 import { isUserLoggedIn } from "../session/session";
 import { isRunningTests } from "../testUtils/utils";
+import Logo from "../baseComponents/logo/Logo";
+import ProgressBar from "../baseComponents/progressBar/ProgressBar";
 
 const timeShowingAppIconInMillis = 1200;
 const timeLoadingInMillis = 1900;
@@ -33,25 +34,9 @@ class Splash extends React.Component {
   render() {
     if (this.state.loading) {
       this.scheduleHideLoading();
-      const mode = isRunningTests() ? "determinate" : "indeterminate";
-      return (
-        <CircularProgress
-          id="progress"
-          className="center"
-          mode={mode}
-          size={100}
-          value={55}
-        />
-      );
+      return <ProgressBar/>;
     } else {
-      return (
-        <img
-          id="logo"
-          src={logo}
-          alt="Buzz logo"
-          className="loading-screen-logo center"
-        />
-      );
+      return <Logo />;
     }
   }
 

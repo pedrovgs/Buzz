@@ -25,5 +25,5 @@ script:
   - yarn install
   - yarn lint
   - yarn build
-  - find src -type f -name "*diff.png" -exec openssl  base64 -in {} \;
+  - yarn test
   - yarn dist
