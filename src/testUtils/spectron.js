@@ -32,7 +32,10 @@ export async function compareScreenshot() {
 export async function startApp() {
   app = new Application({
     path: electron,
-    args: [path.join(__dirname, "..", "..", "electron-starter.js")],
+    args: [
+      path.join(__dirname, "..", "..", "electron-starter.js"),
+      "--force-device-scale-factor=1"
+    ],
     startTimeout: 3000
   });
   return app.start();
