@@ -2,7 +2,6 @@ import { toMatchImageSnapshot } from "jest-image-snapshot";
 import { Application } from "spectron";
 import electron from "electron";
 import path from "path";
-import sharp from "sharp";
 
 expect.extend({ toMatchImageSnapshot });
 
