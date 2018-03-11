@@ -24,6 +24,9 @@ export async function startApp() {
   return app.start().then(() => {
     return waitForReady()
       .then(() => {
+        return waitASec();
+      })
+      .then(() => {
         return resetAppState();
       })
       .then(() => {
