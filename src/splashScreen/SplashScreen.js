@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
-import { ALBUM, LOG_IN } from "../routes";
+import { ALBUM, LOG_IN } from "../app/routes";
 import { isUserLoggedIn } from "../session/session";
 import Logo from "../baseComponents/logo/Logo";
 import ProgressBar from "../baseComponents/progressBar/ProgressBar";

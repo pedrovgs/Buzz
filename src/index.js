@@ -3,8 +3,8 @@ import ReactDOM from "react-dom";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
 import AppTheme from "./theme/AppTheme";
 import { Provider } from "react-redux";
-import App from "./App";
-import buzzStore from "./buzz";
+import App from "./app/App";
+import buzzStore from "./app/buzz";
 
 ReactDOM.render(
   <Provider store={buzzStore}>
