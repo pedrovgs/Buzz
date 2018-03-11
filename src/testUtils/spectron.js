@@ -21,18 +21,7 @@ export async function startApp() {
     args: [path.join(__dirname, "..", "..", "electron-starter.js")],
     startTimeout: 3000
   });
-  return app.start().then(() => {
-    return waitForReady()
-      .then(() => {
-        return waitASec();
-      })
-      .then(() => {
-        return resetAppState();
-      })
-      .then(() => {
-        return app;
-      });
-  });
+  return app.start();
 }
 
 export async function stopApp() {
