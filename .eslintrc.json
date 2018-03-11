@@ -27,7 +27,8 @@
     ],
     "globals": { 
       "assert": true,
-      "expect": true
+      "expect": true,
+      "jasmine": true
     }
  
   }

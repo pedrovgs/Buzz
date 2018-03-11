@@ -7,6 +7,8 @@ expect.extend({ toMatchImageSnapshot });
 
 process.env.REACT_APP_RUNNING_TESTS = true;
 
+jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+
 let app;
 
 export async function compareScreenshot() {
@@ -21,13 +23,34 @@ export async function startApp() {
     args: [path.join(__dirname, "..", "..", "electron-starter.js")],
     startTimeout: 3000
   });
-  return app.start();
+  return app.start().then(() => {
+    return waitForReady()
+      .then(() => {
+        return app.client.waitUntil(() => {
+          return app.client
+            .execute(() => {
+              return window.store;
+            })
+            .then(store => {
+              return typeof store !== "undefined";
+            });
+        });
+      })
+      .then(() => {
+        return resetAppState();
+      })
+      .then(() => {
+        return app;
+      });
+  });
 }
 
 export async function stopApp() {
   return resetAppState().then(() => {
     if (app) {
       return app.stop();
+    } else {
+      return Promise.resolve();
     }
   });
 }
