@@ -1,13 +1,14 @@
 import {
-  getUrlLoaded,
   getWindowTitle,
   startApp,
   stopApp,
-  waitABit,
   waitForInvisible,
-  waitForVisible
+  waitForVisible,
+  waitUntilUrlLoaded
 } from "../../testUtils/spectron";
 
+const logoSelector = "#logo";
+const progressBarSelector = "#progress";
 describe("SplashScreen", () => {
   beforeEach(async () => {
     await startApp();
@@ -23,19 +24,27 @@ describe("SplashScreen", () => {
   });
 
   it("shows the app logo on start", async () => {
-    await waitForVisible("#logo");
+    await waitForVisible(logoSelector);
   });
 
   it("shows the progress bar after showing the application logo", async () => {
-    await waitForVisible("#logo");
-    await waitForVisible("#progress");
+    await waitForVisible(logoSelector);
+    await waitForVisible(progressBarSelector);
   });
 
   it("navigates to the log in screen if the user is not logged in after finishing the splash screen animation", async () => {
-    await waitForVisible("#progress");
-    await waitForInvisible("#progress");
-    await waitABit();
-    const currentUrl = await getUrlLoaded();
-    expect(currentUrl).toMatch("/logIn");
+    await waitForLoadScreenLoaded();
+    await waitUntilUrlLoaded("/logIn");
   });
+
+  /*it("navigates to the album screen if the user is logged in after finishing the splash screen animation", async () => {
+    //TODO: given the user is logged in
+    await waitForLoadScreenLoaded();
+    await waitUntilUrlLoaded("/album");
+  });*/
+
+  async function waitForLoadScreenLoaded() {
+    await waitForVisible(progressBarSelector);
+    await waitForInvisible(progressBarSelector);
+  }
 });

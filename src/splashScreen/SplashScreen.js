@@ -1,12 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./css/SplashScreen.css";
-import CircularProgress from "material-ui/CircularProgress";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import { ALBUM, LOG_IN } from "../routes";
 import { isUserLoggedIn } from "../session/session";
-import { isRunningTests } from "../testUtils/utils";
 import Logo from "../baseComponents/logo/Logo";
 import ProgressBar from "../baseComponents/progressBar/ProgressBar";
 
@@ -34,7 +31,7 @@ class Splash extends React.Component {
   render() {
     if (this.state.loading) {
       this.scheduleHideLoading();
-      return <ProgressBar/>;
+      return <ProgressBar />;
     } else {
       return <Logo />;
     }

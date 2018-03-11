@@ -43,12 +43,20 @@ export async function waitForInvisible(selector) {
   return app.client.waitForVisible(selector, true);
 }
 
-export async function waitABit() {
-  return app.client.pause(2000);
+export async function waitASec() {
+  return app.client.pause(1000);
 }
 
 export async function getUrlLoaded() {
   return app.client.getUrl();
+}
+
+export async function waitUntilUrlLoaded(expectedUrl) {
+  return app.client.waitUntil(() => {
+    return app.client.getUrl().then(url => {
+      return url.endsWith(expectedUrl);
+    });
+  });
 }
 
 async function waitForReady() {

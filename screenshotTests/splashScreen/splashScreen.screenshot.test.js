@@ -1,11 +1,8 @@
 import {
   compareScreenshot,
-  getUrlLoaded,
   getWindowTitle,
   startApp,
   stopApp,
-  waitABit,
-  waitForInvisible,
   waitForVisible
 } from "../../src/testUtils/spectron";
 
@@ -33,11 +30,4 @@ describe("SplashScreen screenshots", () => {
     await compareScreenshot();
   });
 
-  it("navigates to the log in screen if the user is not logged in after finishing the splash screen animation", async () => {
-    await waitForVisible("#progress");
-    await waitForInvisible("#progress");
-    await waitABit();
-    const currentUrl = await getUrlLoaded();
-    expect(currentUrl).toMatch("/logIn");
-  });
 });
