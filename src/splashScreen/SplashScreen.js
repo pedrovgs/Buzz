@@ -45,7 +45,7 @@ class Splash extends React.Component {
   }
 
   openNextScreen() {
-    if (!this.isUserLoggedIn) {
+    if (!this.props.isUserLoggedIn) {
       return this.props.history.push(LOG_IN);
     } else {
       return this.props.history.push(ALBUM);
@@ -64,7 +64,8 @@ function mapStateToProps(state) {
 }
 
 Splash.propTypes = {
-  history: PropTypes.object.isRequired
+  history: PropTypes.object.isRequired,
+  isUserLoggedIn: PropTypes.boolean
 };
 
 export default withRouter(connect(mapStateToProps)(Splash));

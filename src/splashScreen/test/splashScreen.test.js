@@ -4,8 +4,10 @@ import {
   stopApp,
   waitForInvisible,
   waitForVisible,
-  waitUntilUrlLoaded
+  waitUntilUrlLoaded,
+  setAppState
 } from "../../testUtils/spectron";
+import { loggedInState } from "../../testUtils/testStatus/session";
 
 const logoSelector = "#logo";
 const progressBarSelector = "#progress";
@@ -38,11 +40,15 @@ describe("SplashScreen", () => {
     await waitUntilUrlLoaded("/logIn");
   });
 
-  /*it("navigates to the album screen if the user is logged in after finishing the splash screen animation", async () => {
-    //TODO: given the user is logged in
+  it("navigates to the album screen if the user is logged in after finishing the splash screen animation", async () => {
+    await givenTheUserIsLoggedIn();
     await waitForLoadScreenLoaded();
     await waitUntilUrlLoaded("/album");
-  });*/
+  });
+
+  async function givenTheUserIsLoggedIn() {
+    return setAppState(loggedInState);
+  }
 
   async function waitForLoadScreenLoaded() {
     await waitForVisible(progressBarSelector);

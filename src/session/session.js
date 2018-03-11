@@ -24,5 +24,6 @@ export function sessionReducer(state = initialState, action) {
 }
 
 export function isUserLoggedIn(state) {
-  return typeof state.session !== "undefined";
+  const isSessionDefined = typeof state.session !== "undefined";
+  return isSessionDefined;
 }

@@ -21,14 +21,23 @@ export async function startApp() {
     args: [path.join(__dirname, "..", "..", "electron-starter.js")],
     startTimeout: 3000
   });
-  return app.start();
+  return app.start().then(() => {
+    return waitForReady()
+      .then(() => {
+        return resetAppState();
+      })
+      .then(() => {
+        return app;
+      });
+  });
 }
 
 export async function stopApp() {
-  if (app && app.isRunning()) {
-    return app.stop();
-  }
-  return Promise.resolve();
+  return resetAppState().then(() => {
+    if (app) {
+      return app.stop();
+    }
+  });
 }
 
 export async function getWindowTitle() {
@@ -57,6 +66,25 @@ export async function waitUntilUrlLoaded(expectedUrl) {
       return url.endsWith(expectedUrl);
     });
   });
+}
+
+export function getClient() {
+  return app.client;
+}
+
+export async function setAppState(state) {
+  return getClient().execute(newState => {
+    const action = {
+      type: "RESET_STATE",
+      state: newState
+    };
+    window.store.dispatch(action);
+    return window.store.getState();
+  }, state);
+}
+
+export async function resetAppState() {
+  return setAppState({});
 }
 
 async function waitForReady() {

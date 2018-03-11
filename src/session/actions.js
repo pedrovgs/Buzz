@@ -11,8 +11,8 @@ export class User {
 export function saveSession(user, authToken) {
   return {
     type: SAVE_SESSION,
-    authToken,
-    user
+    authToken: authToken,
+    user: user
   };
 }
 

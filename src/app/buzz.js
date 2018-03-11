@@ -3,8 +3,12 @@ import { createStore } from "redux";
 import { loadState, saveState } from "../persistence/storePersistence";
 import { throttle } from "lodash";
 import { RESET_STATE, resetState } from "./actions";
+import { isRunningTests } from "../testUtils/utils";
 
-const buzzStore = createStore(buzzReducer);
+const buzzStore = createStore(
+  buzzReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 configurePersistence(buzzStore);
 
 function configurePersistence(store) {
@@ -18,7 +22,7 @@ function configureSubscriberToPersistStateChanges(store) {
     const currentState = buzzStore.getState();
     saveState(currentState);
   };
-  const persistStateThrottle = 1000;
+  const persistStateThrottle = isRunningTests() ? 0 : 1000;
   store.subscribe(throttle(saveNewStatus), persistStateThrottle);
 }
 
