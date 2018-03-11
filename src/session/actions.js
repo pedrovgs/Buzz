@@ -1,4 +1,4 @@
-export const LOG_IN = "LOG_IN";
+export const SAVE_SESSION = "SAVE_SESSION";
 export const LOG_OUT = "LOG_OUT";
 
 export class User {
@@ -8,9 +8,9 @@ export class User {
   }
 }
 
-export function logIn(user, authToken) {
+export function saveSession(user, authToken) {
   return {
-    type: LOG_IN,
+    type: SAVE_SESSION,
     authToken,
     user
   };

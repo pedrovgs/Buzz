@@ -1,4 +1,4 @@
-import { LOG_IN, LOG_OUT } from "./actions";
+import { SAVE_SESSION, LOG_OUT } from "./actions";
 
 const initialState = {
   user: undefined,
@@ -7,7 +7,7 @@ const initialState = {
 
 export function sessionReducer(state = initialState, action) {
   switch (action.type) {
-    case LOG_IN:
+    case SAVE_SESSION:
       return Object.assign({}, state, {
         session: {
           user: action.user,

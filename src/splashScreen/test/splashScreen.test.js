@@ -9,6 +9,7 @@ import {
 
 const logoSelector = "#logo";
 const progressBarSelector = "#progress";
+
 describe("SplashScreen", () => {
   beforeEach(async () => {
     await startApp();
