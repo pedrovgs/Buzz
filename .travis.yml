@@ -26,5 +26,5 @@ script:
   - yarn lint
   - yarn build
   - yarn buildForTests
-  - yarn test
+  - yarn spectronTest
   - yarn dist

@@ -1,13 +1,15 @@
 import { sessionReducer } from "../session/session";
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
 import { loadState, saveState } from "../persistence/storePersistence";
 import { throttle } from "lodash";
 import { RESET_STATE, resetState } from "./actions";
 import { isRunningTests } from "../testUtils/utils";
+import thunk from "redux-thunk";
 
 const buzzStore = createStore(
   buzzReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+  applyMiddleware(thunk)
 );
 configurePersistence(buzzStore);
 
