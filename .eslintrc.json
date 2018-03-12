@@ -6,7 +6,8 @@
       "jest": true
     },
     "rules": {
-      "prettier/prettier": "error"
+      "prettier/prettier": "error",
+      "import/no-duplicates": "off"
     },
     "plugins": [
       "prettier"
