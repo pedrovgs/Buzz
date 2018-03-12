@@ -13,7 +13,7 @@ expect.addSnapshotSerializer(createSerializer({ mode: "deep" }));
 Enzyme.configure({ adapter: new Adapter() });
 
 describe("ProgressBar", () => {
-  it("shows the application progress bar as determinated if we are running tests", async () => {
+  it("shows the application progress bar as determinated if we are running tests", () => {
     givenTheAppIsRunningTests();
 
     const progressBar = renderProgressBar();
@@ -21,7 +21,7 @@ describe("ProgressBar", () => {
     expect(progressBar).toMatchSnapshot();
   });
 
-  it("shows the application progress bar as indeterminated if we are not running tests", async () => {
+  it("shows the application progress bar as indeterminated if we are not running tests", () => {
     givenTheAppIsNotRunningTests();
 
     const progressBar = renderProgressBar();
