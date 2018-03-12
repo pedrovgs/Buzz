@@ -70,4 +70,4 @@ typings/
 /build
 
 # jest-image-snapshot diffs
-/src/**/__diff_output__/
+/screenshotTests/**/__diff_output__/

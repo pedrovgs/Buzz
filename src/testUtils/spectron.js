@@ -2,6 +2,7 @@ import { toMatchImageSnapshot } from "jest-image-snapshot";
 import { Application } from "spectron";
 import electron from "electron";
 import path from "path";
+import sharp from "sharp";
 
 expect.extend({ toMatchImageSnapshot });
 
@@ -14,7 +15,11 @@ let app;
 export async function compareScreenshot() {
   await waitForReady();
   const screenshot = await app.client.saveScreenshot();
-  expect(screenshot).toMatchImageSnapshot();
+  const windowSize = await app.browserWindow.getSize();
+  const resizedScreenshot = await sharp(screenshot)
+    .resize(windowSize[0], windowSize[1])
+    .toBuffer();
+  expect(resizedScreenshot).toMatchImageSnapshot();
 }
 
 export async function startApp() {
@@ -93,8 +98,9 @@ export async function setAppState(state) {
       type: "RESET_STATE",
       state: newState
     };
-    window.store.dispatch(action);
-    return window.store.getState();
+    const store = window.store;
+    store.dispatch(action);
+    return store.getState();
   }, state);
 }
 

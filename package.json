@@ -12,6 +12,7 @@
     "dev": "nf start -p 3000",
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "buildForTests": "REACT_APP_RUNNING_TESTS=true yarn build",
     "eject": "react-scripts eject",
     "electron": "electron .",
     "lint": "eslint src test",

@@ -25,5 +25,6 @@ script:
   - yarn install
   - yarn lint
   - yarn build
+  - yarn buildForTests
   - yarn test
   - yarn dist
