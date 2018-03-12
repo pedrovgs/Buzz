@@ -4,7 +4,7 @@ import Logo from "../Logo";
 
 describe("Logo", () => {
   const component = renderer.create(<Logo />);
-  it("shows the application logo", async () => {
+  it("shows the application logo", () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 });

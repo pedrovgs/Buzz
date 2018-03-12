@@ -14,9 +14,11 @@ const buzzStore = createStore(
 configurePersistence(buzzStore);
 
 function configurePersistence(store) {
-  return loadInitialState(store).then(() => {
-    configureSubscriberToPersistStateChanges(store);
-  });
+  if (!testUtils.isRunningTests()) {
+    return loadInitialState(store).then(() => {
+      configureSubscriberToPersistStateChanges(store);
+    });
+  }
 }
 
 function configureSubscriberToPersistStateChanges(store) {
@@ -24,7 +26,7 @@ function configureSubscriberToPersistStateChanges(store) {
     const currentState = buzzStore.getState();
     saveState(currentState);
   };
-  const persistStateThrottle = testUtils.isRunningTests() ? 0 : 1000;
+  const persistStateThrottle = 1000;
   store.subscribe(throttle(saveNewStatus), persistStateThrottle);
 }
 
