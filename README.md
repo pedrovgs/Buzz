@@ -17,14 +17,18 @@ yarn start // Starts a webpack-dev-server instance with our react application ru
 This project contains some tests written using [Jest](https://facebook.github.io/jest/). You can easily run the tests by executing one of the following commands:
 
 ```
-yarn test // Executes every test.
-yarn recordTests // Executes every test in record mode.
+yarn test // Executes every test inside the src folder.
+yarn buildForTests // Builds the app for testing purposes. Needed before executing the screenshot tests
+yarn verifyScreenshotTests // Executes every test in record mode.
+yarn recordScreenshotTests // Executes every test in record mode.
 yarn test --watch // Watch files for changes and rerun tests related to changed files.
 yarn test --watchAll // Watch files for changes and rerun every test.
 yarn test --testRegex "String calculator spec*" //Executes tests matching with the regex passed as param.
 ```
 
 This repository contains some tests written using a testing strategy named [visual regression testing](https://www.phase2technology.com/blog/new-and-exciting-area-front-end-development-regression-testing) or [screenshot testing](https://github.com/Karumi/Shot/). Under the hood, we are using [spectron](https://github.com/electron/spectron) and [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot) in order to run the app, take the screenshot and compare them with the baseline images. **However, a library used by ``jest-image-snapshot`` is not compatible with ``node-9`` so we need to force ``node-8`` to be able to run our tests. Sorry for the inconveniences, [here](https://github.com/lukeapage/pngjs/issues/95) you can find more information about the bug. And [here](https://github.com/americanexpress/jest-image-snapshot/issues/31) the original issue named: Image comparison of snapshots crashes node v9.2.0.**
+
+The rest of the tests in this repository are placed inside the ``src`` folder and are regular unit and integration tests.
 
 ### Linter:
 

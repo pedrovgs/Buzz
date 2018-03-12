@@ -18,8 +18,8 @@
     "lint": "eslint src test",
     "fixLint": "eslint --fix src test",
     "test": "xvfb-maybe react-scripts test --env=jsdom",
-    "verifyScreenshotTests": "jest screenshotTests --runInBand --env=jsdom",
-    "recordScreenshotTests": "jest screenshotTests --runInBand --updateSnapshot --env=jsdom",
+    "verifyScreenshotTests": "yarn buildForTests && jest screenshotTests --runInBand --env=jsdom",
+    "recordScreenshotTests": "yarn buildForTests && jest screenshotTests --runInBand --updateSnapshot --env=jsdom",
     "dist": "yarn distMac && yarn distRaspberry",
     "distMac": "yarn build && electron-packager . --platform=darwin --arch=x64 --out=dist --icon=assets/icons/logo.icns --overwrite",
     "distRaspberry": "yarn build && electron-packager . --platform=linux --arch=armv7l --out=dist --icon=assets/icons/logo.png --overwrite"
