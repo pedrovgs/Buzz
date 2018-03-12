@@ -3,7 +3,7 @@ import { applyMiddleware, createStore } from "redux";
 import { loadState, saveState } from "../persistence/storePersistence";
 import { throttle } from "lodash";
 import { RESET_STATE, resetState } from "./actions";
-import { isRunningTests } from "../testUtils/utils";
+import testUtils from "../testUtils/utils";
 import thunk from "redux-thunk";
 
 const buzzStore = createStore(
@@ -24,7 +24,7 @@ function configureSubscriberToPersistStateChanges(store) {
     const currentState = buzzStore.getState();
     saveState(currentState);
   };
-  const persistStateThrottle = isRunningTests() ? 0 : 1000;
+  const persistStateThrottle = testUtils.isRunningTests() ? 0 : 1000;
   store.subscribe(throttle(saveNewStatus), persistStateThrottle);
 }
 

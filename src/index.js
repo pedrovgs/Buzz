@@ -5,7 +5,7 @@ import AppTheme from "./theme/AppTheme";
 import { Provider } from "react-redux";
 import App from "./app/App";
 import buzzStore from "./app/buzz";
-import { isRunningTests } from "./testUtils/utils";
+import testUtils from "./testUtils/utils";
 
 prepareAppForTestingIfNeeded();
 
@@ -19,7 +19,7 @@ ReactDOM.render(
 );
 
 function prepareAppForTestingIfNeeded() {
-  if (isRunningTests()) {
+  if (testUtils.isRunningTests()) {
     window.store = buzzStore;
   }
 }

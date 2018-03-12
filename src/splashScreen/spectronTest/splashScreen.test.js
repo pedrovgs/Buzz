@@ -7,7 +7,7 @@ import {
   waitUntilUrlLoaded,
   setAppState
 } from "../../testUtils/spectron";
-import { loggedInState } from "../../testUtils/testStatus/session";
+import { loggedInState } from "../../testUtils/status/session";
 
 const logoSelector = "#logo";
 const progressBarSelector = "#progress";

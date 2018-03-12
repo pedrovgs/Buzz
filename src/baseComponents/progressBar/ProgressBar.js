@@ -1,10 +1,10 @@
 import React from "react";
 import { CircularProgress } from "material-ui";
-import { isRunningTests } from "../../testUtils/utils";
+import testUtils from "../../testUtils/utils";
 
 export default class ProgressBar extends React.Component {
   render() {
-    const mode = isRunningTests() ? "determinate" : "indeterminate";
+    const mode = testUtils.isRunningTests() ? "determinate" : "indeterminate";
     return (
       <CircularProgress
         id="progress"

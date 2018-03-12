@@ -7,5 +7,3 @@ export const loggedInState = {
     }
   }
 };
-
-export const initialState = {};
