@@ -26,5 +26,5 @@ script:
   - yarn lint
   - yarn build
   - yarn buildForTests
-  - yarn verifyScreenshotTests
+  - yarn test
   - yarn dist
