@@ -46,21 +46,26 @@ function startMainWindow() {
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    minWidth: 400,
+    minHeight: 300,
     icon: path.join(__dirname + "/../assets/icons/png/logo.png"),
-    show: false
+    show: !isRunningTests()
   });
   // This hack keeps the main window hidden until is ready to be shown
   mainWindow.once("ready-to-show", () => {
     mainWindow.show();
   });
   // and load the index.html of the app.
+  const appPath = path.join(__dirname, "build", "index.html");
   const startUrl =
     process.env.ELECTRON_START_URL ||
     url.format({
-      pathname: path.join(__dirname, "/../build/index.html"),
+      pathname: appPath,
       protocol: "file:",
       slashes: true
     });
+  // eslint-disable-next-line no-console
+  console.log("Starting electron and loading url: " + startUrl);
   mainWindow.loadURL(startUrl);
 }
 
@@ -95,4 +100,9 @@ function openDevToolsIfNeeded() {
 
 function isDev() {
   return typeof process.env.ELECTRON_START_URL !== "undefined";
+}
+
+function isRunningTests() {
+  const runningTestEnvVar = process.env.REACT_APP_RUNNING_TESTS;
+  return runningTestEnvVar ? Boolean(runningTestEnvVar) === true : false;
 }

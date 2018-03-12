@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Logo shows the application logo 1`] = `
+<img
+  alt="Buzz logo"
+  className="loading-screen-logo center"
+  id="logo"
+  src="logo.svg"
+/>
+`;
