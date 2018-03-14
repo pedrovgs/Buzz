@@ -12,6 +12,19 @@ yarn run dev // Starts a webpack-dev-server instance with our react application 
 yarn start // Starts a webpack-dev-server instance with our react application running on a browser.
 ```
 
+### Configuring this project:
+
+This project uses [Firebase](https://firebase.google.com) in order to sing in the user and upload the pictures so if you want to build a custom version of this project you'll need to follow the following steps. Without a Firebase project associated you won't be able to run the project properly.
+
+Steps to create a Firebase account:
+
+* Go to your [Firebase Console](https://console.firebase.google.com/) and create a project.
+* After creating a project, click on "Add Firebase to your web app".
+* Go to the authentication menu and enable Google as an authenticator provider.
+
+
+You can find a complete guide explaining how to do configure the Firebase project [here](https://firebase.google.com/docs/auth/web/google-signin).
+
 ### Executing tests:
 
 This project contains some tests written using [Jest](https://facebook.github.io/jest/). You can easily run the tests by executing one of the following commands:
