@@ -19,7 +19,10 @@ export async function compareScreenshot() {
   const resizedScreenshot = await sharp(screenshot)
     .resize(windowSize[0], windowSize[1])
     .toBuffer();
-  expect(resizedScreenshot).toMatchImageSnapshot();
+  expect(resizedScreenshot).toMatchImageSnapshot({
+    failureThreshold: 5,
+    failureThresholdType: "percent"
+  });
 }
 
 export async function startApp() {
