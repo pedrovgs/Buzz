@@ -5,7 +5,9 @@ import { throttle } from "lodash";
 import { RESET_STATE, resetState } from "./actions";
 import testUtils from "../testUtils/utils";
 import thunk from "redux-thunk";
+import firebase from "firebase";
 
+initializeFirebase();
 const buzzStore = createStore(
   buzzReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
@@ -45,6 +47,18 @@ function buzzReducer(state = {}, action) {
         session: sessionReducer(state.session, action)
       };
   }
+}
+
+function initializeFirebase() {
+  const config = {
+    apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+    authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+    databaseURL: process.env.REACT_APP_FIREBASE_DATABASE_URL,
+    projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+    storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID
+  };
+  firebase.initializeApp(config);
 }
 
 export default buzzStore;

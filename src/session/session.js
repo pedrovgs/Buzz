@@ -9,15 +9,11 @@ export function sessionReducer(state = initialState, action) {
   switch (action.type) {
     case SAVE_SESSION:
       return Object.assign({}, state, {
-        session: {
-          user: action.user,
-          authToken: action.authToken
-        }
+        user: action.user,
+        authToken: action.authToken
       });
     case LOG_OUT:
-      return Object.assign({}, state, {
-        session: undefined
-      });
+      return Object.assign({}, state, {});
     default:
       return state;
   }

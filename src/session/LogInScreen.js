@@ -1,16 +1,10 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router";
-import PropTypes from "prop-types";
-import GoogleSignInButton from "../baseComponents/googleSignInButton/GoogleSignInButton";
+import FirebaseGoogleSignInButton from "../baseComponents/googleSignInButton/FirebaseGoogleSignInButton"
 
 class LogInScreen extends Component {
   render() {
-    return <GoogleSignInButton />;
+    return <FirebaseGoogleSignInButton />;
   }
 }
 
-LogInScreen.propTypes = {
-  history: PropTypes.object.isRequired
-};
-
-export default withRouter(LogInScreen);
+export default LogInScreen;

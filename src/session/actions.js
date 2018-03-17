@@ -2,9 +2,10 @@ export const SAVE_SESSION = "SAVE_SESSION";
 export const LOG_OUT = "LOG_OUT";
 
 export class User {
-  constructor(name, email) {
+  constructor(name, email, photoURL) {
     this.name = name;
     this.email = email;
+    this.photoURL = photoURL;
   }
 }
 

@@ -71,3 +71,7 @@ typings/
 
 # jest-image-snapshot diffs
 /screenshotTests/**/__diff_output__/
+
+# env variables
+.env.development
+.env.production

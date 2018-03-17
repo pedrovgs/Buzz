@@ -21,7 +21,29 @@ Steps to create a Firebase account:
 * Go to your [Firebase Console](https://console.firebase.google.com/) and create a project.
 * After creating a project, click on "Add Firebase to your web app".
 * Go to the authentication menu and enable Google as an authenticator provider.
+* Back to the application screen copy the config values you'll see if you tap on the button named "Add Firebase to your web application". You should the following config values:
 
+```javascript
+var config = {
+    apiKey: "AIzaSyAFF1HzzasdffNzysOQqKbNfm4K7Wtasdf",
+    authDomain: "my-app.firebaseapp.com",
+    databaseURL: "https://my-app.firebaseio.com",
+    projectId: "my-app",
+    storageBucket: "my-app.appspot.com",
+    messagingSenderId: "123240264111"
+}
+```
+
+* Paste the previously copied values into a file named ``.env.development`` and ``.env.production`` inside root folder as follows:
+
+```
+REACT_APP_FIREBASE_API_KEY="AIzaSasfd1HzzpgX6fNzysOQqKbNfm4K7Wtasdf"
+REACT_APP_FIREBASE_AUTH_DOMAIN="my-app.firebaseapp.com"
+REACT_APP_FIREBASE_DATABASE_URL="https://my-app.firebaseio.com"
+REACT_APP_FIREBASE_PROJECT_ID="my-app"
+REACT_APP_FIREBASE_STORAGE_BUCKET="my-app.appspot.com"
+REACT_APP_FIREBASE_MESSAGING_SENDER_ID="123240261111"
+```
 
 You can find a complete guide explaining how to do configure the Firebase project [here](https://firebase.google.com/docs/auth/web/google-signin).
 
