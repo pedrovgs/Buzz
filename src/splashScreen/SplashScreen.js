@@ -64,8 +64,7 @@ function mapStateToProps(state) {
 }
 
 Splash.propTypes = {
-  history: PropTypes.object.isRequired,
-  isUserLoggedIn: PropTypes.boolean
+  history: PropTypes.object.isRequired
 };
 
 export default withRouter(connect(mapStateToProps)(Splash));
