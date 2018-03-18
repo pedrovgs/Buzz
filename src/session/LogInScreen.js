@@ -5,6 +5,8 @@ import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import { ALBUM } from "../app/routes";
 import { isUserLoggedIn } from "./session";
+import { Grid, Row, Col } from "react-flexbox-grid";
+import Logo, { mediumSize } from "../baseComponents/logo/Logo";
 
 class LogInScreen extends Component {
   componentDidMount() {
@@ -17,16 +19,23 @@ class LogInScreen extends Component {
 
   render() {
     return (
-      <GoogleSignInButton
-        onUserLoggedIn={this.props.onUserLoggedIn}
-        onError={this.props.onError}
-      />
+      <Grid className="fullWidth">
+        <Row center="xs" middle="xs" className="fullWidth">
+          <Col>
+            <Logo size={mediumSize} />
+            <GoogleSignInButton
+              onUserLoggedIn={this.props.onUserLoggedIn}
+              onError={this.props.onError}
+            />
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 
   goToAlbumScreenIfTheUserIsStillLoggedIn() {
     if (this.props.isUserLoggedIn) {
-      this.props.history.push(ALBUM);
+      this.props.history.push(ALBUM); //TODO: Uncomment this
     }
   }
 }

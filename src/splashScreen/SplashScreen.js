@@ -4,8 +4,9 @@ import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import { ALBUM, LOG_IN } from "../app/routes";
 import { isUserLoggedIn } from "../session/session";
-import Logo from "../baseComponents/logo/Logo";
+import Logo, { bigSize } from "../baseComponents/logo/Logo";
 import ProgressBar from "../baseComponents/progressBar/ProgressBar";
+import { Row, Col } from "react-flexbox-grid";
 
 const timeShowingAppIconInMillis = 1200;
 const timeLoadingInMillis = 1900;
@@ -29,11 +30,19 @@ class Splash extends React.Component {
   }
 
   render() {
+    return (
+      <Row center="xs" middle="xs" className="fullWidth">
+        <Col>{this.getMainComponent()}</Col>
+      </Row>
+    );
+  }
+
+  getMainComponent() {
     if (this.state.loading) {
       this.scheduleHideLoading();
       return <ProgressBar />;
     } else {
-      return <Logo />;
+      return <Logo size={bigSize} />;
     }
   }
 

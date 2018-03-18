@@ -5,7 +5,9 @@ import firebase from "firebase";
 
 const style = {
   width: "300px",
-  cursor: "pointer"
+  cursor: "pointer",
+  paddingTop: "16px",
+  paddingBottom: "16px"
 };
 
 const initialState = {
