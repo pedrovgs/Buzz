@@ -3,7 +3,6 @@ import { Application } from "spectron";
 import electron from "electron";
 import path from "path";
 import sharp from "sharp";
-import url from "url";
 
 expect.extend({ toMatchImageSnapshot });
 

@@ -4,11 +4,10 @@ import {
   waitForVisible,
   setAppState,
   open,
-  waitUntilUrlLoaded, waitASec
+  waitUntilUrlLoaded
 } from "../../testUtils/spectron";
 import { loggedInState } from "../../testUtils/status/session";
 import { ALBUM, LOG_IN } from "../../app/routes";
-import {resetState} from "../../app/actions";
 
 const logoSelector = "#logo";
 const googleSingInButtonSelector = "#googleSingInButton";
