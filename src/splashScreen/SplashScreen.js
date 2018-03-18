@@ -54,7 +54,7 @@ class Splash extends React.Component {
   }
 
   openNextScreen() {
-    if (!this.props.isUserLoggedIn) {
+    if (this.props.isUserLoggedIn === false) {
       return this.props.history.push(LOG_IN);
     } else {
       return this.props.history.push(ALBUM);

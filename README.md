@@ -53,7 +53,8 @@ This project contains some tests written using [Jest](https://facebook.github.io
 
 ```
 yarn test // Executes every test inside the src folder.
-yarn buildForTests // Builds the app for testing purposes. Needed before executing the screenshot tests
+yarn test --updateSnapshot // Executes every test inside the src folder recording snapshots again.
+yarn buildForTests // Builds the app for testing purposes.
 yarn verifyScreenshotTests // Executes every test in record mode.
 yarn recordScreenshotTests // Executes every test in record mode.
 yarn test --watch // Watch files for changes and rerun tests related to changed files.

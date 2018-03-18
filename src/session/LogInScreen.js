@@ -34,8 +34,8 @@ class LogInScreen extends Component {
   }
 
   goToAlbumScreenIfTheUserIsStillLoggedIn() {
-    if (this.props.isUserLoggedIn) {
-      this.props.history.push(ALBUM); //TODO: Uncomment this
+    if (this.props.isUserLoggedIn === true) {
+      this.props.history.push(ALBUM);
     }
   }
 }

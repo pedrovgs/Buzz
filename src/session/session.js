@@ -21,5 +21,10 @@ export function sessionReducer(state = initialState, action) {
 
 export function isUserLoggedIn(state) {
   const isSessionDefined = typeof state.session !== "undefined";
-  return isSessionDefined;
+  if (isSessionDefined) {
+    const isTokenDefined = typeof state.session.authToken !== "undefined";
+    return isTokenDefined;
+  } else {
+    return false;
+  }
 }
