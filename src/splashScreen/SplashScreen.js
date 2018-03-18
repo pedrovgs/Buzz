@@ -7,6 +7,7 @@ import { isUserLoggedIn } from "../session/session";
 import Logo, { bigSize } from "../baseComponents/logo/Logo";
 import ProgressBar from "../baseComponents/progressBar/ProgressBar";
 import { Row, Col } from "react-flexbox-grid";
+import { fade } from "../animations/animationUtils";
 
 const timeShowingAppIconInMillis = 1200;
 const timeLoadingInMillis = 1900;
@@ -32,7 +33,7 @@ class Splash extends React.Component {
   render() {
     return (
       <Row center="xs" middle="xs" className="fullWidth">
-        <Col>{this.getMainComponent()}</Col>
+        <Col>{fade(this.getMainComponent())}</Col>
       </Row>
     );
   }

@@ -11,35 +11,43 @@ const style = {
 };
 
 const initialState = {
-  isPressed: false
+  isPressed: false,
+  isLogInInProgress: true
 };
 
-const provider = new firebase.auth.GoogleAuthProvider();
-
 class GoogleSignInButton extends React.Component {
+  componentDidMount() {
+    this.checkFirebaseAuthenticationResult();
+  }
+
   constructor(props) {
     super(props);
     this.state = initialState;
     this.onMouseTap = this.onMouseTap.bind(this);
     this.onClick = this.onClick.bind(this);
+    this.setStateToLogInInProgress = this.setStateToLogInInProgress.bind(this);
   }
 
   render() {
-    const src = this.state.isPressed
-      ? googleSignInLogoPressed
-      : googleSignInLogo;
-    return (
-      <div>
-        <img
-          src={src}
-          style={style}
-          onMouseDown={this.onMouseTap}
-          onMouseUp={this.onMouseTap}
-          onClick={this.onClick}
-          alt="Sign in with Google"
-        />
-      </div>
-    );
+    if (this.state.isLogInInProgress) {
+      return null;
+    } else {
+      const src = this.state.isPressed
+        ? googleSignInLogoPressed
+        : googleSignInLogo;
+      return (
+        <div>
+          <img
+            src={src}
+            style={style}
+            onMouseDown={this.onMouseTap}
+            onMouseUp={this.onMouseTap}
+            onClick={this.onClick}
+            alt="Sign in with Google"
+          />
+        </div>
+      );
+    }
   }
 
   onMouseTap() {
@@ -49,18 +57,37 @@ class GoogleSignInButton extends React.Component {
   }
 
   onClick() {
-    const onUserCompletion = this.props.onUserLoggedIn;
-    const onErrorCompletion = this.props.onError;
+    const provider = new firebase.auth.GoogleAuthProvider();
+    this.setStateToLogInInProgress(true);
+    firebase.auth().signInWithRedirect(provider);
+  }
+
+  setStateToLogInInProgress(logInInProgress) {
+    this.setState(prevState => ({
+      isPressed: prevState.isPressed,
+      isLogInInProgress: logInInProgress
+    }));
+  }
+
+  checkFirebaseAuthenticationResult() {
+    const onUserLoggedIn = this.props.onUserLoggedIn;
+    const onError = this.props.onError;
+    const setStateToLogInInProgress = this.setStateToLogInInProgress;
     firebase
       .auth()
-      .signInWithPopup(provider)
+      .getRedirectResult()
       .then(function(result) {
-        const token = result.credential.accessToken;
-        const user = result.user;
-        onUserCompletion(token, user);
+        if (result.credential) {
+          const token = result.credential.accessToken;
+          const user = result.user;
+          onUserLoggedIn(token, user);
+        } else {
+          setStateToLogInInProgress(false);
+        }
       })
       .catch(function(error) {
-        onErrorCompletion(error);
+        onError(error);
+        setStateToLogInInProgress(false);
       });
   }
 }

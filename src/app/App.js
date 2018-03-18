@@ -4,7 +4,8 @@ import LogInScreen from "../session/LogInScreen";
 import { HashRouter, Route } from "react-router-dom";
 import { ALBUM, INDEX, LOG_IN } from "./routes";
 import AlbumScreen from "../album/AlbumScreen";
-import "./App.css";
+import "./css/App.css";
+import "../animations/css/Animations.css";
 
 const containerStyle = {
   height: "100%"
