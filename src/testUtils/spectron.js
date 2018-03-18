@@ -3,6 +3,7 @@ import { Application } from "spectron";
 import electron from "electron";
 import path from "path";
 import sharp from "sharp";
+import url from "url";
 
 expect.extend({ toMatchImageSnapshot });
 
@@ -61,6 +62,13 @@ export async function stopApp() {
       return Promise.resolve();
     }
   });
+}
+
+export async function open(appRelativeUrl) {
+  const appPath =
+    "file:///" + path.join(__dirname, "..", "..", "build", "index.html");
+  const applicationUrl = appPath + "#" + appRelativeUrl;
+  return app.client.url(applicationUrl);
 }
 
 export async function getWindowTitle() {

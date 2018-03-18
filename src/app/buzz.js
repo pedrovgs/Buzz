@@ -58,7 +58,9 @@ function initializeFirebase() {
     storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
     messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID
   };
-  firebase.initializeApp(config);
+  if (!testUtils.isRunningTests()) {
+    firebase.initializeApp(config);
+  }
 }
 
 export default buzzStore;

@@ -1,6 +1,7 @@
 import React from "react";
 import googleSignInLogo from "./images/googleSignInLogo.png";
 import googleSignInLogoPressed from "./images/googleSignInLogoPressed.png";
+import testUtils from "../../testUtils/utils";
 import firebase from "firebase";
 
 const style = {
@@ -38,6 +39,7 @@ class GoogleSignInButton extends React.Component {
       return (
         <div>
           <img
+            id="googleSingInButton"
             src={src}
             style={style}
             onMouseDown={this.onMouseTap}
@@ -70,6 +72,10 @@ class GoogleSignInButton extends React.Component {
   }
 
   checkFirebaseAuthenticationResult() {
+    if (testUtils.isRunningTests()) {
+      this.setStateToLogInInProgress(false);
+      return;
+    }
     const onUserLoggedIn = this.props.onUserLoggedIn;
     const onError = this.props.onError;
     const setStateToLogInInProgress = this.setStateToLogInInProgress;
