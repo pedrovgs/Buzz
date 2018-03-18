@@ -3,8 +3,14 @@
 exports[`Logo shows the application logo 1`] = `
 <img
   alt="Buzz logo"
-  className="loading-screen-logo center"
   id="logo"
   src="logo.svg"
+  style={
+    Object {
+      "height": "40%",
+      "padding": "12px",
+      "width": "40%",
+    }
+  }
 />
 `;
