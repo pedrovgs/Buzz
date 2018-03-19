@@ -1,5 +1,10 @@
 import React from "react";
-import {currentUser, signIn, signOut, signUp} from "../../firebase/firebaseAuth";
+import {
+  currentUser,
+  signIn,
+  signOut,
+  signUp
+} from "../../firebase/firebaseAuth";
 import { TextField, RaisedButton } from "material-ui";
 import { User } from "../../session/actions";
 const initialState = {
