@@ -15,6 +15,10 @@ describe("SignInForm", () => {
   const anyEmail = "pedro@gmail.com";
   const anyPass = "pisum";
 
+  afterEach(() => {
+    jest.resetModules();
+  });
+
   it("shows an empty form with the email, pass, sign up and sing in buttons by default", () => {
     const signInForm = renderSignInForm();
 

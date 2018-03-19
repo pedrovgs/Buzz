@@ -6,6 +6,10 @@ import ProgressBar from "../ProgressBar";
 jest.mock("material-ui/CircularProgress", () => "CircularProgress");
 
 describe("ProgressBar", () => {
+  afterEach(() => {
+    jest.resetModules();
+  });
+
   it("shows the application progress bar as determinated if we are running tests", () => {
     givenTheAppIsRunningTests();
 
