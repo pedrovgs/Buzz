@@ -10,7 +10,7 @@ import { loggedInState } from "../../testUtils/status/session";
 import { ALBUM, LOG_IN } from "../../app/routes";
 
 const logoSelector = "#logo";
-const googleSingInButtonSelector = "#googleSingInButton";
+const signInFormSelector = "#signInForm";
 
 describe("LogInScreen", () => {
   beforeEach(async () => {
@@ -24,7 +24,7 @@ describe("LogInScreen", () => {
   it("shows the app logo and the google sign in button on start", async () => {
     await open(LOG_IN);
     await waitForVisible(logoSelector);
-    await waitForVisible(googleSingInButtonSelector);
+    await waitForVisible(signInFormSelector);
   });
 
   it("redirects the user to the album screen if the user is already logged", async () => {

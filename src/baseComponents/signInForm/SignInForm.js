@@ -28,7 +28,7 @@ class SignInForm extends React.Component {
 
   render() {
     return (
-      <form style={formStyle}>
+      <form style={formStyle} id="signInForm">
         <div>
           <TextField
             floatingLabelText="Email"

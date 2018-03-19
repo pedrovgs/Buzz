@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignInForm shows an empty form with the email, pass, sign up and sing in buttons by default 1`] = `
+<form
+  id="signInForm"
+  style="padding:6px"
+>
+  <div>
+    <div
+      style="font-size:16px;line-height:24px;width:256px;height:72px;display:inline-block;position:relative;background-color:transparent;font-family:Roboto, sans-serif;transition:height 200ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;cursor:auto;mui-prepared:"
+    >
+      <label
+        for="undefined-undefined-Email-56458"
+        style="position:absolute;line-height:22px;top:38px;transition:all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;z-index:1;transform:scale(1) translate(0, 0);transform-origin:left top;pointer-events:none;user-select:none;color:rgba(0, 0, 0, 0.3);mui-prepared:"
+      >
+        Email
+      </label>
+      <input
+        id="undefined-undefined-Email-56458"
+        style="appearance:textfield;padding:0;position:relative;width:100%;border:none;outline:none;background-color:rgba(0,0,0,0);color:#000000;cursor:inherit;font:inherit;-webkit-opacity:1;-webkit-tap-highlight-color:rgba(0,0,0,0);height:100%;box-sizing:border-box;margin-top:14px;mui-prepared:"
+        type="text"
+      >
+        
+      </input>
+      <div>
+        <hr
+          aria-hidden="true"
+          style="border-top:none;border-left:none;border-right:none;border-bottom-style:solid;border-bottom-width:1px;border-color:#e0e0e0;bottom:8px;box-sizing:content-box;margin:0;position:absolute;width:100%;mui-prepared:"
+        >
+          
+        </hr>
+        <hr
+          aria-hidden="true"
+          style="border-top:none;border-left:none;border-right:none;border-bottom-style:solid;border-bottom-width:2px;border-color:#f2db2c;bottom:8px;box-sizing:content-box;margin:0;position:absolute;width:100%;transform:scaleX(0);transition:all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;mui-prepared:"
+        >
+          
+        </hr>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      style="font-size:16px;line-height:24px;width:256px;height:72px;display:inline-block;position:relative;background-color:transparent;font-family:Roboto, sans-serif;transition:height 200ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;cursor:auto;mui-prepared:"
+    >
+      <label
+        for="undefined-undefined-Password-46606"
+        style="position:absolute;line-height:22px;top:38px;transition:all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;z-index:1;transform:scale(1) translate(0, 0);transform-origin:left top;pointer-events:none;user-select:none;color:rgba(0, 0, 0, 0.3);mui-prepared:"
+      >
+        Password
+      </label>
+      <input
+        id="undefined-undefined-Password-46606"
+        style="appearance:textfield;padding:0;position:relative;width:100%;border:none;outline:none;background-color:rgba(0,0,0,0);color:#000000;cursor:inherit;font:inherit;-webkit-opacity:1;-webkit-tap-highlight-color:rgba(0,0,0,0);height:100%;box-sizing:border-box;margin-top:14px;mui-prepared:"
+        type="password"
+      >
+        
+      </input>
+      <div>
+        <hr
+          aria-hidden="true"
+          style="border-top:none;border-left:none;border-right:none;border-bottom-style:solid;border-bottom-width:1px;border-color:#e0e0e0;bottom:8px;box-sizing:content-box;margin:0;position:absolute;width:100%;mui-prepared:"
+        >
+          
+        </hr>
+        <hr
+          aria-hidden="true"
+          style="border-top:none;border-left:none;border-right:none;border-bottom-style:solid;border-bottom-width:2px;border-color:#f2db2c;bottom:8px;box-sizing:content-box;margin:0;position:absolute;width:100%;transform:scaleX(0);transition:all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;mui-prepared:"
+        >
+          
+        </hr>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div
+      style="color:#000000;background-color:#ffffff;transition:all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;box-sizing:border-box;font-family:Roboto, sans-serif;-webkit-tap-highlight-color:rgba(0,0,0,0);box-shadow:0 1px 6px rgba(0, 0, 0, 0.12),
+             0 1px 4px rgba(0, 0, 0, 0.12);border-radius:2px;display:inline-block;min-width:88px;margin:12px;mui-prepared:"
+    >
+      <button
+        style="border:10px;box-sizing:border-box;display:inline-block;font-family:Roboto, sans-serif;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);cursor:pointer;text-decoration:none;margin:0;padding:0;outline:none;font-size:inherit;font-weight:inherit;position:relative;height:36px;line-height:36px;width:100%;border-radius:2px;transition:all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;background-color:#ffffff;text-align:center;mui-prepared:"
+        tabindex="0"
+        type="button"
+      >
+        <div>
+          <div
+            style="height:36px;border-radius:2px;background-color:;transition:all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;top:0;mui-prepared:"
+          >
+            <span
+              style="position:relative;opacity:1;font-size:14px;letter-spacing:0;text-transform:uppercase;font-weight:500;margin:0;user-select:none;padding-left:16px;padding-right:16px;color:#000000;mui-prepared:"
+            >
+              Sign Up
+            </span>
+          </div>
+        </div>
+      </button>
+    </div>
+    <div
+      style="color:#000000;background-color:#ffffff;transition:all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;box-sizing:border-box;font-family:Roboto, sans-serif;-webkit-tap-highlight-color:rgba(0,0,0,0);box-shadow:0 1px 6px rgba(0, 0, 0, 0.12),
+             0 1px 4px rgba(0, 0, 0, 0.12);border-radius:2px;display:inline-block;min-width:88px;margin:12px;mui-prepared:"
+    >
+      <button
+        style="border:10px;box-sizing:border-box;display:inline-block;font-family:Roboto, sans-serif;-webkit-tap-highlight-color:rgba(0, 0, 0, 0);cursor:pointer;text-decoration:none;margin:0;padding:0;outline:none;font-size:inherit;font-weight:inherit;position:relative;height:36px;line-height:36px;width:100%;border-radius:2px;transition:all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;background-color:#ffffff;text-align:center;mui-prepared:"
+        tabindex="0"
+        type="button"
+      >
+        <div>
+          <div
+            style="height:36px;border-radius:2px;background-color:;transition:all 450ms cubic-bezier(0.23, 1, 0.32, 1) 0ms;top:0;mui-prepared:"
+          >
+            <span
+              style="position:relative;opacity:1;font-size:14px;letter-spacing:0;text-transform:uppercase;font-weight:500;margin:0;user-select:none;padding-left:16px;padding-right:16px;color:#000000;mui-prepared:"
+            >
+              Sign In
+            </span>
+          </div>
+        </div>
+      </button>
+    </div>
+  </div>
+</form>
+`;
