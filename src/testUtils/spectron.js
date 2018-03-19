@@ -118,6 +118,10 @@ export async function resetAppState() {
   return setAppState({});
 }
 
+export async function setValue(selector, value) {
+  return getClient().setValue(selector, value)
+}
+
 async function waitForReady() {
   return app.client.waitUntilWindowLoaded();
 }

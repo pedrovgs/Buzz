@@ -31,6 +31,7 @@ class SignInForm extends React.Component {
       <form style={formStyle} id="signInForm">
         <div>
           <TextField
+            id="emailField"
             floatingLabelText="Email"
             onChange={this.onEmailFieldChanged}
             errorText={this.state.errorMessage}
@@ -38,6 +39,7 @@ class SignInForm extends React.Component {
         </div>
         <div>
           <TextField
+            id="passwordField"
             type="password"
             floatingLabelText="Password"
             onChange={this.onPasswordFieldChanged}
@@ -45,11 +47,13 @@ class SignInForm extends React.Component {
         </div>
         <div>
           <RaisedButton
+            id="signUpButton"
             label="Sign Up"
             style={buttonStyle}
             onClick={this.onSubmit}
           />
           <RaisedButton
+            id="signInButton"
             label="Sign In"
             style={buttonStyle}
             onClick={this.onSubmit}
