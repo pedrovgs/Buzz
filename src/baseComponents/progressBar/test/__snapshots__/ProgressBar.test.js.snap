@@ -1,65 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ProgressBar shows the application progress bar as determinated if we are running tests 1`] = `
-<div
+<CircularProgress
   id="progress"
-  max="100"
-  min="0"
   mode="determinate"
-  style="position:relative;display:inline-block;width:100px;height:100px;mui-prepared:"
-  value="55"
->
-  <div
-    style="width:100px;height:100px;display:inline-block;transition:20s transform linear 0ms;transition-timing-function:linear;mui-prepared:"
-  >
-    <svg
-      style="width:100px;height:100px;position:relative;mui-prepared:"
-      viewBox="0 0 100 100"
-    >
-      <circle
-        cx="50"
-        cy="50"
-        fill="none"
-        r="48.25"
-        stroke-miterlimit="20"
-        stroke-width="3.5"
-        style="stroke:#f2db2c;stroke-linecap:round;transition:0.3s all linear 0ms;stroke-dasharray:166.7400300892783, 303.16369107141503;mui-prepared:"
-      >
-        
-      </circle>
-    </svg>
-  </div>
-</div>
+  size={100}
+  value={55}
+/>
 `;
 
 exports[`ProgressBar shows the application progress bar as indeterminated if we are not running tests 1`] = `
-<div
+<CircularProgress
   id="progress"
-  max="100"
-  min="0"
   mode="indeterminate"
-  style="position:relative;display:inline-block;width:100px;height:100px;mui-prepared:"
-  value="55"
->
-  <div
-    style="width:100px;height:100px;display:inline-block;transition:20s transform linear 0ms;transition-timing-function:linear;mui-prepared:"
-  >
-    <svg
-      style="width:100px;height:100px;position:relative;mui-prepared:"
-      viewBox="0 0 100 100"
-    >
-      <circle
-        cx="50"
-        cy="50"
-        fill="none"
-        r="48.25"
-        stroke-miterlimit="20"
-        stroke-width="3.5"
-        style="stroke:#f2db2c;stroke-linecap:round;transition:1.5s all ease-in-out 0ms;mui-prepared:"
-      >
-        
-      </circle>
-    </svg>
-  </div>
-</div>
+  size={100}
+  value={55}
+/>
 `;
