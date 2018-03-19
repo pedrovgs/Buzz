@@ -1,6 +1,5 @@
 import {
   compareScreenshot,
-  getWindowTitle,
   startApp,
   stopApp,
   waitForInvisible,
