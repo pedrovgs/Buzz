@@ -1,12 +1,8 @@
 import React from "react";
-import {
-  currentUser,
-  signIn,
-  signOut,
-  signUp
-} from "../../firebase/firebaseAuth";
 import { TextField, RaisedButton } from "material-ui";
 import { User } from "../../session/actions";
+import firebaseAuth from "../../firebase/firebaseAuth";
+
 const initialState = {
   isLogInInProgress: false,
   email: undefined,
@@ -81,7 +77,9 @@ class SignInForm extends React.Component {
   }
 
   onSubmit(event) {
-    event.preventDefault();
+    if (event) {
+      event.preventDefault();
+    }
     this.setStateToLogInInProgress(true);
     this.signInOrSignUpIfTheUserAlreadyExists();
   }
@@ -89,8 +87,9 @@ class SignInForm extends React.Component {
   signInOrSignUpIfTheUserAlreadyExists() {
     const email = this.state.email;
     const pass = this.state.password;
-    signOut().then(() => {
-      signIn(email, pass)
+    firebaseAuth.signOut().then(() => {
+      firebaseAuth
+        .signIn(email, pass)
         .then(() => {
           this.notifyLogInSuccess();
         })
@@ -107,7 +106,8 @@ class SignInForm extends React.Component {
   }
 
   createAccount(email, password) {
-    signUp(email, password)
+    firebaseAuth
+      .signUp(email, password)
       .then(() => {
         this.notifyLogInSuccess();
       })
@@ -123,7 +123,7 @@ class SignInForm extends React.Component {
   }
 
   notifyLogInSuccess() {
-    const user = currentUser();
+    const user = firebaseAuth.currentUser();
     if (user) {
       this.props.onUserLoggedIn(new User(user.email));
     }

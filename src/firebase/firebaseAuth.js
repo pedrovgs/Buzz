@@ -1,17 +1,24 @@
 import firebase from "firebase";
 
-export async function signOut() {
+function signOut() {
   return firebase.auth().signOut();
 }
 
-export async function signIn(email, pass) {
+function signIn(email, pass) {
   return firebase.auth().signInWithEmailAndPassword(email, pass);
 }
 
-export async function signUp(email, password) {
+function signUp(email, password) {
   return firebase.auth().createUserWithEmailAndPassword(email, password);
 }
 
-export function currentUser() {
+function currentUser() {
   return firebase.auth().currentUser;
 }
+
+export default {
+  signOut: signOut,
+  signIn: signIn,
+  signUp: signUp,
+  currentUser: currentUser
+};

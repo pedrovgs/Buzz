@@ -1,3 +1,5 @@
+jest.mock("../../../firebase/firebaseAuth");
+const firebaseAuthMock = require("../../../firebase/firebaseAuth");
 import React from "react";
 import {
   shallowComponent,
@@ -17,7 +19,7 @@ describe("SignInForm", () => {
     expect(signInForm).toMatchSnapshot();
   });
 
-  it("tries to create an account with the email and pass configured when the sign up button is pressed", () => {
+  it("updates the component state with the email and pass configured when the sign up button is pressed", () => {
     const form = signInForm();
 
     setEmail(form, anyEmail);
@@ -25,6 +27,18 @@ describe("SignInForm", () => {
 
     expect(form.state().email).toEqual(anyEmail);
     expect(form.state().password).toEqual(anyPass);
+  });
+
+  it("tries to create a user account with the email and pass configured when the sign up button is pressed", () => {
+    givenTheSignOutIsPerformedProperly();
+
+    const form = signInForm();
+
+    setEmail(form, anyEmail);
+    setPass(form, anyPass);
+    clickSignInButton(form);
+
+    verifyCreateMemberInvokedWith(anyEmail, anyPass);
   });
 
   function renderSignInForm() {
@@ -41,5 +55,19 @@ describe("SignInForm", () => {
 
   function setPass(form, pass) {
     form.instance().onPasswordFieldChanged(null, pass);
+  }
+
+  function clickSignInButton(form) {
+    form.instance().onSubmit(null);
+  }
+
+  function verifyCreateMemberInvokedWith(email, pass) {
+    expect(firebaseAuthMock.default._signInEmail).toEqual(email);
+    expect(firebaseAuthMock.default._signInPass).toEqual(pass);
+  }
+
+  function givenTheSignOutIsPerformedProperly() {
+    let mock = firebaseAuthMock.default;
+    mock._signOutResult = Promise.resolve();
   }
 });
