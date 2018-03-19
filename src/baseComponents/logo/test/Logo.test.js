@@ -1,10 +1,10 @@
 import React from "react";
 import Logo from "../Logo";
-import { shallowComponent } from "../../../testUtils/enzyme";
+import { shallowComponentToJson } from "../../../testUtils/enzyme";
 
 describe("Logo", () => {
   it("shows the application logo", () => {
-    const logo = shallowComponent(<Logo />);
+    const logo = shallowComponentToJson(<Logo />);
     expect(logo).toMatchSnapshot();
   });
 });

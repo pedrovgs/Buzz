@@ -12,18 +12,21 @@ exports[`SignInForm shows an empty form with the email, pass, sign up and sing i
   <div>
     <TextField
       floatingLabelText="Email"
+      id="emailField"
       onChange={[Function]}
     />
   </div>
   <div>
     <TextField
       floatingLabelText="Password"
+      id="passwordField"
       onChange={[Function]}
       type="password"
     />
   </div>
   <div>
     <RaisedButton
+      id="signUpButton"
       label="Sign Up"
       onClick={[Function]}
       style={
@@ -33,6 +36,7 @@ exports[`SignInForm shows an empty form with the email, pass, sign up and sing i
       }
     />
     <RaisedButton
+      id="signInButton"
       label="Sign In"
       onClick={[Function]}
       style={

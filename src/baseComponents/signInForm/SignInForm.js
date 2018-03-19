@@ -69,14 +69,12 @@ class SignInForm extends React.Component {
   }
 
   onEmailFieldChanged(event, newValue) {
-    event.preventDefault();
     this.setState(() => ({
       email: newValue
     }));
   }
 
   onPasswordFieldChanged(event, newValue) {
-    event.preventDefault();
     this.setState(() => ({
       password: newValue
     }));

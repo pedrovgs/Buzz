@@ -1,6 +1,6 @@
 jest.mock("../../../testUtils/utils");
 const testUtilsMock = require("../../../testUtils/utils");
-import { shallowComponent } from "../../../testUtils/enzyme";
+import { shallowComponentToJson } from "../../../testUtils/enzyme";
 import React from "react";
 import ProgressBar from "../ProgressBar";
 jest.mock("material-ui/CircularProgress", () => "CircularProgress");
@@ -23,7 +23,7 @@ describe("ProgressBar", () => {
   });
 
   function renderProgressBar() {
-    return shallowComponent(<ProgressBar />);
+    return shallowComponentToJson(<ProgressBar />);
   }
 
   function givenTheAppIsNotRunningTests() {
