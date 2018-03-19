@@ -1,5 +1,5 @@
 import React from "react";
-import firebase from "firebase";
+import {currentUser, signIn, signOut, signUp} from "../../firebase/firebaseAuth";
 import { TextField, RaisedButton } from "material-ui";
 import { User } from "../../session/actions";
 const initialState = {
@@ -84,19 +84,17 @@ class SignInForm extends React.Component {
   }
 
   signInOrSignUpIfTheUserAlreadyExists() {
-    const firebaseAuth = firebase.auth();
     const email = this.state.email;
     const pass = this.state.password;
-    firebaseAuth.signOut().then(() => {
-      firebaseAuth
-        .signInWithEmailAndPassword(email, pass)
+    signOut().then(() => {
+      signIn(email, pass)
         .then(() => {
           this.notifyLogInSuccess();
         })
         .catch(error => {
           let errorCode = error.code;
           if (errorCode === "auth/user-not-found") {
-            this.signUp(firebaseAuth, email, pass);
+            this.createAccount(email, pass);
           } else if (errorCode) {
             this.setStateToError(error.message);
           }
@@ -105,9 +103,8 @@ class SignInForm extends React.Component {
     });
   }
 
-  signUp(firebaseAuth, email, password) {
-    firebaseAuth
-      .createUserWithEmailAndPassword(email, password)
+  createAccount(email, password) {
+    signUp(email, password)
       .then(() => {
         this.notifyLogInSuccess();
       })
@@ -123,7 +120,7 @@ class SignInForm extends React.Component {
   }
 
   notifyLogInSuccess() {
-    const user = firebase.auth().currentUser;
+    const user = currentUser();
     if (user) {
       this.props.onUserLoggedIn(new User(user.email));
     }
