@@ -28,12 +28,14 @@ class SignInForm extends React.Component {
   }
 
   render() {
+    const isLogInInProgress = this.state.isLogInInProgress;
     return (
       <form style={formStyle} id="signInForm">
         <div>
           <TextField
             id="emailField"
             floatingLabelText="Email"
+            disabled={isLogInInProgress}
             onChange={this.onEmailFieldChanged}
             errorText={this.state.errorMessage}
           />
@@ -43,6 +45,7 @@ class SignInForm extends React.Component {
             id="passwordField"
             type="password"
             floatingLabelText="Password"
+            disabled={isLogInInProgress}
             onChange={this.onPasswordFieldChanged}
           />
         </div>
@@ -51,12 +54,14 @@ class SignInForm extends React.Component {
             id="signUpButton"
             label="Sign Up"
             style={buttonStyle}
+            disabled={isLogInInProgress}
             onClick={this.onSubmit}
           />
           <RaisedButton
             id="signInButton"
             label="Sign In"
             style={buttonStyle}
+            disabled={isLogInInProgress}
             onClick={this.onSubmit}
           />
         </div>
@@ -81,14 +86,14 @@ class SignInForm extends React.Component {
       event.preventDefault();
     }
     this.setStateToLogInInProgress(true);
-    this.signInOrSignUpIfTheUserAlreadyExists();
+    return this.signInOrSignUpIfTheUserAlreadyExists();
   }
 
   signInOrSignUpIfTheUserAlreadyExists() {
     const email = this.state.email;
     const pass = this.state.password;
-    firebaseAuth.signOut().then(() => {
-      firebaseAuth
+    return firebaseAuth.signOut().then(() => {
+      return firebaseAuth
         .signIn(email, pass)
         .then(() => {
           this.notifyLogInSuccess();

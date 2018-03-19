@@ -7,12 +7,12 @@ import testUtils from "../testUtils/utils";
 import thunk from "redux-thunk";
 import firebase from "firebase";
 
-initializeFirebase();
 const buzzStore = createStore(
   buzzReducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(thunk)
 );
+initializeFirebase();
 configurePersistence(buzzStore);
 
 function configurePersistence(store) {

@@ -54,13 +54,12 @@ export async function startApp() {
 }
 
 export async function stopApp() {
-  return resetAppState().then(() => {
-    if (app) {
-      return app.stop();
-    } else {
-      return Promise.resolve();
-    }
-  });
+  await resetAppState();
+  if (app) {
+    return app.stop();
+  } else {
+    return Promise.resolve();
+  }
 }
 
 export async function open(appRelativeUrl) {
