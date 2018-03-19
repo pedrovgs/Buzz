@@ -29,7 +29,7 @@ export async function startApp() {
   app = new Application({
     path: electron,
     args: [path.join(__dirname, "..", "..", "electron-starter.js")],
-    startTimeout: 3000
+    startTimeout: 10000
   });
   return app.start().then(() => {
     return waitForReady()
@@ -43,6 +43,9 @@ export async function startApp() {
               return typeof store !== "undefined";
             });
         });
+      })
+      .then(() => {
+        return waitASec();
       })
       .then(() => {
         return resetAppState();
@@ -118,7 +121,7 @@ export async function resetAppState() {
 }
 
 export async function setValue(selector, value) {
-  return getClient().setValue(selector, value)
+  return getClient().setValue(selector, value);
 }
 
 async function waitForReady() {

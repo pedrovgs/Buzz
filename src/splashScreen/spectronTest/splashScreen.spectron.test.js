@@ -31,7 +31,6 @@ describe("SplashScreen", () => {
   });
 
   it("shows the progress bar after showing the application logo", async () => {
-    await waitForVisible(logoSelector);
     await waitForVisible(progressBarSelector);
   });
 
