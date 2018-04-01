@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import GoogleSignInButton from "../baseComponents/signInForm/SignInForm";
+import SignInForm from "../baseComponents/signInForm/SignInForm";
 import { logOut, saveSession } from "./actions";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
@@ -9,6 +9,7 @@ import { Grid, Row, Col } from "react-flexbox-grid";
 import Logo, { mediumSize } from "../baseComponents/logo/Logo";
 import { fade } from "../animations/animationUtils";
 import { Card } from "material-ui";
+import PropTypes from "prop-types";
 
 class LogInScreen extends Component {
   componentDidMount() {
@@ -27,9 +28,7 @@ class LogInScreen extends Component {
             <Col>
               <Card>
                 <Logo size={mediumSize} />
-                <GoogleSignInButton
-                  onUserLoggedIn={this.props.onUserLoggedIn}
-                />
+                <SignInForm onUserLoggedIn={this.props.onUserLoggedIn} />
               </Card>
             </Col>
           )}
@@ -44,6 +43,10 @@ class LogInScreen extends Component {
     }
   }
 }
+
+LogInScreen.propTypes = {
+  onUserLoggedIn: PropTypes.func
+};
 
 const mapStateToProps = state => {
   return {

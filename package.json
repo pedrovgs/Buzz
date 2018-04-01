@@ -65,6 +65,7 @@
     "prettier-eslint-cli": "^4.7.1",
     "react-scripts": "^1.1.1",
     "react-test-renderer": "^16.2.0",
+    "redux-mock-store": "^1.5.1",
     "sharp": "^0.20.0",
     "spectron": "^3.8.0",
     "webpack": "^4.0.1",
