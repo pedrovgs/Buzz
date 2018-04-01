@@ -2,10 +2,9 @@ import React, { Component } from "react";
 import { withRouter } from "react-router";
 import PropTypes from "prop-types";
 import FloatingButton from "../baseComponents/floatingButton/FloatingButton";
-import ImageCamera from "material-ui/svg-icons/image/camera";
-import { CAMERA } from "../app/routes";
+import ImageCameraAlt from "material-ui/svg-icons/image/camera-alt";
 
-class AlbumScreen extends Component {
+class CameraScreen extends Component {
   constructor(props) {
     super(props);
     this.onFloatingButtonClick = this.onFloatingButtonClick.bind(this);
@@ -14,18 +13,18 @@ class AlbumScreen extends Component {
   render() {
     return (
       <FloatingButton onClick={this.onFloatingButtonClick}>
-        <ImageCamera />
+        <ImageCameraAlt />
       </FloatingButton>
     );
   }
 
   onFloatingButtonClick() {
-    this.props.history.push(CAMERA);
+
   }
 }
 
-AlbumScreen.propTypes = {
+CameraScreen.propTypes = {
   history: PropTypes.object.isRequired
 };
 
-export default withRouter(AlbumScreen);
+export default withRouter(CameraScreen);
