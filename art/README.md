@@ -24,3 +24,7 @@ Generated using [https://coolors.co](https://coolors.co) and moved to material d
 ## Design schema
 
 We follow the [Material Design](https://material.io) style implemented thanks to [Material UI](http://www.material-ui.com/#/) react components.
+
+## Third party design guidelines:
+
+* Google single sign on: [https://developers.google.com/identity/branding-guidelines](https://developers.google.com/identity/branding-guidelines).

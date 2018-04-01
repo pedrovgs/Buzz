@@ -9,15 +9,10 @@ export function sessionReducer(state = initialState, action) {
   switch (action.type) {
     case SAVE_SESSION:
       return Object.assign({}, state, {
-        session: {
-          user: action.user,
-          authToken: action.authToken
-        }
+        user: action.user
       });
     case LOG_OUT:
-      return Object.assign({}, state, {
-        session: undefined
-      });
+      return Object.assign({}, state, {});
     default:
       return state;
   }
@@ -25,5 +20,10 @@ export function sessionReducer(state = initialState, action) {
 
 export function isUserLoggedIn(state) {
   const isSessionDefined = typeof state.session !== "undefined";
-  return isSessionDefined;
+  if (isSessionDefined) {
+    const isUserDefined = typeof state.session.user !== "undefined";
+    return isUserDefined;
+  } else {
+    return false;
+  }
 }

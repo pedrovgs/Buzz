@@ -1,0 +1,160 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignInForm shows an empty form with the email, pass, sign up and sing in buttons by default 1`] = `
+<form
+  id="signInForm"
+  style={
+    Object {
+      "padding": "6px",
+    }
+  }
+>
+  <div>
+    <TextField
+      disabled={false}
+      floatingLabelText="Email"
+      id="emailField"
+      onChange={[Function]}
+    />
+  </div>
+  <div>
+    <TextField
+      disabled={false}
+      floatingLabelText="Password"
+      id="passwordField"
+      onChange={[Function]}
+      type="password"
+    />
+  </div>
+  <div>
+    <RaisedButton
+      disabled={false}
+      id="signUpButton"
+      label="Sign Up"
+      onClick={[Function]}
+      style={
+        Object {
+          "margin": 12,
+        }
+      }
+    />
+    <RaisedButton
+      disabled={false}
+      id="signInButton"
+      label="Sign In"
+      onClick={[Function]}
+      style={
+        Object {
+          "margin": 12,
+        }
+      }
+    />
+  </div>
+</form>
+`;
+
+exports[`SignInForm shows the error message returned by firebase if the sign in fails 1`] = `
+<form
+  id="signInForm"
+  style={
+    Object {
+      "padding": "6px",
+    }
+  }
+>
+  <div>
+    <TextField
+      disabled={false}
+      floatingLabelText="Email"
+      id="emailField"
+      onChange={[Function]}
+    />
+  </div>
+  <div>
+    <TextField
+      disabled={false}
+      floatingLabelText="Password"
+      id="passwordField"
+      onChange={[Function]}
+      type="password"
+    />
+  </div>
+  <div>
+    <RaisedButton
+      disabled={false}
+      id="signUpButton"
+      label="Sign Up"
+      onClick={[Function]}
+      style={
+        Object {
+          "margin": 12,
+        }
+      }
+    />
+    <RaisedButton
+      disabled={false}
+      id="signInButton"
+      label="Sign In"
+      onClick={[Function]}
+      style={
+        Object {
+          "margin": 12,
+        }
+      }
+    />
+  </div>
+</form>
+`;
+
+exports[`SignInForm shows the error message returned by firebase if the sign up fails 1`] = `
+<form
+  id="signInForm"
+  style={
+    Object {
+      "padding": "6px",
+    }
+  }
+>
+  <div>
+    <TextField
+      disabled={false}
+      floatingLabelText="Email"
+      id="emailField"
+      onChange={[Function]}
+    />
+  </div>
+  <div>
+    <TextField
+      disabled={false}
+      floatingLabelText="Password"
+      id="passwordField"
+      onChange={[Function]}
+      type="password"
+    />
+  </div>
+  <div>
+    <RaisedButton
+      disabled={false}
+      id="signUpButton"
+      label="Sign Up"
+      onClick={[Function]}
+      style={
+        Object {
+          "margin": 12,
+        }
+      }
+    />
+    <RaisedButton
+      disabled={false}
+      id="signInButton"
+      label="Sign In"
+      onClick={[Function]}
+      style={
+        Object {
+          "margin": 12,
+        }
+      }
+    />
+  </div>
+</form>
+`;

@@ -4,8 +4,10 @@ import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import { ALBUM, LOG_IN } from "../app/routes";
 import { isUserLoggedIn } from "../session/session";
-import Logo from "../baseComponents/logo/Logo";
+import Logo, { bigSize } from "../baseComponents/logo/Logo";
 import ProgressBar from "../baseComponents/progressBar/ProgressBar";
+import { Row, Col } from "react-flexbox-grid";
+import { fade } from "../animations/animationUtils";
 
 const timeShowingAppIconInMillis = 1200;
 const timeLoadingInMillis = 1900;
@@ -29,11 +31,19 @@ class Splash extends React.Component {
   }
 
   render() {
+    return (
+      <Row center="xs" middle="xs" className="fullWidth">
+        <Col>{fade(this.getMainComponent())}</Col>
+      </Row>
+    );
+  }
+
+  getMainComponent() {
     if (this.state.loading) {
       this.scheduleHideLoading();
       return <ProgressBar />;
     } else {
-      return <Logo />;
+      return <Logo size={bigSize} />;
     }
   }
 
@@ -45,7 +55,7 @@ class Splash extends React.Component {
   }
 
   openNextScreen() {
-    if (!this.props.isUserLoggedIn) {
+    if (this.props.isUserLoggedIn === false) {
       return this.props.history.push(LOG_IN);
     } else {
       return this.props.history.push(ALBUM);
@@ -64,8 +74,7 @@ function mapStateToProps(state) {
 }
 
 Splash.propTypes = {
-  history: PropTypes.object.isRequired,
-  isUserLoggedIn: PropTypes.boolean
+  history: PropTypes.object.isRequired
 };
 
 export default withRouter(connect(mapStateToProps)(Splash));

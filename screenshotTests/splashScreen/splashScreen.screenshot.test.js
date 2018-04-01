@@ -1,6 +1,5 @@
 import {
   compareScreenshot,
-  getWindowTitle,
   startApp,
   stopApp,
   waitForInvisible,
@@ -22,7 +21,6 @@ describe("SplashScreen screenshots", () => {
   });
 
   it("shows the progress bar after showing the application logo", async () => {
-    await waitForInvisible("#logo");
     await waitForVisible("#progress");
     await compareScreenshot();
   });

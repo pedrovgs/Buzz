@@ -54,9 +54,6 @@ typings/
 # Yarn Integrity file
 .yarn-integrity
 
-# dotenv environment variables file
-.env
-
 # Distribution 
 /dist
 
@@ -71,3 +68,7 @@ typings/
 
 # jest-image-snapshot diffs
 /screenshotTests/**/__diff_output__/
+
+# env variables
+.env.development
+.env.production

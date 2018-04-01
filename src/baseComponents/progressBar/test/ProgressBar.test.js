@@ -1,18 +1,15 @@
 jest.mock("../../../testUtils/utils");
 const testUtilsMock = require("../../../testUtils/utils");
+import { shallowComponentToJson } from "../../../testUtils/enzyme";
 import React from "react";
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import AppTheme from "../../../theme/AppTheme";
-import Enzyme from "enzyme";
-import { createSerializer } from "enzyme-to-json";
-import toJson from "enzyme-to-json";
-import Adapter from "enzyme-adapter-react-16";
 import ProgressBar from "../ProgressBar";
-
-expect.addSnapshotSerializer(createSerializer({ mode: "deep" }));
-Enzyme.configure({ adapter: new Adapter() });
+jest.mock("material-ui/CircularProgress", () => "CircularProgress");
 
 describe("ProgressBar", () => {
+  afterEach(() => {
+    jest.resetModules();
+  });
+
   it("shows the application progress bar as determinated if we are running tests", () => {
     givenTheAppIsRunningTests();
 
@@ -30,13 +27,7 @@ describe("ProgressBar", () => {
   });
 
   function renderProgressBar() {
-    return toJson(
-      Enzyme.render(
-        <MuiThemeProvider muiTheme={AppTheme}>
-          <ProgressBar />
-        </MuiThemeProvider>
-      )
-    );
+    return shallowComponentToJson(<ProgressBar />);
   }
 
   function givenTheAppIsNotRunningTests() {

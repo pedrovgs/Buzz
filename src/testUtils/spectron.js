@@ -19,14 +19,17 @@ export async function compareScreenshot() {
   const resizedScreenshot = await sharp(screenshot)
     .resize(windowSize[0], windowSize[1])
     .toBuffer();
-  expect(resizedScreenshot).toMatchImageSnapshot();
+  expect(resizedScreenshot).toMatchImageSnapshot({
+    failureThreshold: 5,
+    failureThresholdType: "percent"
+  });
 }
 
 export async function startApp() {
   app = new Application({
     path: electron,
     args: [path.join(__dirname, "..", "..", "electron-starter.js")],
-    startTimeout: 3000
+    startTimeout: 10000
   });
   return app.start().then(() => {
     return waitForReady()
@@ -42,6 +45,9 @@ export async function startApp() {
         });
       })
       .then(() => {
+        return waitASec();
+      })
+      .then(() => {
         return resetAppState();
       })
       .then(() => {
@@ -51,13 +57,19 @@ export async function startApp() {
 }
 
 export async function stopApp() {
-  return resetAppState().then(() => {
-    if (app) {
-      return app.stop();
-    } else {
-      return Promise.resolve();
-    }
-  });
+  await resetAppState();
+  if (app) {
+    return app.stop();
+  } else {
+    return Promise.resolve();
+  }
+}
+
+export async function open(appRelativeUrl) {
+  const appPath =
+    "file:///" + path.join(__dirname, "..", "..", "build", "index.html");
+  const applicationUrl = appPath + "#" + appRelativeUrl;
+  return app.client.url(applicationUrl);
 }
 
 export async function getWindowTitle() {
@@ -106,6 +118,10 @@ export async function setAppState(state) {
 
 export async function resetAppState() {
   return setAppState({});
+}
+
+export async function setValue(selector, value) {
+  return getClient().setValue(selector, value);
 }
 
 async function waitForReady() {
