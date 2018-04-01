@@ -1,5 +1,6 @@
 import React from "react";
 import { FloatingActionButton } from "material-ui";
+import PropTypes from "prop-types";
 
 const actionButtonStyle = {
   position: "fixed",
@@ -11,11 +12,18 @@ const actionButtonStyle = {
 class FloatingButton extends React.Component {
   render() {
     return (
-      <FloatingActionButton style={actionButtonStyle}>
+      <FloatingActionButton
+        style={actionButtonStyle}
+        onClick={this.props.onClick}
+      >
         {this.props.children}
       </FloatingActionButton>
     );
   }
 }
+
+FloatingButton.propTypes = {
+  onClick: PropTypes.func
+};
 
 export default FloatingButton;
