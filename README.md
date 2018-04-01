@@ -45,7 +45,7 @@ REACT_APP_FIREBASE_STORAGE_BUCKET="my-app.appspot.com"
 REACT_APP_FIREBASE_MESSAGING_SENDER_ID="123240261111"
 ```
 
-You can find a complete guide explaining how to do configure the Firebase project [here](https://firebase.google.com/docs/auth/web/google-signin).
+You can find a complete guide explaining how to do configure the Firebase project [here](https://firebase.google.com/docs/auth/web/password-auth).
 
 ### Executing tests:
 
