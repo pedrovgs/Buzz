@@ -25,7 +25,7 @@ class CameraScreen extends Component {
       <div style={containerStyle}>
         <WebCam />
         <Countdown
-          countdownSeconds={3}
+          countdownSeconds={5}
           countdownStartDate={this.state.startCountdownDate}
           onCountdownFinished={this.didFinishCountdown}
         />

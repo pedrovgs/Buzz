@@ -8,6 +8,7 @@ html,
 body {
     text-rendering: optimizeLegibility;
     height: 100%;
+    font-family: 'Roboto', sans-serif;
 }
 
 #root {

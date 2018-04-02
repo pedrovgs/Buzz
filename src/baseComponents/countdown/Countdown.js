@@ -8,7 +8,12 @@ const containerStyle = {
   background: "rgba(0, 0, 0, 0.5)"
 };
 const counterStyle = {
-  fontSize: "50pt"
+  fontSize: "100pt",
+  color: "#FFFFFF",
+  position: "relative",
+  top: "50%",
+  left: "50%",
+  transform: "translateX(-50%) translateY(-50%)"
 };
 class Countdown extends React.Component {
   constructor(props) {

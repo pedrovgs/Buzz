@@ -42,7 +42,8 @@
     "redux": "^3.7.2",
     "redux-devtools": "^3.4.1",
     "redux-thunk": "^2.2.0",
-    "store": "^2.0.12"
+    "store": "^2.0.12",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "babel-preset-env": "^1.6.1",
