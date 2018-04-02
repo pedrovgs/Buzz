@@ -15,6 +15,7 @@ class FloatingButton extends React.Component {
       <FloatingActionButton
         style={actionButtonStyle}
         onClick={this.props.onClick}
+        disabled={this.props.disabled}
       >
         {this.props.children}
       </FloatingActionButton>
@@ -23,7 +24,8 @@ class FloatingButton extends React.Component {
 }
 
 FloatingButton.propTypes = {
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
+  disabled: PropTypes.bool
 };
 
 export default FloatingButton;
