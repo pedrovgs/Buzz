@@ -18,12 +18,13 @@ class CameraScreen extends Component {
     this.onFloatingButtonClick = this.onFloatingButtonClick.bind(this);
     this.didStartTheCountdown = this.didStartTheCountdown.bind(this);
     this.didFinishCountdown = this.didFinishCountdown.bind(this);
+    this.webcamReference = React.createRef();
   }
 
   render() {
     return (
       <div style={containerStyle}>
-        <WebCam />
+        <WebCam ref={this.webcamReference} />
         <Countdown
           countdownSeconds={5}
           countdownStartDate={this.state.startCountdownDate}
@@ -51,6 +52,8 @@ class CameraScreen extends Component {
 
   didFinishCountdown() {
     this.setState({ startCountdownDate: undefined });
+    const image = this.webcamReference.current.takePicture();
+    console.log(image);
   }
 }
 

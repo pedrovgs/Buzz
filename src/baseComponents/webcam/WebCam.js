@@ -14,7 +14,7 @@ const videoStyle = {
 
 class WebCam extends React.Component {
   componentDidMount() {
-    const video = document.querySelector("#video");
+    const video = this.getVideoTag();
     function handleVideo(stream) {
       video.src = window.URL.createObjectURL(stream);
     }
@@ -26,8 +26,20 @@ class WebCam extends React.Component {
       navigator.oGetUserMedia;
     navigator.getUserMedia({ video: true }, handleVideo, () => {});
   }
+
   render() {
     return <video autoPlay="true" id="video" style={videoStyle} />;
+  }
+
+  getVideoTag() {
+    return document.querySelector("#video");
+  }
+
+  takePicture() {
+    const video = this.getVideoTag();
+    const canvas = document.createElement("canvas");
+    canvas.getContext("2d").drawImage(video, 0, 0, canvas.width, canvas.height);
+    return canvas.toDataURL();
   }
 }
 
