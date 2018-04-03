@@ -6,6 +6,8 @@ import ImageCameraAlt from "material-ui/svg-icons/image/camera-alt";
 import WebCam from "../baseComponents/webcam/WebCam";
 import moment from "moment";
 import Countdown from "../baseComponents/countdown/Countdown";
+import { saveTentativePicture } from "./actions";
+import { connect } from "react-redux";
 
 const containerStyle = {
   height: "100%",
@@ -52,8 +54,8 @@ class CameraScreen extends Component {
 
   didFinishCountdown() {
     this.setState({ startCountdownDate: undefined });
-    const image = this.webcamReference.current.takePicture();
-    console.log(image);
+    const base64Image = this.webcamReference.current.takePicture();
+    this.props.onPictureTaken(base64Image);
   }
 }
 
@@ -61,4 +63,18 @@ CameraScreen.propTypes = {
   history: PropTypes.object.isRequired
 };
 
-export default withRouter(CameraScreen);
+const mapStateToProps = () => {
+  return {};
+};
+
+const mapPropsToDispatch = dispatch => {
+  return {
+    onPictureTaken: picture => {
+      dispatch(saveTentativePicture(picture));
+    }
+  };
+};
+
+export default withRouter(
+  connect(mapStateToProps, mapPropsToDispatch)(CameraScreen)
+);

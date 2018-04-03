@@ -6,6 +6,7 @@ import { RESET_STATE, resetState } from "./actions";
 import testUtils from "../testUtils/utils";
 import thunk from "redux-thunk";
 import firebase from "firebase";
+import { cameraReducer } from "../camera/camera";
 
 const buzzStore = createStore(
   buzzReducer,
@@ -44,7 +45,8 @@ function buzzReducer(state = {}, action) {
       return action.state;
     default:
       return {
-        session: sessionReducer(state.session, action)
+        session: sessionReducer(state.session, action),
+        camera: cameraReducer(state.camera, action)
       };
   }
 }
