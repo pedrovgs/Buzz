@@ -110,8 +110,8 @@ class Countdown extends React.Component {
 
 Countdown.propTypes = {
   onCountdownFinished: PropTypes.func,
-  countdownSeconds: PropTypes.number.required,
-  countdownStartDate: PropTypes.object.required
+  countdownSeconds: PropTypes.number,
+  countdownStartDate: PropTypes.object
 };
 
 export default Countdown;

@@ -4,10 +4,7 @@ const videoStyle = {
   position: "fixed",
   top: "50%",
   left: "50%",
-  minWidth: "100%",
-  minHeight: "100%",
-  width: "auto",
-  height: "auto",
+  height: "100%",
   zIndex: "-100",
   transform: "translateX(-50%) translateY(-50%) scaleX(-1)"
 };
@@ -38,7 +35,11 @@ class WebCam extends React.Component {
   takePicture() {
     const video = this.getVideoTag();
     const canvas = document.createElement("canvas");
-    canvas.getContext("2d").drawImage(video, 0, 0, canvas.width, canvas.height);
+    canvas.height = video.clientHeight;
+    canvas.width = video.clientWidth;
+    const ctx = canvas.getContext("2d");
+    ctx.scale(-1, 1)
+    ctx.drawImage(video, 0, 0, canvas.width * -1, canvas.height);
     return canvas.toDataURL();
   }
 }

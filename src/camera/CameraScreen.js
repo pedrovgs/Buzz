@@ -8,6 +8,7 @@ import moment from "moment";
 import Countdown from "../baseComponents/countdown/Countdown";
 import { saveTentativePicture } from "./actions";
 import { connect } from "react-redux";
+import { PREVIEW } from "../app/routes";
 
 const containerStyle = {
   height: "100%",
@@ -21,6 +22,12 @@ class CameraScreen extends Component {
     this.didStartTheCountdown = this.didStartTheCountdown.bind(this);
     this.didFinishCountdown = this.didFinishCountdown.bind(this);
     this.webcamReference = React.createRef();
+  }
+
+  componentDidUpdate(prevProp, prevState) {
+    if (prevState.tentativePicture !== this.state.tentativePicture) {
+      this.props.history.push(PREVIEW);
+    }
   }
 
   render() {
@@ -56,6 +63,7 @@ class CameraScreen extends Component {
     this.setState({ startCountdownDate: undefined });
     const base64Image = this.webcamReference.current.takePicture();
     this.props.onPictureTaken(base64Image);
+    this.props.history.push(PREVIEW);
   }
 }
 
@@ -63,8 +71,10 @@ CameraScreen.propTypes = {
   history: PropTypes.object.isRequired
 };
 
-const mapStateToProps = () => {
-  return {};
+const mapStateToProps = state => {
+  return {
+    tentativePicture: state.camera.tentativePicture
+  };
 };
 
 const mapPropsToDispatch = dispatch => {
