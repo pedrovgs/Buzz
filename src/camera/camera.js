@@ -14,7 +14,8 @@ export function cameraReducer(state = initialState, action) {
   switch (action.type) {
     case SAVE_TENTATIVE_PICTURE:
       return Object.assign({}, state, {
-        tentativePicture: action.base64Picture
+        tentativePicture: action.base64Picture,
+        lastPictureUploaded: undefined
       });
     case UPLOAD_PICTURE:
       return Object.assign({}, state, {

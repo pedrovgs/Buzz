@@ -14,15 +14,24 @@ const previewStyle = {
 };
 
 class PreviewScreen extends React.Component {
+  componentDidMount() {
+    this.uploadPicture();
+  }
+
   componentDidUpdate() {
+    this.uploadPicture();
+  }
+
+  render() {
+    const src = this.props.tentativePicture || this.props.pictureUploaded;
+    return <img alt="Preview" style={previewStyle} src={src} />;
+  }
+
+  uploadPicture() {
     const tentativePicture = this.props.tentativePicture;
     if (tentativePicture) {
       this.props.uploadPicture(tentativePicture);
     }
-  }
-  render() {
-    const src = this.props.tentativePicture || this.props.pictureUploaded;
-    return <img alt="Preview" style={previewStyle} src={src} />;
   }
 }
 
