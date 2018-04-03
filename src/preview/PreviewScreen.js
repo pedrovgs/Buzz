@@ -2,6 +2,7 @@ import React from "react";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { uploadPicture } from "../camera/actions";
 
 const previewStyle = {
   position: "fixed",
@@ -13,8 +14,15 @@ const previewStyle = {
 };
 
 class PreviewScreen extends React.Component {
+  componentDidUpdate() {
+    const tentativePicture = this.props.tentativePicture;
+    if (tentativePicture) {
+      this.props.uploadPicture(tentativePicture);
+    }
+  }
   render() {
-    return <img style={previewStyle} src={this.props.tentativePicture} />;
+    const src = this.props.tentativePicture || this.props.pictureUploaded;
+    return <img alt="Preview" style={previewStyle} src={src} />;
   }
 }
 
@@ -23,6 +31,19 @@ PreviewScreen.propTypes = {
 };
 
 const mapStateToProps = state => {
-  return { tentativePicture: state.camera.tentativePicture };
+  return {
+    tentativePicture: state.camera.tentativePicture,
+    pictureUploaded: state.camera.lastPictureUploaded
+  };
 };
-export default withRouter(connect(mapStateToProps, () => {})(PreviewScreen));
+
+const mapPropsToDispatch = dispatch => {
+  return {
+    uploadPicture: picture => {
+      dispatch(uploadPicture(picture));
+    }
+  };
+};
+export default withRouter(
+  connect(mapStateToProps, mapPropsToDispatch)(PreviewScreen)
+);
