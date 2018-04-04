@@ -49,9 +49,7 @@ class PreviewScreen extends React.Component {
     return fade(
       <div style={containerStyle}>
         <div>
-          <NavigationBar
-            title="😃 Uploading your picture"
-          />
+          <NavigationBar title="😃 Uploading your picture" />
         </div>
         <Row center="xs" middle="xs" className="fullWidth">
           <Col xs>
@@ -71,7 +69,6 @@ class PreviewScreen extends React.Component {
       this.props.uploadPicture(tentativePicture);
     }
   }
-
 }
 
 PreviewScreen.propTypes = {

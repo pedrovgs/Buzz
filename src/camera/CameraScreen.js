@@ -23,7 +23,6 @@ class CameraScreen extends Component {
     this.onFloatingButtonClick = this.onFloatingButtonClick.bind(this);
     this.didStartTheCountdown = this.didStartTheCountdown.bind(this);
     this.didFinishCountdown = this.didFinishCountdown.bind(this);
-    this.onBackPressed = this.onBackPressed.bind(this);
     this.webcamReference = React.createRef();
   }
 
@@ -39,7 +38,6 @@ class CameraScreen extends Component {
         <NavigationBar
           title="📸 Cheeers!"
           showBackButton={true}
-          onLeftIconButtonClick={this.onBackPressed}
         />
         <div>
           <WebCam ref={this.webcamReference} />
@@ -74,10 +72,6 @@ class CameraScreen extends Component {
     const base64Image = this.webcamReference.current.takePicture();
     this.props.onPictureTaken(base64Image);
     this.props.history.push(PREVIEW);
-  }
-
-  onBackPressed() {
-    this.props.history.goBack();
   }
 }
 
