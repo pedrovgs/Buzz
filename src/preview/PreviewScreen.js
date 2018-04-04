@@ -22,7 +22,6 @@ const previewStyle = {
 
 class PreviewScreen extends React.Component {
   componentDidMount() {
-    this.uploadPicture();
     this.setState({
       mountDate: moment(),
       previewFinished: false
