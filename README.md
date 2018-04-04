@@ -61,6 +61,17 @@ service firebase.storage {
 
 ```
 
+### Pictures resolution
+
+As this project uses any camera we can connect to the Raspberri Pi device the screen resolution of the device can vary. By default, the pictures resolutions are 640x480 but the values can be easily configured by adding the following variables to the ``.env.development`` and ``.env.production`` files:
+
+```
+REACT_APP_WEB_CAM_RESOLUTION_HEIGHT = <YOUR_WEB_CAM_RESOLUTION>
+REACT_APP_WEB_CAM_RESOLUTION_WIDTH = <YOUR_WEB_CAM_RESOLUTION>
+```
+
+You can check your device resolution using this [web](https://webcamtests.com/).
+
 ### Executing tests:
 
 This project contains some tests written using [Jest](https://facebook.github.io/jest/). You can easily run the tests by executing one of the following commands:
