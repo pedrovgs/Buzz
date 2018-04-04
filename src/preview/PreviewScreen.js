@@ -7,13 +7,16 @@ import moment from "moment";
 import ProgressBar from "../baseComponents/progressBar/ProgressBar";
 import { Col, Row } from "react-flexbox-grid";
 import { fade } from "../animations/animationUtils";
+import NavigationBar from "../baseComponents/navigationBar/NavigationBar";
 
+const containerStyle = {
+  height: "100%"
+};
 const previewStyle = {
-  position: "fixed",
+  position: "absolute",
   top: "50%",
   left: "50%",
   height: "100%",
-  zIndex: "-100",
   transform: "translateX(-50%) translateY(-50%)"
 };
 
@@ -44,12 +47,21 @@ class PreviewScreen extends React.Component {
   render() {
     const src = this.props.tentativePicture || this.props.pictureUploaded;
     return fade(
-      <Row center="xs" middle="xs" className="fullWidth">
-        <Col>
-          <img alt="Preview" style={previewStyle} src={src} />
-          <ProgressBar />
-        </Col>
-      </Row>
+      <div style={containerStyle}>
+        <div>
+          <NavigationBar
+            title="😃 Uploading your picture"
+          />
+        </div>
+        <Row center="xs" middle="xs" className="fullWidth">
+          <Col xs>
+            <div>
+              <img alt="Preview" style={previewStyle} src={src} />
+              <ProgressBar />
+            </div>
+          </Col>
+        </Row>
+      </div>
     );
   }
 
@@ -59,6 +71,7 @@ class PreviewScreen extends React.Component {
       this.props.uploadPicture(tentativePicture);
     }
   }
+
 }
 
 PreviewScreen.propTypes = {

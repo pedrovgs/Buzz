@@ -9,6 +9,8 @@ import Countdown from "../baseComponents/countdown/Countdown";
 import { saveTentativePicture } from "./actions";
 import { connect } from "react-redux";
 import { PREVIEW } from "../app/routes";
+import { fade } from "../animations/animationUtils";
+import NavigationBar from "../baseComponents/navigationBar/NavigationBar";
 
 const containerStyle = {
   height: "100%",
@@ -21,6 +23,7 @@ class CameraScreen extends Component {
     this.onFloatingButtonClick = this.onFloatingButtonClick.bind(this);
     this.didStartTheCountdown = this.didStartTheCountdown.bind(this);
     this.didFinishCountdown = this.didFinishCountdown.bind(this);
+    this.onBackPressed = this.onBackPressed.bind(this);
     this.webcamReference = React.createRef();
   }
 
@@ -31,20 +34,27 @@ class CameraScreen extends Component {
   }
 
   render() {
-    return (
+    return fade(
       <div style={containerStyle}>
-        <WebCam ref={this.webcamReference} />
-        <Countdown
-          countdownSeconds={5}
-          countdownStartDate={this.state.startCountdownDate}
-          onCountdownFinished={this.didFinishCountdown}
+        <NavigationBar
+          title="📸 Cheeers!"
+          showBackButton={true}
+          onLeftIconButtonClick={this.onBackPressed}
         />
-        <FloatingButton
-          onClick={this.onFloatingButtonClick}
-          disabled={this.didStartTheCountdown()}
-        >
-          <ImageCameraAlt />
-        </FloatingButton>
+        <div>
+          <WebCam ref={this.webcamReference} />
+          <Countdown
+            countdownSeconds={5}
+            countdownStartDate={this.state.startCountdownDate}
+            onCountdownFinished={this.didFinishCountdown}
+          />
+          <FloatingButton
+            onClick={this.onFloatingButtonClick}
+            disabled={this.didStartTheCountdown()}
+          >
+            <ImageCameraAlt />
+          </FloatingButton>
+        </div>
       </div>
     );
   }
@@ -64,6 +74,10 @@ class CameraScreen extends Component {
     const base64Image = this.webcamReference.current.takePicture();
     this.props.onPictureTaken(base64Image);
     this.props.history.push(PREVIEW);
+  }
+
+  onBackPressed() {
+    this.props.history.goBack();
   }
 }
 

@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import moment from "moment";
 
 const containerStyle = {
+  position: "absolute",
   height: "100%",
   width: "100%",
   background: "rgba(0, 0, 0, 0.5)"
@@ -10,7 +11,7 @@ const containerStyle = {
 const counterStyle = {
   fontSize: "100pt",
   color: "#FFFFFF",
-  position: "relative",
+  position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translateX(-50%) translateY(-50%)"
