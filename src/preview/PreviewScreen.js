@@ -75,10 +75,15 @@ PreviewScreen.propTypes = {
 };
 
 const mapStateToProps = state => {
-  return {
-    tentativePicture: state.camera.tentativePicture,
-    pictureUploaded: state.camera.lastPictureUploaded
-  };
+  const camera = state.camera;
+  if (camera) {
+    return {
+      tentativePicture: camera.tentativePicture,
+      pictureUploaded: camera.lastPictureUploaded
+    };
+  } else {
+    return {};
+  }
 };
 
 const mapPropsToDispatch = dispatch => {

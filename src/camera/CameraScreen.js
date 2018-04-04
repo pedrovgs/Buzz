@@ -35,10 +35,7 @@ class CameraScreen extends Component {
   render() {
     return fade(
       <div style={containerStyle}>
-        <NavigationBar
-          title="📸 Cheeers!"
-          showBackButton={true}
-        />
+        <NavigationBar title="📸 Cheeers!" showBackButton={true} />
         <div>
           <WebCam ref={this.webcamReference} />
           <Countdown
@@ -80,9 +77,14 @@ CameraScreen.propTypes = {
 };
 
 const mapStateToProps = state => {
-  return {
-    tentativePicture: state.camera.tentativePicture
-  };
+  const camera = state.camera;
+  if (camera) {
+    return {
+      tentativePicture: camera.tentativePicture
+    };
+  } else {
+    return {};
+  }
 };
 
 const mapPropsToDispatch = dispatch => {
