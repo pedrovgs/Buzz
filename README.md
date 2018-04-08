@@ -72,6 +72,13 @@ REACT_APP_WEB_CAM_RESOLUTION_WIDTH = <YOUR_WEB_CAM_RESOLUTION>
 
 You can check your device resolution using this [web](https://webcamtests.com/).
 
+### Other configurable values
+
+There are some values we can configure in our small application. This table contains the keys, descriptions and default values for every configurable item in our app:
+
+|ID|DEFAULT|DESCRIPTION|
+|REACT_APP_ALBUM_NUMBER_OF_COLUMNS|3|Number of columns used in the album's grid|
+|REACT_APP_CELL_HEIGHT|300px|Album's grid cell height|
 ### Executing tests:
 
 This project contains some tests written using [Jest](https://facebook.github.io/jest/). You can easily run the tests by executing one of the following commands:

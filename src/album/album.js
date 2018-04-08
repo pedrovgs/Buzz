@@ -2,7 +2,7 @@ import { FETCH_PICTURES, PICTURES_LOADED } from "./actions";
 
 const initialState = {
   fetchingPictures: false,
-  pictures: undefined
+  pictures: []
 };
 
 export function albumReducer(state = initialState, action) {
