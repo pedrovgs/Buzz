@@ -3,7 +3,7 @@ import moment from "moment";
 
 export function uploadBase64Image(folderName, image) {
   const storageRef = firebase.storage().ref();
-  const timestamp = moment().valueOf();
+  const timestamp = moment().unix();
   const fileExtension = "jpg";
   const childRef = storageRef.child(
     `${folderName}/${timestamp}.${fileExtension}`

@@ -10,6 +10,8 @@ import { connect } from "react-redux";
 import ProgressBar from "../baseComponents/progressBar/ProgressBar";
 import GridList from "material-ui/GridList";
 import { GridTile } from "material-ui";
+import { formatTimestamp } from "../utils/dates";
+import { Col, Row } from "react-flexbox-grid";
 
 const styles = {
   gridList: {
@@ -29,30 +31,52 @@ class AlbumScreen extends Component {
   }
 
   render() {
+    const containerStyle = this.props.fetchingPictures
+      ? { height: "100%" }
+      : {};
     return (
-      <div>
+      <div style={containerStyle}>
         <NavigationBar title="🖼 Your pictures" />
-        <ProgressBar hidden={!this.props.fetchingPictures} />
-        <GridList
-          cols={this.props.numberOfColumns}
-          cellHeight={this.props.cellHeight}
-          style={styles.gridList}
-        >
-          {this.props.pictures.map(tile => (
-            <GridTile
-              key={tile.url}
-              title={tile.createdAt}
-              //actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-            >
-              <img src={tile.url} alt={tile.createdAt} />
-            </GridTile>
-          ))}
-        </GridList>
+        {this.renderMainComponent()}
         <FloatingButton onClick={this.onFloatingButtonClick}>
           <ImageCamera />
         </FloatingButton>
       </div>
     );
+  }
+
+  renderMainComponent() {
+    if (this.props.fetchingPictures) {
+      return (
+        <Row center="xs" middle="xs" className="fullWidth">
+          <Col xs>
+            <ProgressBar />
+          </Col>
+        </Row>
+      );
+    } else {
+      return (
+        <GridList
+          cols={this.props.numberOfColumns}
+          cellHeight={this.props.cellHeight}
+          style={styles.gridList}
+        >
+          {this.props.pictures.map(tile => {
+            const url = tile.url;
+            const title = formatTimestamp(tile.createdAt);
+            return (
+              <GridTile
+                key={url}
+                title={title}
+                //actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
+              >
+                <img src={url} alt={title} />
+              </GridTile>
+            );
+          })}
+        </GridList>
+      );
+    }
   }
 
   onFloatingButtonClick() {
@@ -67,6 +91,7 @@ AlbumScreen.propTypes = {
 };
 
 AlbumScreen.defaultProps = {
+  fetchingPictures: true,
   numberOfColumns: process.env.REACT_APP_ALBUM_NUMBER_OF_COLUMNS,
   cellHeight: process.env.REACT_APP_CELL_HEIGHT
 };

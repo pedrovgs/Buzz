@@ -5,12 +5,14 @@ import testUtils from "../../testUtils/utils";
 
 class ProgressBar extends React.Component {
   render() {
-    const mode = testUtils.isRunningTests() ? "determinate" : "indeterminate";
-    return (
-      <div hidden={this.props.hidden}>
+    if (this.props.hidden) {
+      return null;
+    } else {
+      const mode = testUtils.isRunningTests() ? "determinate" : "indeterminate";
+      return (
         <CircularProgress id="progress" mode={mode} size={100} value={55} />
-      </div>
-    );
+      );
+    }
   }
 }
 
