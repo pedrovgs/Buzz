@@ -11,17 +11,28 @@ const videoStyle = {
 
 class WebCam extends React.Component {
   componentDidMount() {
-    const video = this.getVideoTag();
-    function handleVideo(stream) {
-      video.src = window.URL.createObjectURL(stream);
-    }
     navigator.getUserMedia =
       navigator.getUserMedia ||
       navigator.webkitGetUserMedia ||
       navigator.mozGetUserMedia ||
       navigator.msGetUserMedia ||
       navigator.oGetUserMedia;
-    navigator.getUserMedia({ video: true }, handleVideo, () => {});
+    navigator.getUserMedia(
+      { video: true },
+      stream => {
+        const video = this.getVideoTag();
+        video.srcObject = stream;
+        this.localStream = stream;
+      },
+      () => {}
+    );
+  }
+
+  componentWillUnmount() {
+    this.localStream.getTracks()[0].stop();
+    const video = this.getVideoTag();
+    video.pause();
+    video.srcObject = null;
   }
 
   render() {

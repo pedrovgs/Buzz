@@ -87,12 +87,12 @@ class AlbumScreen extends Component {
 AlbumScreen.propTypes = {
   history: PropTypes.object.isRequired,
   numberOfColumns: PropTypes.number,
-  cellHeight: PropTypes.number
+  cellHeight: PropTypes.string
 };
 
 AlbumScreen.defaultProps = {
   fetchingPictures: true,
-  numberOfColumns: parseInt(process.env.REACT_APP_ALBUM_NUMBER_OF_COLUMNS),
+  numberOfColumns: Number(process.env.REACT_APP_ALBUM_NUMBER_OF_COLUMNS),
   cellHeight: process.env.REACT_APP_CELL_HEIGHT
 };
 
