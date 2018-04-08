@@ -7,6 +7,7 @@ import { CAMERA } from "../app/routes";
 import NavigationBar from "../baseComponents/navigationBar/NavigationBar";
 import { fetchPictures } from "./actions";
 import { connect } from "react-redux";
+import ProgressBar from "../baseComponents/progressBar/ProgressBar";
 
 class AlbumScreen extends Component {
   constructor(props) {
@@ -25,6 +26,7 @@ class AlbumScreen extends Component {
   render() {
     return (
       <div>
+        <ProgressBar hidden={!this.props.fetchingPictures} />
         <NavigationBar title="🖼 Your pictures" />
         <FloatingButton onClick={this.onFloatingButtonClick}>
           <ImageCamera />
@@ -43,7 +45,9 @@ AlbumScreen.propTypes = {
 };
 
 const mapStateToProps = state => {
-  return {};
+  return {
+    fetchingPictures: state.camera.fetchingPictures
+  };
 };
 
 const mapDispatchToProps = dispatch => {
