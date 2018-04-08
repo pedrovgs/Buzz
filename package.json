@@ -30,10 +30,10 @@
     "firebase": "^4.11.0",
     "lodash": "^4.17.5",
     "material-ui": "^0.20.0",
-    "moment": "^2.21.0",
+    "moment": "^2.22.0",
     "monet": "^0.8.10",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
+    "react": "^16.3.0",
+    "react-dom": "^16.3.0",
     "react-flexbox-grid": "^2.0.0",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
@@ -42,7 +42,8 @@
     "redux": "^3.7.2",
     "redux-devtools": "^3.4.1",
     "redux-thunk": "^2.2.0",
-    "store": "^2.0.12"
+    "store": "^2.0.12",
+    "webfontloader": "^1.6.28"
   },
   "devDependencies": {
     "babel-preset-env": "^1.6.1",
@@ -64,7 +65,7 @@
     "jsverify": "^0.8.3",
     "prettier-eslint-cli": "^4.7.1",
     "react-scripts": "^1.1.1",
-    "react-test-renderer": "^16.2.0",
+    "react-test-renderer": "^16.3.0",
     "redux-mock-store": "^1.5.1",
     "sharp": "^0.20.0",
     "spectron": "^3.8.0",

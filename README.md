@@ -47,6 +47,31 @@ REACT_APP_FIREBASE_MESSAGING_SENDER_ID="123240261111"
 
 You can find a complete guide explaining how to do configure the Firebase project [here](https://firebase.google.com/docs/auth/web/password-auth).
 
+**As we are using Firebase to persist the pictures taken remember you'll have to enable Firebase storage and configure the storage rules after creating your app:**
+
+```
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{allPaths=**} {
+      allow read;
+      allow write: if request.auth != null;
+    }
+  }
+}
+
+```
+
+### Pictures resolution
+
+As this project uses any camera we can connect to the Raspberri Pi device the screen resolution of the device can vary. By default, the pictures resolutions are 640x480 but the values can be easily configured by adding the following variables to the ``.env.development`` and ``.env.production`` files:
+
+```
+REACT_APP_WEB_CAM_RESOLUTION_HEIGHT = <YOUR_WEB_CAM_RESOLUTION>
+REACT_APP_WEB_CAM_RESOLUTION_WIDTH = <YOUR_WEB_CAM_RESOLUTION>
+```
+
+You can check your device resolution using this [web](https://webcamtests.com/).
+
 ### Executing tests:
 
 This project contains some tests written using [Jest](https://facebook.github.io/jest/). You can easily run the tests by executing one of the following commands:
