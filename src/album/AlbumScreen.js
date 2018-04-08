@@ -12,6 +12,7 @@ import GridList from "material-ui/GridList";
 import { GridTile } from "material-ui";
 import { formatTimestamp } from "../utils/dates";
 import { Col, Row } from "react-flexbox-grid";
+import EmptyAlbum from "./emptyCase/EmptyAlbum";
 
 const styles = {
   gridList: {
@@ -31,9 +32,10 @@ class AlbumScreen extends Component {
   }
 
   render() {
-    const containerStyle = this.props.fetchingPictures
-      ? { height: "100%" }
-      : {};
+    const containerStyle =
+      this.props.fetchingPictures || this.props.pictures.length === 0
+        ? { height: "100%" }
+        : {};
     return (
       <div style={containerStyle}>
         <NavigationBar title="🖼 Your pictures" />
@@ -54,7 +56,7 @@ class AlbumScreen extends Component {
           </Col>
         </Row>
       );
-    } else {
+    } else if (this.props.pictures.length > 0) {
       return (
         <GridList
           cols={this.props.numberOfColumns}
@@ -75,6 +77,14 @@ class AlbumScreen extends Component {
             );
           })}
         </GridList>
+      );
+    } else {
+      return (
+        <Row center="xs" middle="xs" className="fullWidth">
+          <Col xs>
+            <EmptyAlbum />
+          </Col>
+        </Row>
       );
     }
   }

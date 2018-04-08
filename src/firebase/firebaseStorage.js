@@ -29,13 +29,17 @@ export function getPicturesByFolder(folder) {
     .once("value")
     .then(result => {
       const firebaseObject = result.val();
-      return Object.keys(firebaseObject)
-        .map(key => {
-          let storedObject = firebaseObject[key];
-          storedObject.id = key;
-          return storedObject;
-        })
-        .reverse();
+      if (firebaseObject) {
+        return Object.keys(firebaseObject)
+          .map(key => {
+            let storedObject = firebaseObject[key];
+            storedObject.id = key;
+            return storedObject;
+          })
+          .reverse();
+      } else {
+        return [];
+      }
     });
 }
 
