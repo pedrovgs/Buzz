@@ -7,7 +7,7 @@ import { connect } from "react-redux";
 
 const userEmailLabelStyle = {
   textTransform: "lowercase"
-}
+};
 
 class NavigationBar extends React.Component {
   constructor(props) {
@@ -22,7 +22,13 @@ class NavigationBar extends React.Component {
         onLeftIconButtonClick={this.onLeftIconButtonClick}
         iconElementLeft={this.leftIcon()}
         showMenuIconButton={this.props.showBackButton || false}
-        iconElementRight={<FlatButton label={this.props.userLoggedInEmail} disabled={true} labelStyle={userEmailLabelStyle}/>}
+        iconElementRight={
+          <FlatButton
+            label={this.props.userLoggedInEmail}
+            disabled={true}
+            labelStyle={userEmailLabelStyle}
+          />
+        }
       />
     );
   }
