@@ -92,7 +92,7 @@ AlbumScreen.propTypes = {
 
 AlbumScreen.defaultProps = {
   fetchingPictures: true,
-  numberOfColumns: process.env.REACT_APP_ALBUM_NUMBER_OF_COLUMNS,
+  numberOfColumns: parseInt(process.env.REACT_APP_ALBUM_NUMBER_OF_COLUMNS),
   cellHeight: process.env.REACT_APP_CELL_HEIGHT
 };
 

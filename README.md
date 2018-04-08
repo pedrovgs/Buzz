@@ -78,7 +78,7 @@ There are some values we can configure in our small application. This table cont
 
 |ID|DEFAULT|DESCRIPTION|
 |REACT_APP_ALBUM_NUMBER_OF_COLUMNS|3|Number of columns used in the album's grid|
-|REACT_APP_CELL_HEIGHT|300px|Album's grid cell height|
+|REACT_APP_CELL_HEIGHT|auto|Album's grid cell height. The values can be numbers (300, 400, 500) or the string "auto"|
 ### Executing tests:
 
 This project contains some tests written using [Jest](https://facebook.github.io/jest/). You can easily run the tests by executing one of the following commands:
