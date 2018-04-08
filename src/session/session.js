@@ -27,3 +27,12 @@ export function isUserLoggedIn(state) {
     return false;
   }
 }
+
+export function getFolderId(state) {
+  const isSessionDefined = typeof state.session !== "undefined" && typeof state.session.user !== "undefined";
+  if (isSessionDefined) {
+    return state.session.user.email;
+  } else {
+    return undefined;
+  }
+}

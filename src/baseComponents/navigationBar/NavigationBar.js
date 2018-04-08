@@ -24,7 +24,7 @@ class NavigationBar extends React.Component {
         showMenuIconButton={this.props.showBackButton || false}
         iconElementRight={
           <FlatButton
-            label={this.props.userLoggedInEmail}
+            label={this.props.userLoggedInEmail || " "}
             disabled={true}
             labelStyle={userEmailLabelStyle}
           />
@@ -68,4 +68,4 @@ const mapStateToProps = state => {
   }
 };
 
-export default withRouter(connect(mapStateToProps, () => {})(NavigationBar));
+export default withRouter(connect(mapStateToProps, null)(NavigationBar));
