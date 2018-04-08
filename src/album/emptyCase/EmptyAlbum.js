@@ -10,10 +10,10 @@ const style = {
   icon: {
     height: "200px",
     width: "200px",
-    color: "#686868"
+    color: "#828282"
   },
   text: {
-    color: "#686868",
+    color: "#828282",
     fontSize: "110%"
   }
 };
@@ -22,10 +22,18 @@ class EmptyAlbum extends React.Component {
   render() {
     return (
       <div style={style.contentStyle}>
-        <PhotoCamera style={style.icon}/>
-        <p style={style.text}>Don´t be shy ☺️</p>
+        <PhotoCamera style={style.icon} />
         <p style={style.text}>
-          Take your first picture tapping on the bottom right button 📸
+          Don´t be shy{" "}
+          <span role="img" aria-label="Smiley">
+            ☺️
+          </span>️
+        </p>
+        <p style={style.text}>
+          Take your first picture tapping on the bottom right button{" "}
+          <span role="img" aria-label="Camera">
+            📸
+          </span>
         </p>
       </div>
     );
