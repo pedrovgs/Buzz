@@ -68,11 +68,7 @@ class AlbumScreen extends Component {
             const url = tile.url;
             const title = formatTimestamp(tile.createdAt);
             return (
-              <GridTile
-                key={url}
-                title={title}
-                //actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
-              >
+              <GridTile key={url} title={title}>
                 <img
                   onClick={() => {
                     this.onPictureClick(tile);
