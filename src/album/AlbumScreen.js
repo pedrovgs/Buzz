@@ -3,9 +3,9 @@ import { withRouter } from "react-router";
 import PropTypes from "prop-types";
 import FloatingButton from "../baseComponents/floatingButton/FloatingButton";
 import ImageCamera from "material-ui/svg-icons/image/camera";
-import { CAMERA } from "../app/routes";
+import {CAMERA, DETAIL} from "../app/routes";
 import NavigationBar from "../baseComponents/navigationBar/NavigationBar";
-import { fetchPictures } from "./actions";
+import {fetchPictures, selectPicture} from "./actions";
 import { connect } from "react-redux";
 import ProgressBar from "../baseComponents/progressBar/ProgressBar";
 import GridList from "material-ui/GridList";
@@ -25,6 +25,7 @@ class AlbumScreen extends Component {
   constructor(props) {
     super(props);
     this.onFloatingButtonClick = this.onFloatingButtonClick.bind(this);
+    this.onPictureClick = this.onPictureClick.bind(this);
   }
 
   componentDidMount() {
@@ -72,7 +73,13 @@ class AlbumScreen extends Component {
                 title={title}
                 //actionIcon={<IconButton><StarBorder color="white" /></IconButton>}
               >
-                <img src={url} alt={title} />
+                <img
+                  onClick={() => {
+                    this.onPictureClick(tile);
+                  }}
+                  src={url}
+                  alt={title}
+                />
               </GridTile>
             );
           })}
@@ -91,6 +98,11 @@ class AlbumScreen extends Component {
 
   onFloatingButtonClick() {
     this.props.history.push(CAMERA);
+  }
+
+  onPictureClick(pictureSelected) {
+    this.props.onPictureClick(pictureSelected);
+    this.props.history.push(DETAIL);
   }
 }
 
@@ -117,6 +129,9 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchPictures: () => {
       dispatch(fetchPictures());
+    },
+    onPictureClick: pictureSelected => {
+      dispatch(selectPicture(pictureSelected));
     }
   };
 };

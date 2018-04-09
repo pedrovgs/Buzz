@@ -2,12 +2,13 @@ import React, { Component } from "react";
 import SplashScreen from "../splashScreen/SplashScreen";
 import LogInScreen from "../session/LogInScreen";
 import { HashRouter, Route } from "react-router-dom";
-import { ALBUM, CAMERA, INDEX, LOG_IN, PREVIEW } from "./routes";
+import { ALBUM, CAMERA, DETAIL, INDEX, LOG_IN, PREVIEW } from "./routes";
 import AlbumScreen from "../album/AlbumScreen";
 import "./css/App.css";
 import "../animations/css/Animations.css";
 import CameraScreen from "../camera/CameraScreen";
 import PreviewScreen from "../preview/PreviewScreen";
+import DetailScreen from "../detail/DetailScreen";
 
 const containerStyle = {
   height: "100%"
@@ -23,6 +24,7 @@ export default class App extends Component {
           <Route exact path={ALBUM} component={AlbumScreen} />
           <Route exact path={CAMERA} component={CameraScreen} />
           <Route exact path={PREVIEW} component={PreviewScreen} />
+          <Route exact path={DETAIL} component={DetailScreen} />
         </div>
       </HashRouter>
     );

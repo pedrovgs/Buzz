@@ -1,4 +1,4 @@
-import { FETCH_PICTURES, PICTURES_LOADED } from "./actions";
+import { FETCH_PICTURES, PICTURES_LOADED, SELECT_PICTURE } from "./actions";
 
 const initialState = {
   fetchingPictures: false,
@@ -15,6 +15,10 @@ export function albumReducer(state = initialState, action) {
       return Object.assign({}, state, {
         fetchingPictures: false,
         pictures: action.pictures
+      });
+    case SELECT_PICTURE:
+      return Object.assign({}, state, {
+        selectedPicture: action.pictureSelected
       });
     default:
       return state;

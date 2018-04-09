@@ -3,6 +3,7 @@ import { getFolderId } from "../session/session";
 
 export const FETCH_PICTURES = "FETCH_PICTURES";
 export const PICTURES_LOADED = "PICTURES_LOADED";
+export const SELECT_PICTURE = "SELECT_PICTURE";
 
 export function fetchPictures() {
   return function(dispatch, getState) {
@@ -19,5 +20,12 @@ export function fetchPictures() {
         });
       });
     }
+  };
+}
+
+export function selectPicture(pictureSelected) {
+  return {
+    type: SELECT_PICTURE,
+    pictureSelected: pictureSelected
   };
 }
