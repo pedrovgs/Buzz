@@ -66,7 +66,7 @@ class DetailScreen extends React.Component {
     const selectedPicture = this.props.selectedPicture;
     const selectedIndex = selectedPicture
       ? this.props.pictures.findIndex(pic => {
-          return pic.url === selectedPicture.url;
+          return pic.id === selectedPicture.id;
         })
       : 0;
     return {
