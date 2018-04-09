@@ -7,6 +7,7 @@ import testUtils from "../testUtils/utils";
 import thunk from "redux-thunk";
 import firebase from "firebase";
 import { cameraReducer } from "../camera/camera";
+import { albumReducer } from "../album/album";
 
 const buzzStore = createStore(
   buzzReducer,
@@ -46,7 +47,8 @@ function buzzReducer(state = {}, action) {
     default:
       return {
         session: sessionReducer(state.session, action),
-        camera: cameraReducer(state.camera, action)
+        camera: cameraReducer(state.camera, action),
+        album: albumReducer(state.album, action)
       };
   }
 }

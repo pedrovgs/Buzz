@@ -1,4 +1,5 @@
 import { uploadBase64Image } from "../firebase/firebaseStorage";
+import { getFolderId } from "../session/session";
 
 export const SAVE_TENTATIVE_PICTURE = "SAVE_TENTATIVE_PICTURE";
 export const UPLOAD_PICTURE = "UPLOAD_PICTURE";
@@ -17,7 +18,7 @@ export function uploadPicture(base64Picture) {
       type: UPLOAD_PICTURE,
       base64Picture: base64Picture
     });
-    const userEmail = getState().session.user.email;
+    const userEmail = getFolderId(getState());
     uploadBase64Image(userEmail, base64Picture).then(pictureUrl => {
       dispatch(pictureUploaded(pictureUrl));
     });

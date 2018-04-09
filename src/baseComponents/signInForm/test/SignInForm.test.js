@@ -14,6 +14,7 @@ jest.mock("material-ui/RaisedButton", () => "RaisedButton");
 describe("SignInForm", () => {
   const anyEmail = "pedro@gmail.com";
   const anyPass = "pisum";
+  const anyUid = "1";
 
   afterEach(() => {
     jest.resetModules();
@@ -182,9 +183,10 @@ describe("SignInForm", () => {
 
   function givenTheUserIsAuthenticatedProperly() {
     const user = {
+      uid: anyUid,
       email: anyEmail
     };
     firebaseAuthMock.default._configureCurrentUserResult(user);
-    return new User(user.email);
+    return new User(user.uid, user.email);
   }
 });

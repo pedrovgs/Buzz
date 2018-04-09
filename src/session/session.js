@@ -12,7 +12,7 @@ export function sessionReducer(state = initialState, action) {
         user: action.user
       });
     case LOG_OUT:
-      return Object.assign({}, state, {});
+      return initialState;
     default:
       return state;
   }
@@ -25,5 +25,16 @@ export function isUserLoggedIn(state) {
     return isUserDefined;
   } else {
     return false;
+  }
+}
+
+export function getFolderId(state) {
+  const isSessionDefined =
+    typeof state.session !== "undefined" &&
+    typeof state.session.user !== "undefined";
+  if (isSessionDefined) {
+    return state.session.user.uid;
+  } else {
+    return undefined;
   }
 }
