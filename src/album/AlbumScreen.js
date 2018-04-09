@@ -39,7 +39,7 @@ class AlbumScreen extends Component {
         : {};
     return (
       <div style={containerStyle}>
-        <NavigationBar title="🖼 Your pictures" />
+        <NavigationBar title="🖼 Your album" />
         {this.renderMainComponent()}
         <FloatingButton onClick={this.onFloatingButtonClick}>
           <ImageCamera />

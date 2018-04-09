@@ -7,6 +7,7 @@ import { connect } from "react-redux";
 import NavigationBar from "../baseComponents/navigationBar/NavigationBar";
 import { formatTimestamp } from "../utils/dates";
 import Slider from "react-slick";
+import { selectPicture } from "../album/actions";
 
 const style = {
   img: {
@@ -17,6 +18,7 @@ class DetailScreen extends React.Component {
   constructor(props) {
     super(props);
     this.updateDimensions = this.updateDimensions.bind(this);
+    this.onNewPictureSelected = this.onNewPictureSelected.bind(this);
   }
   updateDimensions() {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
@@ -35,13 +37,13 @@ class DetailScreen extends React.Component {
   }
 
   render() {
+    const title = this.props.selectedPicture
+      ? formatTimestamp(this.props.selectedPicture.createdAt)
+      : "";
     return (
       <div>
-        <NavigationBar
-          title="TODO: Selected picture title here bro"
-          showBackButton={true}
-        />
-        <Slider {...this.settings()}>
+        <NavigationBar title={title} showBackButton={true} />
+        <Slider {...this.settings()} afterChange={this.onNewPictureSelected}>
           {this.props.pictures.map(tile => {
             const url = tile.url;
             const title = formatTimestamp(tile.createdAt);
@@ -81,6 +83,11 @@ class DetailScreen extends React.Component {
       initialSlide: selectedIndex
     };
   }
+
+  onNewPictureSelected(index) {
+    const picture = this.props.pictures[index];
+    this.props.onPictureSelected(picture);
+  }
 }
 
 DetailScreen.propTypes = {
@@ -99,4 +106,14 @@ const mapStateToProps = state => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, null)(DetailScreen));
+const mapDispatchToProps = dispatch => {
+  return {
+    onPictureSelected: pictureSelected => {
+      dispatch(selectPicture(pictureSelected));
+    }
+  };
+};
+
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(DetailScreen)
+);
