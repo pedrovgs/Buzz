@@ -24,8 +24,14 @@ class NavigationBar extends React.Component {
 
   render() {
     const logOutDialogActions = [
-      <FlatButton label="Cancel" primary={true} onClick={this.closeDialog} />,
       <FlatButton
+        key="Cancel button"
+        label="Cancel"
+        primary={true}
+        onClick={this.closeDialog}
+      />,
+      <FlatButton
+        key="Ok button"
         label="Ok"
         primary={true}
         keyboardFocused={true}

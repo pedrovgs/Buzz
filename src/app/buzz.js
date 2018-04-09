@@ -7,7 +7,7 @@ import testUtils from "../testUtils/utils";
 import thunk from "redux-thunk";
 import firebase from "firebase";
 import { cameraReducer } from "../camera/camera";
-import {albumReducer} from "../album/album";
+import { albumReducer } from "../album/album";
 
 const buzzStore = createStore(
   buzzReducer,
