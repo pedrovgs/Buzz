@@ -3,13 +3,14 @@ import { withRouter } from "react-router";
 import PropTypes from "prop-types";
 import FloatingButton from "../baseComponents/floatingButton/FloatingButton";
 import ImageCamera from "material-ui/svg-icons/image/camera";
+import CommunicationEmail from "material-ui/svg-icons/communication/email";
 import { CAMERA, DETAIL } from "../app/routes";
 import NavigationBar from "../baseComponents/navigationBar/NavigationBar";
 import { fetchPictures, selectPicture } from "./actions";
 import { connect } from "react-redux";
 import ProgressBar from "../baseComponents/progressBar/ProgressBar";
 import GridList from "material-ui/GridList";
-import { GridTile } from "material-ui";
+import { Dialog, FlatButton, GridTile, IconButton } from "material-ui";
 import { formatTimestamp } from "../utils/dates";
 import { Col, Row } from "react-flexbox-grid";
 import EmptyAlbum from "./emptyCase/EmptyAlbum";
@@ -26,6 +27,12 @@ class AlbumScreen extends Component {
     super(props);
     this.onFloatingButtonClick = this.onFloatingButtonClick.bind(this);
     this.onPictureClick = this.onPictureClick.bind(this);
+    this.onShare = this.onShare.bind(this);
+    this.sharePicture = this.sharePicture.bind(this);
+    this.closeDialog = this.closeDialog.bind(this);
+    this.state = {
+      sharingPicture: false
+    };
   }
 
   componentDidMount() {
@@ -59,27 +66,49 @@ class AlbumScreen extends Component {
       );
     } else if (this.props.pictures.length > 0) {
       return (
-        <GridList
-          cols={this.props.numberOfColumns}
-          cellHeight={this.props.cellHeight}
-          style={styles.gridList}
-        >
-          {this.props.pictures.map(tile => {
-            const url = tile.url;
-            const title = formatTimestamp(tile.createdAt);
-            return (
-              <GridTile key={url} title={title}>
-                <img
-                  onClick={() => {
-                    this.onPictureClick(tile);
-                  }}
-                  src={url}
-                  alt={title}
-                />
-              </GridTile>
-            );
-          })}
-        </GridList>
+        <div>
+          <GridList
+            cols={this.props.numberOfColumns}
+            cellHeight={this.props.cellHeight}
+            style={styles.gridList}
+          >
+            {this.props.pictures.map(tile => {
+              const url = tile.url;
+              const title = formatTimestamp(tile.createdAt);
+              return (
+                <GridTile
+                  key={url}
+                  title={title}
+                  actionIcon={
+                    <IconButton
+                      onClick={() => {
+                        this.onShare(tile);
+                      }}
+                    >
+                      <CommunicationEmail color="white" />
+                    </IconButton>
+                  }
+                >
+                  <img
+                    onClick={() => {
+                      this.onPictureClick(tile);
+                    }}
+                    src={url}
+                    alt={title}
+                  />
+                </GridTile>
+              );
+            })}
+          </GridList>
+          <Dialog
+            title="Share picture"
+            actions={this.shareActions()}
+            modal={false}
+            open={this.state.sharingPicture}
+          >
+            {`Send picture by email to ${this.props.sendPictureEmail}`}
+          </Dialog>
+        </div>
       );
     } else {
       return (
@@ -92,6 +121,24 @@ class AlbumScreen extends Component {
     }
   }
 
+  shareActions() {
+    return [
+      <FlatButton
+        key="Cancel button"
+        label="Cancel"
+        primary={true}
+        onClick={this.closeDialog}
+      />,
+      <FlatButton
+        key="Ok button"
+        label="Ok"
+        primary={true}
+        keyboardFocused={true}
+        onClick={this.sharePicture}
+      />
+    ];
+  }
+
   onFloatingButtonClick() {
     this.props.history.push(CAMERA);
   }
@@ -99,6 +146,22 @@ class AlbumScreen extends Component {
   onPictureClick(pictureSelected) {
     this.props.onPictureClick(pictureSelected);
     this.props.history.push(DETAIL);
+  }
+
+  onShare(picture) {
+    this.setState({
+      sharingPicture: picture
+    });
+  }
+
+  sharePicture() {
+    this.closeDialog();
+  }
+
+  closeDialog() {
+    this.setState({
+      sharingPicture: undefined
+    });
   }
 }
 
@@ -116,10 +179,12 @@ AlbumScreen.defaultProps = {
 
 const mapStateToProps = state => {
   const album = state.album;
-  if (album) {
+  const session = state.session;
+  if (album && session && session.user) {
     return {
       fetchingPictures: album.fetchingPictures || false,
-      pictures: album.pictures || []
+      pictures: album.pictures || [],
+      sendPictureEmail: session.user.email
     };
   } else {
     return {
