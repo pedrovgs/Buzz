@@ -4,7 +4,8 @@ export const SAVE_SESSION = "SAVE_SESSION";
 export const LOG_OUT = "LOG_OUT";
 
 export class User {
-  constructor(email) {
+  constructor(uid, email) {
+    this.uid = uid;
     this.email = email;
   }
 }

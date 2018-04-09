@@ -130,7 +130,7 @@ class SignInForm extends React.Component {
   notifyLogInSuccess() {
     const user = firebaseAuth.currentUser();
     if (user) {
-      this.props.onUserLoggedIn(new User(user.email));
+      this.props.onUserLoggedIn(new User(user.uid, user.email));
     }
   }
 

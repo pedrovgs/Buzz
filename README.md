@@ -60,7 +60,19 @@ service firebase.storage {
     }
   }
 }
+```
 
+**As we are using Firebase to persist the user information related to the pictures taken remember you'll have to configure Firebase database access rules after creating your app as follows:**
+
+```
+{
+  "rules": {
+    "$user_id": {
+        ".read": "$user_id === auth.uid",
+        ".write": "$user_id === auth.uid",
+      }
+  }
+}
 ```
 
 ### Pictures resolution

@@ -29,9 +29,11 @@ export function isUserLoggedIn(state) {
 }
 
 export function getFolderId(state) {
-  const isSessionDefined = typeof state.session !== "undefined" && typeof state.session.user !== "undefined";
+  const isSessionDefined =
+    typeof state.session !== "undefined" &&
+    typeof state.session.user !== "undefined";
   if (isSessionDefined) {
-    return state.session.user.email;
+    return state.session.user.uid;
   } else {
     return undefined;
   }
