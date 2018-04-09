@@ -1,4 +1,5 @@
 import { INDEX } from "../app/routes";
+import { resetState } from "../app/actions";
 
 export const SAVE_SESSION = "SAVE_SESSION";
 export const LOG_OUT = "LOG_OUT";
@@ -22,6 +23,7 @@ export function logOut(history) {
     dispatch({
       type: LOG_OUT
     });
+    dispatch(resetState());
     history.replace(INDEX);
   };
 }
