@@ -119,10 +119,18 @@ AlbumScreen.defaultProps = {
 };
 
 const mapStateToProps = state => {
-  return {
-    fetchingPictures: state.album.fetchingPictures,
-    pictures: state.album.pictures
-  };
+  const album = state.album;
+  if (album) {
+    return {
+      fetchingPictures: album.fetchingPictures || false,
+      pictures: album.pictures || []
+    };
+  } else {
+    return {
+      fetchingPictures: false,
+      pictures: []
+    };
+  }
 };
 
 const mapDispatchToProps = dispatch => {

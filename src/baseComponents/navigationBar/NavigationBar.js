@@ -106,7 +106,7 @@ NavigationBar.propTypes = {
 };
 
 const mapStateToProps = state => {
-  if (state.session.user) {
+  if (state.session && state.session.user) {
     return {
       userLoggedInEmail: state.session.user.email
     };
