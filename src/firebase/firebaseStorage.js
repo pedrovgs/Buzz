@@ -48,7 +48,7 @@ export function deletePictureFromFolder(folder, id) {
     .database()
     .ref(`${extractReferenceId(folder)}/pictures/`)
     .child(id)
-    .remove()
+    .remove();
 }
 
 function addPictureToTheDatabase(folder, pictureUrl) {
