@@ -2,7 +2,7 @@
 
 A portable photo booth built on top of [Electron](https://electronjs.org/), [React](https://reactjs.org/) and [Raspberry Pi](https://www.raspberrypi.org/).
 
-**Disclaimer: I use this repository as a playground for different web experiments. Don't look at the code expecting to find a canonical code example or any good practice. Sorry for the inconveniences.**
+**Disclaimer: I use this repository as a playground for different web experiments. Don't look at the code expecting to find a canonical code example or any good practice :smiley:.
 
 ### Running this project:
 
@@ -13,6 +13,25 @@ yarn install
 yarn run dev // Starts a webpack-dev-server instance with our react application inside and the electron app showing this applicaiton. This command is ideal for development purposes.
 yarn start // Starts a webpack-dev-server instance with our react application running on a browser.
 ```
+
+### Building this project:
+
+As this project is built on top of [Electron](https://electronjs.org/) we can easily generate distribution binaries for may different platforms. We've configured this project to easily generate the distribution binaries executing the following command:
+
+```
+yarn dist
+```
+
+You can generate a build for OSX or Raspberry Pi separatelly if needed executing these commands:
+
+```
+yarn distMac
+yarn distRaspberry
+```
+
+**Remember, you'll have to execute ``yarn install first``.
+
+After these commands execution you will find the application executable files into the ``dist`` folder
 
 ### Executing tests:
 
@@ -32,6 +51,10 @@ yarn test --testRegex "String calculator spec*" //Executes tests matching with t
 This repository contains some tests written using a testing strategy named [visual regression testing](https://www.phase2technology.com/blog/new-and-exciting-area-front-end-development-regression-testing) or [screenshot testing](https://github.com/Karumi/Shot/). Under the hood, we are using [spectron](https://github.com/electron/spectron) and [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot) in order to run the app, take the screenshot and compare them with the baseline images. **However, a library used by ``jest-image-snapshot`` is not compatible with ``node-9`` so we need to force ``node-8`` to be able to run our tests. Sorry for the inconveniences, [here](https://github.com/lukeapage/pngjs/issues/95) you can find more information about the bug. And [here](https://github.com/americanexpress/jest-image-snapshot/issues/31) the original issue named: Image comparison of snapshots crashes node v9.2.0.**
 
 The rest of the tests in this repository are placed inside the ``src`` folder and are regular unit and integration tests.
+
+### Linter:
+
+This repository uses [eslint](https://eslint.org/) in order to check if the js code written matches the checkstyle configured. You can check if everything is ok by executing ``yarn lint`` and automatically fix the issues by executing ``yarn fixLint`` if needed.
 
 ### Configuring this project:
 
@@ -145,9 +168,28 @@ If you change part of the function configuration remember can deploy it again by
 
 Remember that as we need access to the internet from the Firebase Cloud Functions you'll need to set up your Google Cloud Platform account billing in order to get the functions being executed properly. You can find more information [here](https://console.cloud.google.com/billing).
 
-### Linter:
+### Raspberry Pi Application
 
-This repository uses [eslint](https://eslint.org/) in order to check if the js code written matches the checkstyle configured. You can check if everything is ok by executing ``yarn lint`` and automatically fix the issues by executing ``yarn fixLint`` if needed.
+This project was designed to run into a [Raspberry Pi](https://www.raspberrypi.org/). In order to get the project up and running you should follow the next steps:
+
+```
+* Create the Firebase account and project and also the mailgun account as described before.
+* Clone this project executing "git clone https://github.com/pedrovgs/Buzz.git".
+* Create the .env.* and .mailgun.json files as described in the previous sections.
+* Initialize the Firebase Cloud Functions. You can do this later from your laptop if needed as described before.
+* Build the project by executing "yarn install && yarn distRaspberry" from the root repository folder. The executable application will be placed into the ``dist`` folder at the end of the command execution.
+* Get a Raspberry Pi, install a [Raspbian](https://www.raspbian.org/) distribution and connect it to the same WiFi your laptop is connected.
+* Find your Raspberry Pi ip address by executing "ping raspberrypi.local".
+* Connect to your Raspberry Pi by execting "ssh pi@YOUR_RASPBERRY_PI_IP". The "pi" user passowrd is "raspberry" by default.
+* Copy the folder ``dist/Buzz-linux-armv7l`` to the Raspberry Pi. You can compress it if needed.
+* Once you've copy the application to your Raspberry Pi. Execute the file named ``Buzz`` you'll find insde the folder. At this point, you should see the application up and running :smiley:
+```
+
+***You can generate a equivalent application for OSX executing ``yarn distMac``. The OSX application generated as a result of the command execution will be placed into the ``dist`` folder as well.**
+
+If needed, you can also clone this repository from your Raspberry Pi and build the whole project from scratch executing ``yarn install && yarn distRaspberry`` from the root folder.
+
+**The whole process can take a while, so be patient my firend. The result worth it! :camera:**
 
 Developed By
 ------------
