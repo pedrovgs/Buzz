@@ -72,3 +72,8 @@ typings/
 # env variables
 .env.development
 .env.production
+
+
+# firebase functions
+.firebaserc
+functions/\.mailgun\.json

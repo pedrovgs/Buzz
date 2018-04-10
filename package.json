@@ -28,6 +28,7 @@
     "electron": "^1.8.2",
     "electron-is-dev": "^0.3.0",
     "firebase": "^4.11.0",
+    "firebase-tools": "^3.18.2",
     "lodash": "^4.17.5",
     "material-ui": "^0.20.0",
     "moment": "^2.22.0",
