@@ -35,7 +35,7 @@ class CameraScreen extends Component {
   render() {
     return fade(
       <div style={containerStyle}>
-        <NavigationBar title="📸 Cheeers!" showBackButton={true} />
+        <NavigationBar title="&#128248; Cheeers!" showBackButton={true} />
         <div>
           <WebCam ref={this.webcamReference} />
           <Countdown

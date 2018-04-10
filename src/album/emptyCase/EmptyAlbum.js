@@ -26,13 +26,13 @@ class EmptyAlbum extends React.Component {
         <p style={style.text}>
           Don´t be shy{" "}
           <span role="img" aria-label="Smiley">
-            ☺️
+            &#128515;
           </span>️
         </p>
         <p style={style.text}>
           Take your first picture tapping on the bottom right button{" "}
           <span role="img" aria-label="Camera">
-            📸
+            &#128248;
           </span>
         </p>
       </div>
