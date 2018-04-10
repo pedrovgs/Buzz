@@ -1,7 +1,14 @@
-import { FETCH_PICTURES, PICTURES_LOADED, SELECT_PICTURE } from "./actions";
+import {
+  DELETE_PICTURE,
+  DELETING_PICTURE,
+  FETCH_PICTURES,
+  PICTURES_LOADED,
+  SELECT_PICTURE
+} from "./actions";
 
 const initialState = {
   fetchingPictures: false,
+  deletingPicture: false,
   pictures: []
 };
 
@@ -20,7 +27,35 @@ export function albumReducer(state = initialState, action) {
       return Object.assign({}, state, {
         selectedPicture: action.pictureSelected
       });
+    case DELETING_PICTURE: {
+      return Object.assign({}, state, {
+        deletingPicture: true
+      });
+    }
+    case DELETE_PICTURE:
+      return Object.assign({}, state, {
+        deletingPicture: false,
+        selectedPicture: newSelectedPicture(
+          state.pictures,
+          action.pictureToDelete
+        ),
+        pictures: state.pictures.filter(
+          picture => picture.id !== action.pictureToDelete.id
+        )
+      });
     default:
       return state;
+  }
+}
+
+function newSelectedPicture(pictures, pictureToDelete) {
+  if (pictures.length === 1) {
+    return undefined;
+  } else {
+    const newSelectedPictureIndex = Math.max(
+      0,
+      pictures.indexOf(pictureToDelete) - 1
+    );
+    return pictures[newSelectedPictureIndex];
   }
 }

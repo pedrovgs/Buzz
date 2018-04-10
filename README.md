@@ -14,6 +14,25 @@ yarn run dev // Starts a webpack-dev-server instance with our react application 
 yarn start // Starts a webpack-dev-server instance with our react application running on a browser.
 ```
 
+### Executing tests:
+
+This project contains some tests written using [Jest](https://facebook.github.io/jest/). You can easily run the tests by executing one of the following commands:
+
+```
+yarn test // Executes every test inside the src folder.
+yarn test --updateSnapshot // Executes every test inside the src folder recording snapshots again.
+yarn buildForTests // Builds the app for testing purposes.
+yarn verifyScreenshotTests // Executes every test in record mode.
+yarn recordScreenshotTests // Executes every test in record mode.
+yarn test --watch // Watch files for changes and rerun tests related to changed files.
+yarn test --watchAll // Watch files for changes and rerun every test.
+yarn test --testRegex "String calculator spec*" //Executes tests matching with the regex passed as param.
+```
+
+This repository contains some tests written using a testing strategy named [visual regression testing](https://www.phase2technology.com/blog/new-and-exciting-area-front-end-development-regression-testing) or [screenshot testing](https://github.com/Karumi/Shot/). Under the hood, we are using [spectron](https://github.com/electron/spectron) and [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot) in order to run the app, take the screenshot and compare them with the baseline images. **However, a library used by ``jest-image-snapshot`` is not compatible with ``node-9`` so we need to force ``node-8`` to be able to run our tests. Sorry for the inconveniences, [here](https://github.com/lukeapage/pngjs/issues/95) you can find more information about the bug. And [here](https://github.com/americanexpress/jest-image-snapshot/issues/31) the original issue named: Image comparison of snapshots crashes node v9.2.0.**
+
+The rest of the tests in this repository are placed inside the ``src`` folder and are regular unit and integration tests.
+
 ### Configuring this project:
 
 This project uses [Firebase](https://firebase.google.com) in order to sing in the user and upload the pictures so if you want to build a custom version of this project you'll need to follow the following steps. Without a Firebase project associated you won't be able to run the project properly.
@@ -93,24 +112,38 @@ There are some values we can configure in our small application. This table cont
 |ID|DEFAULT|DESCRIPTION|
 |REACT_APP_ALBUM_NUMBER_OF_COLUMNS|3|Number of columns used in the album's grid|
 |REACT_APP_CELL_HEIGHT|auto|Album's grid cell height. The values can be numbers (300, 400, 500) or the string "auto"|
-### Executing tests:
 
-This project contains some tests written using [Jest](https://facebook.github.io/jest/). You can easily run the tests by executing one of the following commands:
+### Email service:
+
+When a new picture is taken, Buzz will automatically share it with you by email. In order to accomplish this task you'll need to create a free account at [mailgun](https://app.mailgun.com) and create a new file named ``.mailgun.js`` inside the ``functions`` folder. After creating the mailgun account paste the private api key and the automatically generated domain into the ``.mailgun.json`` file as follows:
 
 ```
-yarn test // Executes every test inside the src folder.
-yarn test --updateSnapshot // Executes every test inside the src folder recording snapshots again.
-yarn buildForTests // Builds the app for testing purposes.
-yarn verifyScreenshotTests // Executes every test in record mode.
-yarn recordScreenshotTests // Executes every test in record mode.
-yarn test --watch // Watch files for changes and rerun tests related to changed files.
-yarn test --watchAll // Watch files for changes and rerun every test.
-yarn test --testRegex "String calculator spec*" //Executes tests matching with the regex passed as param.
+{
+  "privateApiKey": "<YOUR_MAILGUN_PRIVATE_API_KEY>",
+  "domain": "<YOUR_MAILGUN_DOMAIN>"
+}
 ```
 
-This repository contains some tests written using a testing strategy named [visual regression testing](https://www.phase2technology.com/blog/new-and-exciting-area-front-end-development-regression-testing) or [screenshot testing](https://github.com/Karumi/Shot/). Under the hood, we are using [spectron](https://github.com/electron/spectron) and [jest-image-snapshot](https://github.com/americanexpress/jest-image-snapshot) in order to run the app, take the screenshot and compare them with the baseline images. **However, a library used by ``jest-image-snapshot`` is not compatible with ``node-9`` so we need to force ``node-8`` to be able to run our tests. Sorry for the inconveniences, [here](https://github.com/lukeapage/pngjs/issues/95) you can find more information about the bug. And [here](https://github.com/americanexpress/jest-image-snapshot/issues/31) the original issue named: Image comparison of snapshots crashes node v9.2.0.**
+You can configure a real domain if needed.
 
-The rest of the tests in this repository are placed inside the ``src`` folder and are regular unit and integration tests.
+### Firebase Cloud Functions:
+
+Part of the project is implemented using Firebase Cloud Functions. An example is how the pictures taken are sent to the user logged in email after saving the picture. In order to configure your Firebase project you'll need to follow these steps:
+
+Initialize ``Firebase CLI Tools``
+
+```
+yarn install
+yarn firebase login # You'll have to introduce your Google credentials :smiley:
+cd functions
+yarn install # Firebase functions has some dependencies we can manage thanks to yarn!
+cd ..
+yarn firebase deploy
+```
+
+If you change part of the function configuration remember can deploy it again by executing ``yarn firebase deploy``.
+
+Remember that as we need access to the internet from the Firebase Cloud Functions you'll need to set up your Google Cloud Platform account billing in order to get the functions being executed properly. You can find more information [here](https://console.cloud.google.com/billing).
 
 ### Linter:
 

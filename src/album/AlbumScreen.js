@@ -59,27 +59,29 @@ class AlbumScreen extends Component {
       );
     } else if (this.props.pictures.length > 0) {
       return (
-        <GridList
-          cols={this.props.numberOfColumns}
-          cellHeight={this.props.cellHeight}
-          style={styles.gridList}
-        >
-          {this.props.pictures.map(tile => {
-            const url = tile.url;
-            const title = formatTimestamp(tile.createdAt);
-            return (
-              <GridTile key={url} title={title}>
-                <img
-                  onClick={() => {
-                    this.onPictureClick(tile);
-                  }}
-                  src={url}
-                  alt={title}
-                />
-              </GridTile>
-            );
-          })}
-        </GridList>
+        <div>
+          <GridList
+            cols={this.props.numberOfColumns}
+            cellHeight={this.props.cellHeight}
+            style={styles.gridList}
+          >
+            {this.props.pictures.map(tile => {
+              const url = tile.url;
+              const title = formatTimestamp(tile.createdAt);
+              return (
+                <GridTile key={url} title={title}>
+                  <img
+                    onClick={() => {
+                      this.onPictureClick(tile);
+                    }}
+                    src={url}
+                    alt={title}
+                  />
+                </GridTile>
+              );
+            })}
+          </GridList>
+        </div>
       );
     } else {
       return (
@@ -116,10 +118,12 @@ AlbumScreen.defaultProps = {
 
 const mapStateToProps = state => {
   const album = state.album;
-  if (album) {
+  const session = state.session;
+  if (album && session && session.user) {
     return {
       fetchingPictures: album.fetchingPictures || false,
-      pictures: album.pictures || []
+      pictures: album.pictures || [],
+      sendPictureEmail: session.user.email
     };
   } else {
     return {

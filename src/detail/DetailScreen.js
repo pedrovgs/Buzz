@@ -7,7 +7,9 @@ import { connect } from "react-redux";
 import NavigationBar from "../baseComponents/navigationBar/NavigationBar";
 import { formatTimestamp } from "../utils/dates";
 import Slider from "react-slick";
-import { selectPicture } from "../album/actions";
+import { deletePicture, selectPicture } from "../album/actions";
+import ActionDelete from "material-ui/svg-icons/action/delete";
+import FloatingButton from "../baseComponents/floatingButton/FloatingButton";
 
 const style = {
   img: {
@@ -19,6 +21,7 @@ class DetailScreen extends React.Component {
     super(props);
     this.updateDimensions = this.updateDimensions.bind(this);
     this.onNewPictureSelected = this.onNewPictureSelected.bind(this);
+    this.onFloatingButtonClick = this.onFloatingButtonClick.bind(this);
   }
   updateDimensions() {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
@@ -34,6 +37,12 @@ class DetailScreen extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.updateDimensions);
+  }
+
+  componentDidUpdate() {
+    if (this.props.pictures.length === 0) {
+      this.props.history.goBack();
+    }
   }
 
   render() {
@@ -60,6 +69,12 @@ class DetailScreen extends React.Component {
             );
           })}
         </Slider>
+        <FloatingButton
+          disabled={this.props.deletingPicture}
+          onClick={this.onFloatingButtonClick}
+        >
+          <ActionDelete />
+        </FloatingButton>
       </div>
     );
   }
@@ -67,9 +82,7 @@ class DetailScreen extends React.Component {
   settings() {
     const selectedPicture = this.props.selectedPicture;
     const selectedIndex = selectedPicture
-      ? this.props.pictures.findIndex(pic => {
-          return pic.id === selectedPicture.id;
-        })
+      ? this.props.pictures.indexOf(selectedPicture)
       : 0;
     return {
       dots: true,
@@ -88,21 +101,32 @@ class DetailScreen extends React.Component {
     const picture = this.props.pictures[index];
     this.props.onPictureSelected(picture);
   }
+
+  onFloatingButtonClick() {
+    const pictureSelected = this.props.selectedPicture;
+    if (pictureSelected) {
+      this.props.onPictureDeleted(pictureSelected);
+    }
+  }
 }
 
 DetailScreen.propTypes = {
   pictures: PropTypes.array,
-  selectedPicture: PropTypes.object
+  selectedPicture: PropTypes.object,
+  deletingPicture: PropTypes.bool
 };
 
 DetailScreen.defaultProps = {
-  pictures: []
+  pictures: [],
+  deletingPicture: false
 };
 
 const mapStateToProps = state => {
+  const albumState = state.album;
   return {
-    pictures: state.album.pictures,
-    selectedPicture: state.album.selectedPicture
+    pictures: albumState.pictures,
+    selectedPicture: albumState.selectedPicture,
+    deletingPicture: albumState.deletingPicture
   };
 };
 
@@ -110,6 +134,9 @@ const mapDispatchToProps = dispatch => {
   return {
     onPictureSelected: pictureSelected => {
       dispatch(selectPicture(pictureSelected));
+    },
+    onPictureDeleted: pictureToDelete => {
+      dispatch(deletePicture(pictureToDelete));
     }
   };
 };

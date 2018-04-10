@@ -43,6 +43,14 @@ export function getPicturesByFolder(folder) {
     });
 }
 
+export function deletePictureFromFolder(folder, id) {
+  return firebase
+    .database()
+    .ref(`${extractReferenceId(folder)}/pictures/`)
+    .child(id)
+    .remove();
+}
+
 function addPictureToTheDatabase(folder, pictureUrl) {
   const childId = extractReferenceId(folder);
   const reference = firebase.database().ref(childId);
