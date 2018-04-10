@@ -7,6 +7,7 @@ export const FETCH_PICTURES = "FETCH_PICTURES";
 export const PICTURES_LOADED = "PICTURES_LOADED";
 export const SELECT_PICTURE = "SELECT_PICTURE";
 export const DELETE_PICTURE = "DELETE_PICTURE";
+export const DELETING_PICTURE = "DELETING_PICTURE";
 
 export function fetchPictures() {
   return function(dispatch, getState) {
@@ -38,6 +39,9 @@ export function selectPicture(pictureSelected) {
 export function deletePicture(pictureToDelete) {
   return function(dispatch, getState) {
     const folderId = getFolderId(getState());
+    dispatch({
+      type: DELETING_PICTURE
+    });
     deletePictureFromFolder(folderId, pictureToDelete.id).then(() => {
       dispatch({
         type: DELETE_PICTURE,

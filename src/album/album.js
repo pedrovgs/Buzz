@@ -1,5 +1,6 @@
 import {
   DELETE_PICTURE,
+  DELETING_PICTURE,
   FETCH_PICTURES,
   PICTURES_LOADED,
   SELECT_PICTURE
@@ -7,6 +8,7 @@ import {
 
 const initialState = {
   fetchingPictures: false,
+  deletingPicture: false,
   pictures: []
 };
 
@@ -25,8 +27,14 @@ export function albumReducer(state = initialState, action) {
       return Object.assign({}, state, {
         selectedPicture: action.pictureSelected
       });
+    case DELETING_PICTURE: {
+      return Object.assign({}, state, {
+        deletingPicture: true
+      });
+    }
     case DELETE_PICTURE:
       return Object.assign({}, state, {
+        deletingPicture: false,
         selectedPicture: newSelectedPicture(
           state.pictures,
           action.pictureToDelete

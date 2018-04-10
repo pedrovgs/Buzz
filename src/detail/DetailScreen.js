@@ -69,7 +69,10 @@ class DetailScreen extends React.Component {
             );
           })}
         </Slider>
-        <FloatingButton onClick={this.onFloatingButtonClick}>
+        <FloatingButton
+          disabled={this.props.deletingPicture}
+          onClick={this.onFloatingButtonClick}
+        >
           <ActionDelete />
         </FloatingButton>
       </div>
@@ -109,17 +112,21 @@ class DetailScreen extends React.Component {
 
 DetailScreen.propTypes = {
   pictures: PropTypes.array,
-  selectedPicture: PropTypes.object
+  selectedPicture: PropTypes.object,
+  deletingPicture: PropTypes.bool
 };
 
 DetailScreen.defaultProps = {
-  pictures: []
+  pictures: [],
+  deletingPicture: false
 };
 
 const mapStateToProps = state => {
+  const albumState = state.album;
   return {
-    pictures: state.album.pictures,
-    selectedPicture: state.album.selectedPicture
+    pictures: albumState.pictures,
+    selectedPicture: albumState.selectedPicture,
+    deletingPicture: albumState.deletingPicture
   };
 };
 
