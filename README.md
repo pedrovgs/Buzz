@@ -14,9 +14,11 @@ yarn run dev // Starts a webpack-dev-server instance with our react application 
 yarn start // Starts a webpack-dev-server instance with our react application running on a browser.
 ```
 
+As we are using React as a core component for this project and our usage of Electron is really simple we'd recommend you to use ``yarn start`` while developing the app so you can easily apply any change to the code during the development stage. When developing any feature directly related to Electron you'll have to use ``yarn run dev``.
+
 ### Building this project:
 
-As this project is built on top of [Electron](https://electronjs.org/) we can easily generate distribution binaries for may different platforms. We've configured this project to easily generate the distribution binaries executing the following command:
+As this project is built on top of [Electron 1.7.12](https://electronjs.org/) we can easily generate distribution binaries for may different platforms. The only version I've got working on Raspbian for now is 1.7.12, that's why we are still using this Electron version. We've configured this project to easily generate the distribution binaries executing the following command:
 
 ```
 yarn dist
