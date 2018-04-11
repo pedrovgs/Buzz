@@ -113,8 +113,19 @@ AlbumScreen.propTypes = {
 AlbumScreen.defaultProps = {
   fetchingPictures: true,
   numberOfColumns: Number(process.env.REACT_APP_ALBUM_NUMBER_OF_COLUMNS),
-  cellHeight: process.env.REACT_APP_CELL_HEIGHT
+  cellHeight: defaultCellHeight()
 };
+
+function defaultCellHeight() {
+  const configuredCellHeight = process.env.REACT_APP_CELL_HEIGHT;
+  if (Number.isInteger(configuredCellHeight)) {
+    return Number(configuredCellHeight);
+  } else if (configuredCellHeight === "auto") {
+    return configuredCellHeight;
+  } else {
+    return "auto";
+  }
+}
 
 const mapStateToProps = state => {
   const album = state.album;

@@ -252,6 +252,10 @@ A detailed tutorial can be found [here](https://jackbarber.co.uk/blog/2017-02-16
 
 If your screen is small, remember you can configure the album screen cell height from your .env file using the variable ``REACT_APP_CELL_HEIGHT``. If your screen height is 480px, you can set up a ``REACT_APP_CELL_HEIGHT=150`` configuration.
 
+#### Disable screen saver
+
+As the detail screen can be used like a infinite carousel showing the pictures you've taken usin Buzz we'd recommend you to disable the Raspberry Pi screen saver adding the line ``xserver-command=X -s 0 dpms`` to your ``/etc/lightdm/lightdm.conf`` file. You might need to reboot your Raspberry Pi.
+
 Developed By
 ------------
 
