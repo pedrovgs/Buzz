@@ -124,8 +124,8 @@ service firebase.storage {
 As this project uses any camera we can connect to the Raspberri Pi device the screen resolution of the device can vary. By default, the pictures resolutions are 640x480 but the values can be easily configured by adding the following variables to the ``.env.development`` and ``.env.production`` files:
 
 ```
-REACT_APP_WEB_CAM_RESOLUTION_HEIGHT = <YOUR_WEB_CAM_RESOLUTION>
-REACT_APP_WEB_CAM_RESOLUTION_WIDTH = <YOUR_WEB_CAM_RESOLUTION>
+REACT_APP_WEB_CAM_RESOLUTION_HEIGHT=<YOUR_WEB_CAM_RESOLUTION>
+REACT_APP_WEB_CAM_RESOLUTION_WIDTH=<YOUR_WEB_CAM_RESOLUTION>
 ```
 
 You can check your device resolution using this [web](https://webcamtests.com/).
@@ -196,6 +196,61 @@ If needed, you can also clone this repository from your Raspberry Pi and build t
 #### Installing emojis
 
 The application shows some emojis as part of the user interface, but the emoji support Raspbian provides is not so good, so we've prepared an script you can execute in order to install [Twitter emojis](https://github.com/eosrei/twemoji-color-font#install-on-linux) in your Raspberry Pi. You can easily install the emojis pack by executing ``scripts/installEmojis.sh``
+
+#### Camera configuration
+
+If you've got just a regular webcam, connect it and check if it's working. If it's not working, review if you need to install some drivers distributed by the manufacturer.
+
+But, if you've got a camera like [this](https://www.amazon.com/Raspberry-Camera-Module-OV5647-Supports/dp/B01ICLLOZ8). Follow these steps in order to get it working:
+
+```
+* Connect your Raspberry Pi camera and enable the camera configuration from the Raspberry Pi configuration screen. You can find a tutorial [here](https://thepihut.com/blogs/raspberry-pi-tutorials/16021420-how-to-install-use-the-raspberry-pi-camera).
+* Test your camera configuration executing this command ``raspistill -o image.jpg``. If the camera is configured properly you should see the camera in your screen and after the command execution a picture will be saved in your Raspberry :camera:.
+* Install the drivers needed executing this command: ``sudo modprobe bcm2835-v4l2``. If everything is ok, you should see a new camera interface when executing this ```ls -al /dev/vid*```.
+* Ensure the camera focus is properly configured. You can use this command: ``raspistill -o image.jpg`` in order to check if the focus is configured properly. If you'd like to keep the image on the screen while adjusting the camera focus you can execute this: ```raspistill -o image.jpg -t 500000``` and you'll se the camera image for 50 seconds on the screen.
+* Remember to configure the screen resolution in your ``.env`` files.
+```
+
+* If for some reason the camera seems to be broken when watching the preview from Buzz this is because of a bug related to Chromium I'm waiting to be fixed. A workaround is to install another driver executing this command: ``sudo modprobe bcm2835-v4l2 gst_v4l2src_is_broken=1`` and reboot your Raspberry Pi (this workaround did not work in my case) so I decided to get a real webcam instead of a Raspberry Pi camera.
+
+#### Screen configuration
+
+Setting a LCD Display with support for capacitive touch is quite simple. I've got [this one](https://www.amazon.es/Kuman-pantalla-capacitiva-pulgadas-Raspberry/dp/B01F3801A2) but feel free to get the one you prefer. You can even use a regular screen and connect a mouse to your Raspberry Pi if needed :smiley:. To configure your shiny LCD you should follow these steps:
+
+Edit the ``/boot/config.txt`` file adding the following content at the end:
+
+```
+# Camera settings for a 800x480 screen
+
+max_usb_current=1
+hdmi_group=2
+hdmi_mode=87
+hdmi_mode=87
+hdmi_cvt 800 480 60 6 0 0 0
+```
+
+Then follow these steps:
+
+```
+* Connect the LCD usb to the Raspberry and the LCD.
+* Connect the HDMI to the Raspberry Pi and the LCD.
+* Turn on the Raspberry PI.
+```
+
+You can find a video explaining the process [here](https://www.youtube.com/watch?v=LvtH0TeOw2k).
+
+In order to make the LCD and the user interface look better I'm sure you'd like to hide the cursor. To do this you can follow these steps:
+
+```
+sudo apt-get install unclutter
+vi ~/.config/lxsession/LXDE-pi/autostart
+@unclutter -idle 0 # Add this at the end of the file
+sudo reboot
+```
+
+A detailed tutorial can be found [here](https://jackbarber.co.uk/blog/2017-02-16-hide-raspberry-pi-mouse-cursor-in-raspbian-kiosk).
+
+If your screen is small, remember you can configure the album screen cell height from your .env file using the variable ``REACT_APP_CELL_HEIGHT``. If your screen height is 480px, you can set up a ``REACT_APP_CELL_HEIGHT=150`` configuration.
 
 Developed By
 ------------
