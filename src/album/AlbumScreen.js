@@ -118,10 +118,9 @@ AlbumScreen.defaultProps = {
 
 function defaultCellHeight() {
   const configuredCellHeight = process.env.REACT_APP_CELL_HEIGHT;
+  console.log("Let's get the cell height -> " + configuredCellHeight);
   if (Number.isInteger(configuredCellHeight)) {
     return Number(configuredCellHeight);
-  } else if (configuredCellHeight === "auto") {
-    return configuredCellHeight;
   } else {
     return "auto";
   }
