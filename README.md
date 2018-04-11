@@ -136,7 +136,6 @@ There are some values we can configure in our small application. This table cont
 
 |ID|DEFAULT|DESCRIPTION|
 |REACT_APP_ALBUM_NUMBER_OF_COLUMNS|3|Number of columns used in the album's grid|
-|REACT_APP_CELL_HEIGHT|auto|Album's grid cell height. The values can be numbers (300, 400, 500) or the string "auto"|
 
 ### Email service:
 
@@ -250,7 +249,7 @@ sudo reboot
 
 A detailed tutorial can be found [here](https://jackbarber.co.uk/blog/2017-02-16-hide-raspberry-pi-mouse-cursor-in-raspbian-kiosk).
 
-If your screen is small, remember you can configure the album screen cell height from your .env file using the variable ``REACT_APP_CELL_HEIGHT``. If your screen height is 480px, you can set up a ``REACT_APP_CELL_HEIGHT=150`` configuration.
+If your screen is small, remember you can configure the album screen number of columns.
 
 #### Disable screen saver
 

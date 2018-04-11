@@ -62,7 +62,7 @@ class AlbumScreen extends Component {
         <div>
           <GridList
             cols={this.props.numberOfColumns}
-            cellHeight={this.props.cellHeight}
+            cellHeight={200}
             style={styles.gridList}
           >
             {this.props.pictures.map(tile => {
@@ -106,24 +106,13 @@ class AlbumScreen extends Component {
 
 AlbumScreen.propTypes = {
   history: PropTypes.object.isRequired,
-  numberOfColumns: PropTypes.number,
-  cellHeight: PropTypes.string
+  numberOfColumns: PropTypes.number
 };
 
 AlbumScreen.defaultProps = {
   fetchingPictures: true,
-  numberOfColumns: Number(process.env.REACT_APP_ALBUM_NUMBER_OF_COLUMNS),
-  cellHeight: defaultCellHeight()
+  numberOfColumns: Number(process.env.REACT_APP_ALBUM_NUMBER_OF_COLUMNS)
 };
-
-function defaultCellHeight() {
-  const configuredCellHeight = process.env.REACT_APP_CELL_HEIGHT;
-  if (Number.isInteger(configuredCellHeight)) {
-    return String(configuredCellHeight);
-  } else {
-    return "auto";
-  }
-}
 
 const mapStateToProps = state => {
   const album = state.album;
