@@ -193,6 +193,10 @@ If needed, you can also clone this repository from your Raspberry Pi and build t
 
 **The whole process can take a while, so be patient my firend. The result worth it! :camera:**
 
+#### Installing emojis
+
+The application shows some emojis as part of the user interface, but the emoji support Raspbian provides is not so good, so we've prepared an script you can execute in order to install [Twitter emojis](https://github.com/eosrei/twemoji-color-font#install-on-linux) in your Raspberry Pi. You can easily install the emojis pack by executing ``scripts/installEmojis.sh``
+
 Developed By
 ------------
 

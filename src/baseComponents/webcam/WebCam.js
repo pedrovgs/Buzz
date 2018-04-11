@@ -29,10 +29,13 @@ class WebCam extends React.Component {
   }
 
   componentWillUnmount() {
-    this.localStream.getTracks()[0].stop();
-    const video = this.getVideoTag();
-    video.pause();
-    video.srcObject = null;
+    const localStream = this.localStream;
+    if (localStream) {
+      localStream.getTracks()[0].stop();
+      const video = this.getVideoTag();
+      video.pause();
+      video.srcObject = null;
+    }
   }
 
   render() {

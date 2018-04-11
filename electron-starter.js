@@ -49,7 +49,8 @@ function startMainWindow() {
     minWidth: 400,
     minHeight: 300,
     icon: path.join(__dirname + "/../assets/icons/png/logo.png"),
-    show: !isRunningTests()
+    show: !isRunningTests(),
+    frame: false
   });
   // This hack keeps the main window hidden until is ready to be shown
   mainWindow.once("ready-to-show", () => {
@@ -67,6 +68,10 @@ function startMainWindow() {
   // eslint-disable-next-line no-console
   console.log("Starting electron and loading url: " + startUrl);
   mainWindow.loadURL(startUrl);
+  if (!isRunningTests()) {
+    mainWindow.setFullScreen(true);
+    mainWindow.setMenuBarVisibility(false);
+  }
 }
 
 function releaseWindowOnClose() {
