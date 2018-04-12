@@ -210,7 +210,9 @@ But, if you've got a camera like [this](https://www.amazon.com/Raspberry-Camera-
 * Remember to configure the screen resolution in your ``.env`` files.
 ```
 
-* If for some reason the camera seems to be broken when watching the preview from Buzz this is because of a bug related to Chromium I'm waiting to be fixed. A workaround is to install another driver executing this command: ``sudo modprobe bcm2835-v4l2 gst_v4l2src_is_broken=1`` and reboot your Raspberry Pi (this workaround did not work in my case) so I decided to get a real webcam instead of a Raspberry Pi camera.
+* If for some reason the camera seems to be broken when watching the preview from Buzz this is because of a bug related to Chromium I'm waiting to be fixed. A workaround is to install another driver executing this command: ``sudo modprobe bcm2835-v4l2 gst_v4l2src_is_broken=1`` and reboot your Raspberry Pi (this workaround did not work in my case) so I decided to get a real webcam instead of a Raspberry Pi camera.**
+
+I've got a regular webcam and it works like a charm :camera:.
 
 #### Screen configuration
 
@@ -253,7 +255,14 @@ If your screen is small, remember you can configure the album screen number of c
 
 #### Disable screen saver
 
-As the detail screen can be used like a infinite carousel showing the pictures you've taken usin Buzz we'd recommend you to disable the Raspberry Pi screen saver adding the line ``xserver-command=X -s 0 dpms`` to your ``/etc/lightdm/lightdm.conf`` file. You might need to reboot your Raspberry Pi.
+As the detail screen can be used like a infinite carousel showing the pictures you've taken usin Buzz we'd recommend you to disable the Raspberry Pi screen saver adding the following content to your ``/etc/kbd/config`` file:
+
+```
+BLANK_TIME=0
+BLANK_DPMS=off
+POWERDOWN_TIME=0
+```
+
 
 Developed By
 ------------
