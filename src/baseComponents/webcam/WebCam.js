@@ -35,7 +35,8 @@ class WebCam extends React.Component {
       }
     });
 
-    navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+    navigator.mediaDevices.getUserMedia(constraints).then(stream => {
+      this.localStream = stream;
       video.srcObject = stream;
     });
   }
