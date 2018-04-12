@@ -51,6 +51,8 @@ class WebCam extends React.Component {
     const canvas = document.createElement("canvas");
     canvas.height = video.videoHeight;
     canvas.width = video.videoWidth;
+    console.log(video.videoWidth);
+    console.log(video.videoHeight);
     const ctx = canvas.getContext("2d");
     ctx.scale(-1, 1);
     ctx.drawImage(video, 0, 0, canvas.width * -1, canvas.height);
