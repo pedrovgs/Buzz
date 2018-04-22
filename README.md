@@ -2,11 +2,11 @@
 
 A portable photo booth built on top of [Electron](https://electronjs.org/), [React](https://reactjs.org/) and [Raspberry Pi](https://www.raspberrypi.org/).
 
-![screencast](./art/screencast.gif)
+<img width="640" src="./art/screencast.gif"/>
 
-![photo1](./art/photo1.jpg)
+<img width="640" src="./art/photo1.jpg"/>
 
-![photo2](./art/photo2.jpg)
+<img width="640" src="./art/photo2.jpg"/>
 
 **Disclaimer: I use this repository as a playground for different web experiments. Don't look at the code expecting to find a canonical code example or any good practice :smiley:.**
 
@@ -206,7 +206,7 @@ If for some reason the camera seems to be broken when watching the preview from 
 
 **I've got a regular webcam and it works like a charm :camera:.**
 
-![cameraAndRaspberry](./art/raspberry.jpg)
+<img width="640" src="./art/raspberry.jpg"/>
 
 #### Screen configuration
 
@@ -232,7 +232,7 @@ Then follow these steps:
 * Turn on the Raspberry PI.
 ```
 
-![screen](./art/screen.jpg)
+<img width="640" src="./art/screen.jpg"/>
 
 You can find a video explaining the process [here](https://www.youtube.com/watch?v=LvtH0TeOw2k).
 
@@ -272,11 +272,11 @@ If you don't want to start your application manually everytime you reboot your R
 
 If you'd like to use Buzz as a portable photo booth you can also use as a digital frame for your pictures you only need to print [this screen case](https://www.thingiverse.com/thing:2815763) and [this Raspberry Pi case](https://www.thingiverse.com/thing:922740) using a 3D printer or build your own cases using wood or any other material. For now I'm using these cases:
 
-![photo1](./art/photo1.jpg)
+<img width="640" src="./art/photo1.jpg"/>
 
-![photo2](./art/photo2.jpg)
+<img width="640" src="./art/photo2.jpg"/>
 
-![screenWithCase](![screen](./art/screen.jpg))
+<img width="640" src="![screen](./art/screen.jpg)"/>
 
 Developed By
 ------------
