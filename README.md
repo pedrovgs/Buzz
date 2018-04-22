@@ -4,6 +4,10 @@ A portable photo booth built on top of [Electron](https://electronjs.org/), [Rea
 
 ![screencast](./art/screencast.gif)
 
+![photo1](./art/photo1.jpg)
+
+![photo2](./art/photo2.jpg)
+
 **Disclaimer: I use this repository as a playground for different web experiments. Don't look at the code expecting to find a canonical code example or any good practice :smiley:.
 
 ### Running this project:
@@ -33,7 +37,7 @@ yarn distMac
 yarn distRaspberry
 ```
 
-**Remember, you'll have to execute ``yarn install first``.
+**Remember, you'll have to execute ``yarn install`` first.**
 
 After these commands execution you will find the application executable files into the ``dist`` folder
 
@@ -135,11 +139,11 @@ When a new picture is taken, Buzz will automatically share it with you by email.
 ```
 {
   "privateApiKey": "<YOUR_MAILGUN_PRIVATE_API_KEY>",
-  "domain": "<YOUR_MAILGUN_DOMAIN>"
+  "domain": "<YOUR_DOMAIN>"
 }
 ```
 
-You can configure a real domain if needed.
+You'll need configure a real domain and validate it in mailgun in order to send emails when pictures are taken.
 
 ### Firebase Cloud Functions:
 
@@ -164,7 +168,6 @@ Remember that as we need access to the internet from the Firebase Cloud Function
 
 This project was designed to run into a [Raspberry Pi](https://www.raspberrypi.org/). In order to get the project up and running you should follow the next steps:
 
-```
 * Create the Firebase account and project and also the mailgun account as described before.
 * Clone this project executing "git clone https://github.com/pedrovgs/Buzz.git".
 * Create the .env.* and .mailgun.json files as described in the previous sections.
@@ -175,7 +178,7 @@ This project was designed to run into a [Raspberry Pi](https://www.raspberrypi.o
 * Connect to your Raspberry Pi by execting "ssh pi@YOUR_RASPBERRY_PI_IP". The "pi" user passowrd is "raspberry" by default.
 * Copy the folder ``dist/Buzz-linux-armv7l`` to the Raspberry Pi. You can compress it if needed.
 * Once you've copy the application to your Raspberry Pi. Execute the file named ``Buzz`` you'll find insde the folder. At this point, you should see the application up and running :smiley:
-```
+
 
 ***You can generate a equivalent application for OSX executing ``yarn distMac``. The OSX application generated as a result of the command execution will be placed into the ``dist`` folder as well.**
 
@@ -193,17 +196,17 @@ If you've got just a regular webcam, connect it and check if it's working. If it
 
 But, if you've got a camera like [this](https://www.amazon.com/Raspberry-Camera-Module-OV5647-Supports/dp/B01ICLLOZ8). Follow these steps in order to get it working:
 
-```
 * Connect your Raspberry Pi camera and enable the camera configuration from the Raspberry Pi configuration screen. You can find a tutorial [here](https://thepihut.com/blogs/raspberry-pi-tutorials/16021420-how-to-install-use-the-raspberry-pi-camera).
 * Test your camera configuration executing this command ``raspistill -o image.jpg``. If the camera is configured properly you should see the camera in your screen and after the command execution a picture will be saved in your Raspberry :camera:.
 * Install the drivers needed executing this command: ``sudo modprobe bcm2835-v4l2``. If everything is ok, you should see a new camera interface when executing this ```ls -al /dev/vid*```.
 * Ensure the camera focus is properly configured. You can use this command: ``raspistill -o image.jpg`` in order to check if the focus is configured properly. If you'd like to keep the image on the screen while adjusting the camera focus you can execute this: ```raspistill -o image.jpg -t 500000``` and you'll se the camera image for 50 seconds on the screen.
 * Remember to configure the screen resolution in your ``.env`` files.
-```
 
-* If for some reason the camera seems to be broken when watching the preview from Buzz this is because of a bug related to Chromium I'm waiting to be fixed. A workaround is to install another driver executing this command: ``sudo modprobe bcm2835-v4l2 gst_v4l2src_is_broken=1`` and reboot your Raspberry Pi (this workaround did not work in my case) so I decided to get a real webcam instead of a Raspberry Pi camera.**
+If for some reason the camera seems to be broken when watching the preview from Buzz this is because of a bug related to Chromium I'm waiting to be fixed. A workaround is to install another driver executing this command: ``sudo modprobe bcm2835-v4l2 gst_v4l2src_is_broken=1`` and reboot your Raspberry Pi (this workaround did not work in my case) so I decided to get a real webcam instead of a Raspberry Pi camera.
 
-I've got a regular webcam and it works like a charm :camera:.
+**I've got a regular webcam and it works like a charm :camera:.**
+
+![cameraAndRaspberry](.art/raspberry.jpg)
 
 #### Screen configuration
 
@@ -228,6 +231,8 @@ Then follow these steps:
 * Connect the HDMI to the Raspberry Pi and the LCD.
 * Turn on the Raspberry PI.
 ```
+
+![screen](.art/screen.jpg)
 
 You can find a video explaining the process [here](https://www.youtube.com/watch?v=LvtH0TeOw2k).
 
@@ -263,6 +268,15 @@ If you don't want to start your application manually everytime you reboot your R
 @/home/pi/Development/Buzz/dist/Buzz-linux-armv7l/Buzz
 ```
 
+### Buzz case
+
+If you'd like to use Buzz as a portable photo booth you can also use as a digital frame for your pictures you only need to print [this screen case](https://www.thingiverse.com/thing:2815763) and [this Raspberry Pi case](https://www.thingiverse.com/thing:922740) using a 3D printer or build your own cases using wood or any other material. For now I'm using these cases:
+
+![photo1](./art/photo1.jpg)
+
+![photo2](./art/photo2.jpg)
+
+![screenWithCase](![screen](.art/screen.jpg))
 
 Developed By
 ------------
