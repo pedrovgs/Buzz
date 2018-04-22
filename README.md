@@ -244,12 +244,20 @@ If your screen is small, remember you can configure the album screen number of c
 
 #### Disable screen saver
 
-As the detail screen can be used like a infinite carousel showing the pictures you've taken usin Buzz we'd recommend you to disable the Raspberry Pi screen saver adding the following content to your ``/etc/kbd/config`` file:
+As the detail screen can be used like a infinite carousel showing the pictures you've taken using Buzz we'd recommend you to disable the Raspberry Pi screen saver adding the following content to your ``/etc/kbd/config`` file:
 
 ```
 BLANK_TIME=0
 BLANK_DPMS=off
 POWERDOWN_TIME=0
+```
+
+You should also add the following lines to the file ``/etc/xdg/lxsession/LXDE/autostart``:
+
+```
+@xset s noblank
+@xset s off
+@xset -dpms
 ```
 
 
