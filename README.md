@@ -2,6 +2,8 @@
 
 A portable photo booth built on top of [Electron](https://electronjs.org/), [React](https://reactjs.org/) and [Raspberry Pi](https://www.raspberrypi.org/).
 
+![screencast](./art/screencast.gif)
+
 **Disclaimer: I use this repository as a playground for different web experiments. Don't look at the code expecting to find a canonical code example or any good practice :smiley:.
 
 ### Running this project:
@@ -248,6 +250,17 @@ As the detail screen can be used like a infinite carousel showing the pictures y
 
 ```
 xserver-command=X -s 0 -dpms
+```
+
+#### Starting Buzz automatically
+
+If you don't want to start your application manually everytime you reboot your Raspberry Pi you should follow these steps:
+
+* Get the path where you Buzz distribution binary is located. Mine is: ``/home/pi/Development/Buzz/dist/Buzz-linux-armv7l/Buzz``
+* Update the content of the file ``/home/pi/.config/lxsession/LXDE-pi/autostart`` using the path you've got at the previous step adding the following line at the end:
+
+```
+@/home/pi/Development/Buzz/dist/Buzz-linux-armv7l/Buzz
 ```
 
 
