@@ -276,7 +276,7 @@ If you'd like to use Buzz as a portable photo booth you can also use as a digita
 
 <img width="640" src="./art/photo2.jpg"/>
 
-<img width="640" src="./art/screen.jpg"/>
+<img width="640" src="./art/screenWithCase.jpg"/>
 
 Developed By
 ------------
