@@ -11,28 +11,44 @@ const videoStyle = {
 
 class WebCam extends React.Component {
   componentDidMount() {
+    const video = this.getVideoTag();
     navigator.getUserMedia =
       navigator.getUserMedia ||
       navigator.webkitGetUserMedia ||
       navigator.mozGetUserMedia ||
       navigator.msGetUserMedia ||
       navigator.oGetUserMedia;
-    navigator.getUserMedia(
-      { video: true },
-      stream => {
-        const video = this.getVideoTag();
-        video.srcObject = stream;
-        this.localStream = stream;
-      },
-      () => {}
-    );
+    var constraints = {
+      audio: false,
+      video: {
+        width: { ideal: 1280 },
+        height: { ideal: 1024 },
+        facingMode: "environment"
+      }
+    };
+
+    navigator.mediaDevices.enumerateDevices().then(function(devices) {
+      for (let i = 0; i !== devices.length; ++i) {
+        if (devices[i].kind === "videoinput") {
+          constraints.deviceId = { exact: devices[i].deviceId };
+        }
+      }
+    });
+
+    navigator.mediaDevices.getUserMedia(constraints).then(stream => {
+      this.localStream = stream;
+      video.srcObject = stream;
+    });
   }
 
   componentWillUnmount() {
-    this.localStream.getTracks()[0].stop();
-    const video = this.getVideoTag();
-    video.pause();
-    video.srcObject = null;
+    const localStream = this.localStream;
+    if (localStream) {
+      localStream.getTracks()[0].stop();
+      const video = this.getVideoTag();
+      video.pause();
+      video.srcObject = null;
+    }
   }
 
   render() {
@@ -46,8 +62,8 @@ class WebCam extends React.Component {
   takePicture() {
     const video = this.getVideoTag();
     const canvas = document.createElement("canvas");
-    canvas.height = process.env.REACT_APP_WEB_CAM_RESOLUTION_HEIGHT;
-    canvas.width = process.env.REACT_APP_WEB_CAM_RESOLUTION_WIDTH;
+    canvas.height = video.videoHeight;
+    canvas.width = video.videoWidth;
     const ctx = canvas.getContext("2d");
     ctx.scale(-1, 1);
     ctx.drawImage(video, 0, 0, canvas.width * -1, canvas.height);

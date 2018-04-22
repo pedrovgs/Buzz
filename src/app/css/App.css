@@ -4,11 +4,16 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
+
 html,
 body {
     text-rendering: optimizeLegibility;
     height: 100%;
     font-family: 'Roboto', sans-serif;
+}
+
+html::-webkit-scrollbar {
+    width: 0 !important
 }
 
 #root {

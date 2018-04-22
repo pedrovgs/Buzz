@@ -39,7 +39,7 @@ class AlbumScreen extends Component {
         : {};
     return (
       <div style={containerStyle}>
-        <NavigationBar title="🖼 Your album" />
+        <NavigationBar title="&#128444; Your album" />
         {this.renderMainComponent()}
         <FloatingButton onClick={this.onFloatingButtonClick}>
           <ImageCamera />
@@ -62,7 +62,7 @@ class AlbumScreen extends Component {
         <div>
           <GridList
             cols={this.props.numberOfColumns}
-            cellHeight={this.props.cellHeight}
+            cellHeight={200}
             style={styles.gridList}
           >
             {this.props.pictures.map(tile => {
@@ -106,14 +106,12 @@ class AlbumScreen extends Component {
 
 AlbumScreen.propTypes = {
   history: PropTypes.object.isRequired,
-  numberOfColumns: PropTypes.number,
-  cellHeight: PropTypes.string
+  numberOfColumns: PropTypes.number
 };
 
 AlbumScreen.defaultProps = {
   fetchingPictures: true,
-  numberOfColumns: Number(process.env.REACT_APP_ALBUM_NUMBER_OF_COLUMNS),
-  cellHeight: process.env.REACT_APP_CELL_HEIGHT
+  numberOfColumns: Number(process.env.REACT_APP_ALBUM_NUMBER_OF_COLUMNS)
 };
 
 const mapStateToProps = state => {

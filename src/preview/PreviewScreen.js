@@ -48,7 +48,7 @@ class PreviewScreen extends React.Component {
     return fade(
       <div style={containerStyle}>
         <div>
-          <NavigationBar title="😃 Uploading your picture" />
+          <NavigationBar title="&#128515; Uploading your picture" />
         </div>
         <Row center="xs" middle="xs" className="fullWidth">
           <Col xs>
