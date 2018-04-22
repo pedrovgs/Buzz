@@ -8,7 +8,7 @@ A portable photo booth built on top of [Electron](https://electronjs.org/), [Rea
 
 ![photo2](./art/photo2.jpg)
 
-**Disclaimer: I use this repository as a playground for different web experiments. Don't look at the code expecting to find a canonical code example or any good practice :smiley:.
+**Disclaimer: I use this repository as a playground for different web experiments. Don't look at the code expecting to find a canonical code example or any good practice :smiley:.**
 
 ### Running this project:
 
@@ -180,7 +180,7 @@ This project was designed to run into a [Raspberry Pi](https://www.raspberrypi.o
 * Once you've copy the application to your Raspberry Pi. Execute the file named ``Buzz`` you'll find insde the folder. At this point, you should see the application up and running :smiley:
 
 
-***You can generate a equivalent application for OSX executing ``yarn distMac``. The OSX application generated as a result of the command execution will be placed into the ``dist`` folder as well.**
+**You can generate a equivalent application for OSX executing ``yarn distMac``. The OSX application generated as a result of the command execution will be placed into the ``dist`` folder as well.**
 
 If needed, you can also clone this repository from your Raspberry Pi and build the whole project from scratch executing ``yarn install && yarn distRaspberry`` from the root folder.
 
@@ -206,7 +206,7 @@ If for some reason the camera seems to be broken when watching the preview from 
 
 **I've got a regular webcam and it works like a charm :camera:.**
 
-![cameraAndRaspberry](.art/raspberry.jpg)
+![cameraAndRaspberry](./art/raspberry.jpg)
 
 #### Screen configuration
 
@@ -232,7 +232,7 @@ Then follow these steps:
 * Turn on the Raspberry PI.
 ```
 
-![screen](.art/screen.jpg)
+![screen](./art/screen.jpg)
 
 You can find a video explaining the process [here](https://www.youtube.com/watch?v=LvtH0TeOw2k).
 
@@ -276,7 +276,7 @@ If you'd like to use Buzz as a portable photo booth you can also use as a digita
 
 ![photo2](./art/photo2.jpg)
 
-![screenWithCase](![screen](.art/screen.jpg))
+![screenWithCase](![screen](./art/screen.jpg))
 
 Developed By
 ------------
