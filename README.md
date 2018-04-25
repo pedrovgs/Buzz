@@ -153,6 +153,7 @@ Initialize ``Firebase CLI Tools``
 
 ```
 yarn install
+yarn firebase init # You'll have to configure the already created project adding support for the functions feature.
 yarn firebase login # You'll have to introduce your Google credentials :smiley:
 cd functions
 yarn install # Firebase functions has some dependencies we can manage thanks to yarn!
