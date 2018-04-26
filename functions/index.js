@@ -21,29 +21,23 @@ exports.sharePictureByEmail = functions.database
 
 function sendEmail(toEmail, pictureUrl) {
   return new Promise(done => {
-    const mailgunConfig = require("./.mailgun.json");
-    const fromEmail = `Buzz 😃 <buzz@${mailgunConfig.domain}>`;
-    const mailgun = require("mailgun-js")({
-      apiKey: mailgunConfig.privateApiKey,
-      domain: mailgunConfig.domain
-    });
-    const data = {
-      from: fromEmail,
+    const emailConfig = require("./.emailConfig.json");
+    const send = require("gmail-send")({
+      user: emailConfig.user,
+      pass: emailConfig.pass,
       to: toEmail,
       subject: "New picture!! 📸",
       text: `You can download your new picture here: ${pictureUrl}`,
       html: `<a href="${pictureUrl}"><img src="${pictureUrl}"/></a>`
-    };
-    console.log(
-      `Sending email to ${toEmail} from ${fromEmail} with data: ${JSON.stringify(
-        data
-      )}`
-    );
-    mailgun.messages().send(data, function(error, body) {
+    });
+    console.log(`Sending email to ${toEmail} from ${emailConfig.user}`);
+    send({}, function(error, result) {
       if (error) {
         console.log(`Error sending email: ${error}`);
       } else {
-        console.log(`Email sent properly with body: ${JSON.stringify(body)}`);
+        console.log(
+          `Email sent properly with result: ${JSON.stringify(result)}`
+        );
       }
       done();
     });

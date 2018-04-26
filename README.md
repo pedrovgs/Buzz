@@ -134,16 +134,14 @@ There are some values we can configure in our small application. This table cont
 
 ### Email service:
 
-When a new picture is taken, Buzz will automatically share it with you by email. In order to accomplish this task you'll need to create a free account at [mailgun](https://app.mailgun.com) and create a new file named ``.mailgun.js`` inside the ``functions`` folder. After creating the mailgun account paste the private api key and the automatically generated domain into the ``.mailgun.json`` file as follows:
+When a new picture is taken, Buzz will automatically share it with you by email. In order to accomplish this task you'll need to create a free Gmail account and paste the user and pass into a file named ``functions/.emailConfig.json`` file as follows:
 
 ```
 {
-  "privateApiKey": "<YOUR_MAILGUN_PRIVATE_API_KEY>",
-  "domain": "<YOUR_DOMAIN>"
+    "user": "myGmailAccount@gmail.com",
+    "pass": "myGmailPassword"
 }
 ```
-
-You'll need configure a real domain and validate it in mailgun in order to send emails when pictures are taken.
 
 ### Firebase Cloud Functions:
 
@@ -169,9 +167,9 @@ Remember that as we need access to the internet from the Firebase Cloud Function
 
 This project was designed to run into a [Raspberry Pi](https://www.raspberrypi.org/). In order to get the project up and running you should follow the next steps:
 
-* Create the Firebase account and project and also the mailgun account as described before.
+* Create the Firebase account and project and also the Gmail account as described before.
 * Clone this project executing "git clone https://github.com/pedrovgs/Buzz.git".
-* Create the .env.* and .mailgun.json files as described in the previous sections.
+* Create the .env.* and .emailConfig.json files as described in the previous sections.
 * Initialize the Firebase Cloud Functions. You can do this later from your laptop if needed as described before.
 * Build the project by executing "yarn install && yarn distRaspberry" from the root repository folder. The executable application will be placed into the ``dist`` folder at the end of the command execution.
 * Get a Raspberry Pi, install a [Raspbian](https://www.raspbian.org/) distribution and connect it to the same WiFi your laptop is connected.
