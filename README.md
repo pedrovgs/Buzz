@@ -129,7 +129,8 @@ service firebase.storage {
 
 There are some values we can configure in our small application. This table contains the keys, descriptions and default values for every configurable item in our app:
 
-|ID|DEFAULT|DESCRIPTION|
+| ID | DEFAULT | DESCRIPTION |
+|----|---------|-------------|
 |REACT_APP_ALBUM_NUMBER_OF_COLUMNS|3|Number of columns used in the album's grid|
 
 ### Email service:
