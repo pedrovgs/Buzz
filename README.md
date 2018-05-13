@@ -6,7 +6,7 @@ A portable photo booth built on top of [Electron](https://electronjs.org/), [Rea
 
 <img width="640" src="./art/photo1.jpg"/>
 
-<img width="640" src="./art/photo2.jpg"/>
+<img width="640" src="./art/photo2.png"/>
 
 **Disclaimer: I use this repository as a playground for different web experiments. Don't look at the code expecting to find a canonical code example or any good practice :smiley:.**
 
@@ -270,13 +270,13 @@ If you don't want to start your application manually everytime you reboot your R
 
 ### Buzz case
 
-If you'd like to use Buzz as a portable photo booth you can also use as a digital frame for your pictures you only need to print [this screen case](https://www.thingiverse.com/thing:2815763) and [this Raspberry Pi case](https://www.thingiverse.com/thing:922740) using a 3D printer or build your own cases using wood or any other material. For now I'm using these cases:
+If you'd like to use Buzz as a portable photo booth you can also use as a digital frame for your pictures you only need to print [this screen case](https://www.thingiverse.com/thing:2815763) and [this Raspberry Pi case](https://www.thingiverse.com/thing:922740) using a 3D printer or build your own cases using wood or any other material. For now I'm using this case:
 
 <img width="640" src="./art/photo1.jpg"/>
 
-<img width="640" src="./art/photo2.jpg"/>
+<img width="640" src="./art/photo2.png"/>
 
-<img width="640" src="./art/screenWithCase.jpg"/>
+<img width="640" src="./art/screenWithCase.png"/>
 
 Developed By
 ------------
