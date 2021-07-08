@@ -173,6 +173,7 @@ This project was designed to run into a [Raspberry Pi](https://www.raspberrypi.o
 * Create the .env.* and .emailConfig.json files as described in the previous sections.
 * Initialize the Firebase Cloud Functions. You can do this later from your laptop if needed as described before.
 * Build the project by executing "yarn install && yarn distRaspberry" from the root repository folder. The executable application will be placed into the ``dist`` folder at the end of the command execution.
+* Move your app binnaries to the RaspberryPi with the command ``scp -r dist/Buzz-linux-armv7l/* pi@192.168.1.128:/home/pi/Desktop/buzz-bin``.
 * Get a Raspberry Pi, install a [Raspbian](https://www.raspbian.org/) distribution and connect it to the same WiFi your laptop is connected.
 * Find your Raspberry Pi ip address by executing "ping raspberrypi.local".
 * Connect to your Raspberry Pi by execting "ssh pi@YOUR_RASPBERRY_PI_IP". The "pi" user passowrd is "raspberry" by default.
@@ -224,6 +225,15 @@ hdmi_mode=87
 hdmi_cvt 800 480 60 6 0 0 0
 ```
 
+If your screen has a 1024*600 resolution you should use this config:
+
+```
+hdmi_group=2
+hdmi_mode=87
+hdmi_cvt 1024 600 60 3 0 0 0
+hdmi_force_hotplug=1
+```
+
 Then follow these steps:
 
 ```
@@ -240,7 +250,7 @@ In order to make the LCD and the user interface look better I'm sure you'd like 
 
 ```
 sudo apt-get install unclutter
-vi ~/.config/lxsession/LXDE-pi/autostart
+vi /home/pi/.config/lxsession/LXDE-pi/autostart
 @unclutter -idle 0 # Add this at the end of the file
 sudo reboot
 ```
