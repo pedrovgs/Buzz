@@ -13,12 +13,21 @@ import { GridTile } from "material-ui";
 import { formatTimestamp } from "../utils/dates";
 import { Col, Row } from "react-flexbox-grid";
 import EmptyAlbum from "./emptyCase/EmptyAlbum";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const styles = {
   gridList: {
     width: "100%",
     height: "100%",
     overflowY: "auto"
+  },
+  img: {
+    minWidth: "100%",
+    minHeight: "100%",
+    transform: "translate(-50%, -50%)",
+    position: "relative",
+    left: "50%",
+    top: "50%"
   }
 };
 class AlbumScreen extends Component {
@@ -70,13 +79,13 @@ class AlbumScreen extends Component {
               const title = formatTimestamp(tile.createdAt);
               return (
                 <GridTile key={url} title={title}>
-                  <img
+                  <LazyLoadImage
                     onClick={() => {
                       this.onPictureClick(tile);
                     }}
+                    style={styles.img}
                     src={url}
-                    alt={title}
-                  />
+                    alt={title} />
                 </GridTile>
               );
             })}

@@ -10,10 +10,12 @@ import Slider from "react-slick";
 import { deletePicture, selectPicture } from "../album/actions";
 import ActionDelete from "material-ui/svg-icons/action/delete";
 import FloatingButton from "../baseComponents/floatingButton/FloatingButton";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const style = {
   img: {
-    margin: "0 auto"
+    minWidth: "100%",
+    minHeight: "100%"
   }
 };
 class DetailScreen extends React.Component {
@@ -59,12 +61,11 @@ class DetailScreen extends React.Component {
             const imgHeight = this.state.height * 0.8;
             return (
               <div key={url}>
-                <img
-                  height={imgHeight}
-                  src={url}
-                  alt={title}
-                  style={style.img}
-                />
+                <LazyLoadImage
+                    alt={title}
+                    height={imgHeight}
+                    src={url}
+                    style={style.img} />
               </div>
             );
           })}
