@@ -27,7 +27,8 @@ class EmptyAlbum extends React.Component {
           Don´t be shy{" "}
           <span role="img" aria-label="Smiley">
             &#128515;
-          </span>️
+          </span>
+          ️
         </p>
         <p style={style.text}>
           Take your first picture tapping on the bottom right button{" "}

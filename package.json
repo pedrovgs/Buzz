@@ -57,23 +57,35 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.1",
-    "eslint": "^4.18.1",
-    "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-import": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.0",
-    "eslint-plugin-react": "^7.7.0",
+    "eslint": "7.30.0",
+    "eslint-config-prettier": "8.3.0",
+    "eslint-plugin-import": "2.23.4",
+    "eslint-plugin-prettier": "3.4.0",
+    "eslint-plugin-react": "7.24.0",
     "foreman": "^2.0.0",
     "image-size": "^0.6.2",
     "jest-image-snapshot": "^2.3.0",
     "jsverify": "^0.8.3",
-    "prettier-eslint-cli": "^4.7.1",
-    "react-scripts": "^1.1.1",
+    "prettier-eslint-cli": "5.0.1",
+    "react-scripts": "4.0.3",
     "react-test-renderer": "^16.3.0",
     "redux-mock-store": "^1.5.1",
     "sharp": "0.28.3",
     "spectron": "^3.8.0",
-    "webpack": "5.44.0",
-    "webpack-dev-server": "4.0.0-beta.3",
+    "webpack": "4.44.2",
+    "webpack-dev-server": "3.11.1",
     "xvfb-maybe": "^0.2.1"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

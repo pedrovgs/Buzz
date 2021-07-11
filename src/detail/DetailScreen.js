@@ -9,8 +9,8 @@ import { formatTimestamp } from "../utils/dates";
 import { deletePicture, selectPicture } from "../album/actions";
 import ActionDelete from "material-ui/svg-icons/action/delete";
 import FloatingButton from "../baseComponents/floatingButton/FloatingButton";
-import ImageGallery from 'react-image-gallery';
-import "react-image-gallery/styles/css/image-gallery.css"
+import ImageGallery from "react-image-gallery";
+import "react-image-gallery/styles/css/image-gallery.css";
 
 class DetailScreen extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class DetailScreen extends React.Component {
     this.setState({ width: window.innerWidth, height: window.innerHeight });
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     this.updateDimensions();
   }
 
@@ -49,16 +49,15 @@ class DetailScreen extends React.Component {
     return (
       <div>
         <NavigationBar title={title} showBackButton={true} />
-        <ImageGallery items={images} 
-          lazyLoad={true} 
-          showFullscreenButton={false} 
-          autoPlay={true} 
+        <ImageGallery
+          items={images}
+          lazyLoad={true}
+          showFullscreenButton={false}
+          autoPlay={true}
           showThumbnails={false}
           slideInterval={60000}
-          onSlide={index => 
-            this.onNewPictureSelected(index)
-          }
-          />
+          onSlide={index => this.onNewPictureSelected(index)}
+        />
         <FloatingButton
           disabled={this.props.deletingPicture}
           onClick={this.onFloatingButtonClick}

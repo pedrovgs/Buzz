@@ -85,7 +85,8 @@ class AlbumScreen extends Component {
                     }}
                     style={styles.img}
                     src={url}
-                    alt={title} />
+                    alt={title}
+                  />
                 </GridTile>
               );
             })}

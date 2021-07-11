@@ -6,7 +6,7 @@
       "jest": true
     },
     "rules": {
-      "prettier/prettier": "error",
+      "prettier/prettier": ["error", {"singleQuote": false}],
       "import/no-duplicates": "off",
       "react/prop-types": "off"
     },
