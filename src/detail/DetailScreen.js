@@ -6,18 +6,12 @@ import { withRouter } from "react-router";
 import { connect } from "react-redux";
 import NavigationBar from "../baseComponents/navigationBar/NavigationBar";
 import { formatTimestamp } from "../utils/dates";
-import Slider from "react-slick";
 import { deletePicture, selectPicture } from "../album/actions";
 import ActionDelete from "material-ui/svg-icons/action/delete";
 import FloatingButton from "../baseComponents/floatingButton/FloatingButton";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import ImageGallery from 'react-image-gallery';
+import "react-image-gallery/styles/css/image-gallery.css"
 
-const style = {
-  img: {
-    minWidth: "100%",
-    minHeight: "100%"
-  }
-};
 class DetailScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -51,25 +45,20 @@ class DetailScreen extends React.Component {
     const title = this.props.selectedPicture
       ? formatTimestamp(this.props.selectedPicture.createdAt)
       : "";
+    const images = this.props.pictures.map(tile => ({ original: tile.url }));
     return (
       <div>
         <NavigationBar title={title} showBackButton={true} />
-        <Slider {...this.settings()} afterChange={this.onNewPictureSelected}>
-          {this.props.pictures.map(tile => {
-            const url = tile.url;
-            const title = formatTimestamp(tile.createdAt);
-            const imgHeight = this.state.height * 0.8;
-            return (
-              <div key={url}>
-                <LazyLoadImage
-                    alt={title}
-                    height={imgHeight}
-                    src={url}
-                    style={style.img} />
-              </div>
-            );
-          })}
-        </Slider>
+        <ImageGallery items={images} 
+          lazyLoad={true} 
+          showFullscreenButton={false} 
+          autoPlay={true} 
+          showThumbnails={false}
+          slideInterval={60000}
+          onSlide={index => 
+            this.onNewPictureSelected(index)
+          }
+          />
         <FloatingButton
           disabled={this.props.deletingPicture}
           onClick={this.onFloatingButtonClick}
