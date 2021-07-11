@@ -25,9 +25,9 @@
     "distRaspberry": "yarn build && electron-packager . --platform=linux --arch=armv7l --out=dist --icon=assets/icons/logo.png --overwrite"
   },
   "dependencies": {
-    "electron": "1.7.12",
-    "firebase": "^4.11.0",
-    "firebase-tools": "^3.18.2",
+    "electron": "13.1.6",
+    "firebase": "8.7.1",
+    "firebase-tools": "9.16.0",
     "lodash": "^4.17.5",
     "material-ui": "^0.20.0",
     "moment": "^2.22.0",
@@ -52,8 +52,8 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
     "create-react-app": "^1.5.2",
-    "electron-devtools-installer": "^2.2.3",
-    "electron-packager": "^11.0.1",
+    "electron-devtools-installer": "^3.2.0",
+    "electron-packager": "15.2.0",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.1",
@@ -70,10 +70,10 @@
     "react-scripts": "^1.1.1",
     "react-test-renderer": "^16.3.0",
     "redux-mock-store": "^1.5.1",
-    "sharp": "^0.20.0",
+    "sharp": "0.28.3",
     "spectron": "^3.8.0",
-    "webpack": "^4.0.1",
-    "webpack-dev-server": "^3.1.0",
+    "webpack": "5.44.0",
+    "webpack-dev-server": "4.0.0-beta.3",
     "xvfb-maybe": "^0.2.1"
   }
 }
