@@ -88,12 +88,13 @@ class DetailScreen extends React.Component {
     return {
       dots: true,
       infinite: true,
+      lazyLoad: true,
       speed: 500,
       slidesToShow: 1,
       slidesToScroll: 1,
       adaptiveHeight: true,
-      autoplaySpeed: 60000,
       autoplay: true,
+      autoplaySpeed: 60000,
       initialSlide: selectedIndex
     };
   }
