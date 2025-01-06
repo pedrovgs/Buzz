@@ -158,9 +158,12 @@ export default withRouter(
 );
 
 function enterFullScreen() {
-  if (document.documentElement.requestFullscreen) {
-    document.documentElement.requestFullscreen();
-  } else if (document.documentElement.webkitRequestFullscreen) {
-    document.documentElement.webkitRequestFullscreen();
+  const element = document.getElementById("root");
+  if (element.requestFullscreen) {
+    element.requestFullscreen();
+  } else if (element.webkitRequestFullscreen) {
+    element.webkitRequestFullscreen();
+  } else if (element.webkitEnterFullScreen) {
+    element.webkitEnterFullScreen();
   }
 }

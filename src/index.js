@@ -10,6 +10,7 @@ import WebFont from "webfontloader";
 
 prepareAppForTestingIfNeeded();
 loadFonts();
+enableWakeLock();
 
 ReactDOM.render(
   <Provider store={buzzStore}>
@@ -32,4 +33,24 @@ function loadFonts() {
       families: ["Roboto:400", "sans-serif"]
     }
   });
+}
+
+async function enableWakeLock() {
+  let wakeLock = null;
+
+  try {
+    // Request a wake lock
+    wakeLock = await navigator.wakeLock.request("screen");
+    console.log("Wake lock is active");
+
+    // Handle wake lock release
+    wakeLock.addEventListener("release", () => {
+      console.log("Wake lock released");
+    });
+  } catch (err) {
+    console.error("Failed to acquire wake lock:", err);
+  }
+
+  // Return the wake lock instance to manage it if needed
+  return wakeLock;
 }
