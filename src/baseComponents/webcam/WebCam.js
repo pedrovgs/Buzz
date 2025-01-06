@@ -23,7 +23,7 @@ class WebCam extends React.Component {
       video: {
         width: { ideal: 1280 },
         height: { ideal: 1024 },
-        facingMode: "environment"
+        facingMode: "user"
       }
     };
 

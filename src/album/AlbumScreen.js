@@ -105,6 +105,7 @@ class AlbumScreen extends Component {
   }
 
   onFloatingButtonClick() {
+    enterFullScreen();
     this.props.history.push(CAMERA);
   }
 
@@ -155,3 +156,11 @@ const mapDispatchToProps = dispatch => {
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(AlbumScreen)
 );
+
+function enterFullScreen() {
+  if (document.documentElement.requestFullscreen) {
+    document.documentElement.requestFullscreen();
+  } else if (document.documentElement.webkitRequestFullscreen) {
+    document.documentElement.webkitRequestFullscreen();
+  }
+}
