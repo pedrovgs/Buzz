@@ -158,12 +158,12 @@ export default withRouter(
 );
 
 function enterFullScreen() {
-  const element = document.getElementById("root");
+  const element = document.documentElement;
   if (element.requestFullscreen) {
     element.requestFullscreen();
-  } else if (element.webkitRequestFullscreen) {
-    element.webkitRequestFullscreen();
   } else if (element.webkitEnterFullScreen) {
     element.webkitEnterFullScreen();
+  } else if (element.webkitRequestFullscreen) {
+    element.webkitRequestFullscreen();
   }
 }
